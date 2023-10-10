@@ -1,3 +1,6 @@
+@use "partials/variables" as *;
+@use "partials/mixin" as *;
+@use "layout_guest" as *;
 @import "~bootstrap/scss/bootstrap";
 
 *{
