@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('types_users', function (Blueprint $table) {
-            $table->primary(['type_id' , 'user_id']);
+            $table->id();
             $table->timestamps();
-
+            
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')
                 ->references('id')

@@ -19,12 +19,14 @@ class OrderSeeder extends Seeder
         Order::truncate();
         Schema::enableForeignKeyConstraints();
 
-        $user_id = User::inRandomOrder()->first();
-        Order::create([
-            'total_price' => fake()->randomNumber(3),
-            'address' => fake()->address(),
-            'address_number' => rand(1,3),
-            'user_id' => $user_id->id
-        ]);
+        for ($i=0; $i < 10; $i++) { 
+            $user_id = User::inRandomOrder()->first();
+            Order::create([
+                'total_price' => fake()->randomNumber(3),
+                'address' => fake()->address(),
+                'address_number' => rand(1,3),
+                'user_id' => $user_id->id
+            ]);
+        }
     }
 }
