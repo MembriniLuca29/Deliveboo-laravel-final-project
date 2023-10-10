@@ -1,18 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Type;
+use App\Models\Dish;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class TypeController extends Controller
+// Models
+use App\Models\Post;
+use App\Models\Type;
+
+// Requests
+use App\Http\Requests\StoreDishRequest;
+use App\Http\Requests\UpdateDishRequest;
+
+class DishController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $dishes = Dish::all();
     }
 
     /**
@@ -20,13 +30,14 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        // forse è necessario un collegamento con altro
+        return view('admin.dishes.create', compact('dishes'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreDishRequest $request)
     {
         //
     }
@@ -34,7 +45,7 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Type $type)
+    public function show(Dish $dish)
     {
         //
     }
@@ -42,7 +53,7 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Type $type)
+    public function edit(Dish $dish)
     {
         //
     }
@@ -50,7 +61,7 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Type $type)
+    public function update(UpdateDishRequest $request, Dish $dish)
     {
         //
     }
@@ -58,7 +69,7 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Type $type)
+    public function destroy(Dish $dish)
     {
         //
     }
