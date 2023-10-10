@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Dish;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 // Models
-use App\Models\Post;
-use App\Models\Type;
+use App\Models\Dish;
+use App\Models\User;
 
 // Requests
-use App\Http\Requests\StoreDishRequest;
-use App\Http\Requests\UpdateDishRequest;
+use App\Http\Requests\Dish\StoreDishRequest;
+use App\Http\Requests\Dish\UpdateDishRequest;
 
 class DishController extends Controller
 {
@@ -22,7 +20,7 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::all();
+        return redirect()->route('error.page');
     }
 
     /**
@@ -39,7 +37,16 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //
+        $formData = $request->validated();
+
+        Dish::create([
+            'name'=> $formData['name'],
+            'ingridients'=> $formData['ingredients'],
+            'price'=> $formData['price'],
+            'user_id'=> $formData['user_id'],
+        ]);
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -47,7 +54,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+       //
     }
 
     /**
@@ -55,7 +62,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+        return view('admin.dishes.edit', compact('dish'));
     }
 
     /**
@@ -63,7 +70,14 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+        $formData = $request->validated();
+
+        $dish->update([
+            'name' => $formData['name'],
+            'ingredients' => $formData['ingredients'],
+            'price' => $formData['price'],
+        ]);
+        return redirect()->route('admin.users.show', compact('user'));
     }
 
     /**
@@ -71,6 +85,8 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $dish->delete();
+
+    return redirect()->route('admin.users.index');
     }
 }
