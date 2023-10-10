@@ -45,7 +45,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        // Aggiungere rotta per stampare in pagina order
+        
     }
 
     /**
