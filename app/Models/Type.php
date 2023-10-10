@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     use HasFactory;
+    
+    public function user(){
+        return $this->belongsToMany(User::class);
+    }
+
+    protected $fillable=[
+        'name',
+        'thumb',
+    ];
 }
