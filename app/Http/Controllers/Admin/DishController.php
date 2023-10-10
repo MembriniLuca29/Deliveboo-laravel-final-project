@@ -3,6 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Dish;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+// Models
+use App\Models\Post;
+use App\Models\Type;
+
+// Requests
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 
@@ -13,7 +22,7 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $dishes = Dish::all();
     }
 
     /**
@@ -21,7 +30,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        // forse è necessario un collegamento con altro
+        return view('admin.dishes.create', compact('dishes'));
     }
 
     /**
