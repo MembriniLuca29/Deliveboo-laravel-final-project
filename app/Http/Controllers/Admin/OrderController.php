@@ -6,6 +6,10 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+// Form Requests
+use App\Http\Requests\Order\StoreOrderRequest;
+use App\Http\Requests\Order\UpdateOrderRequest;
+
 class OrderController extends Controller
 {
     /**
@@ -27,9 +31,13 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        Order::create($data);
+
+        // Aggiungere redirect a pagina post pagamento
     }
 
     /**
@@ -37,7 +45,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        // Aggiungere rotta per stampare in pagina order
     }
 
     /**
@@ -51,7 +59,7 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function update(UpdateOrderRequest $request, Order $order)
     {
         //
     }
@@ -61,6 +69,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
     }
 }

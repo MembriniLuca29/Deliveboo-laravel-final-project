@@ -12,8 +12,8 @@ use App\Models\Post;
 use App\Models\Type;
 
 // Requests
-use App\Http\Requests\StoreDishRequest;
-use App\Http\Requests\UpdateDishRequest;
+use App\Http\Requests\Dish\StoreDishRequest;
+use App\Http\Requests\Dish\UpdateDishRequest;
 
 class DishController extends Controller
 {
