@@ -12,22 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('types_users', function (Blueprint $table) {
-            $table->id();
+            $table->primary(['type_id' , 'user_id']);
             $table->timestamps();
 
+            $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')
                 ->references('id')
-                ->on('types')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->on('types');
 
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->on('users');
 
-            $table->primary(['type_id' , 'user_id']);
+            
         });
     }
 
