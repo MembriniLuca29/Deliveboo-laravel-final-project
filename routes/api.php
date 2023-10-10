@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+//controller collegato
+
+use App\Http\Controllers\API\DishController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+         return $request->user();
+     });
+
+
+     Route::name('api.')->group(function () {
+        Route::name('dishes.')->group(function () {
+            Route::post('/dishes/{id}', [DishController::class, 'store'])->name('store');
+            Route::put('/dishes/{id}', [DishController::class, 'update'])->name('update');
+            Route::delete('/dishes/{id}', [DishController::class, 'destroy'])->name('destroy');
+        });
+    });
