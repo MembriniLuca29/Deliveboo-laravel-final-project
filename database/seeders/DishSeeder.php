@@ -26,7 +26,7 @@ class DishSeeder extends Seeder
                 'name' => fake()->word(),
                 'ingredients' => fake()->sentence(),
                 'price' => fake()->randomNumber(2),
-                'user_id' => $user_id
+                'user_id' => $user_id->id
             ]);
         }
     }
