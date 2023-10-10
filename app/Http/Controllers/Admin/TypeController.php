@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Dish;
-use App\Http\Requests\StoreDishRequest;
-use App\Http\Requests\UpdateDishRequest;
+use App\Models\Type;
+use Illuminate\Http\Request;
 
-class DishController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +26,7 @@ class DishController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDishRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +34,7 @@ class DishController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dish $dish)
+    public function show(Type $type)
     {
         //
     }
@@ -43,7 +42,7 @@ class DishController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Dish $dish)
+    public function edit(Type $type)
     {
         //
     }
@@ -51,7 +50,7 @@ class DishController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDishRequest $request, Dish $dish)
+    public function update(Request $request, Type $type)
     {
         //
     }
@@ -59,7 +58,7 @@ class DishController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Dish $dish)
+    public function destroy(Type $type)
     {
         //
     }
