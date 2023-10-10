@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('dishes_orders', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-
+            
             $table->unsignedBigInteger('dish_id');
             $table->foreign('dish_id')
             ->references('id')
@@ -29,7 +28,7 @@ return new class extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-        
+            $table->timestamps();
         });
     }
 
