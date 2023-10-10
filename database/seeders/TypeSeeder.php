@@ -19,10 +19,34 @@ class TypeSeeder extends Seeder
         Type::truncate();
         Schema::enableForeignKeyConstraints();
 
-        for ($i=0; $i < 10; $i++) { 
+        $types = [
+            'italiano',
+            'vegetariano',
+            'vegano',
+            'pizza',
+            'sushi',
+            'cinese',
+            'messicano',
+            'thailandese',
+            'hamburger'
+        ];
+
+        $thumbs = [
+            'img-1',
+            'img-2',
+            'img-3',
+            'img-4',
+            'img-5',
+            'img-6',
+            'img-7',
+            'img-8',
+            'img-9',
+        ];
+
+        foreach ($types as $key => $type) {
             Type::create([
-                'name' => fake()->word(),
-                'thumb' => Str::slug(fake()->sentence())
+                'name' => $type,
+                'thumb' => $thumbs[$key]
             ]);
         }
     }
