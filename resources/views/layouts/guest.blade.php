@@ -45,7 +45,7 @@
                                 LOGO
                             </div>
                             <h1 class="mx-3 fs-1">
-                                DELIVEBOO
+                                
                             </h1>
                         </nav>
 
