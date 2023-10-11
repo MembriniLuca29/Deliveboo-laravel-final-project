@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da4c1d55262bd0d34c794150440a6d54",
+    "content-hash": "a18b1b102ec1b34db798c8666df9fc7c",
     "packages": [
         {
             "name": "brick/math",
@@ -5458,6 +5458,63 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.6"
             },
             "time": "2023-01-03T09:29:04+00:00"
+        },
+        {
+            "name": "twbs/bootstrap-sass",
+            "version": "v3.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap-sass.git",
+                "reference": "6b0ca5025c64f2e5696c8719cfce7148c78d0a50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap-sass/zipball/6b0ca5025c64f2e5696c8719cfce7148c78d0a50",
+                "reference": "6b0ca5025c64f2e5696c8719cfce7148c78d0a50",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas McDonald"
+                },
+                {
+                    "name": "Tristan Harward"
+                },
+                {
+                    "name": "Peter Gumeson"
+                },
+                {
+                    "name": "Gleb Mazovetskiy"
+                },
+                {
+                    "name": "Mark Otto"
+                },
+                {
+                    "name": "Jacob Thornton"
+                }
+            ],
+            "description": "bootstrap-sass is a Sass-powered version of Bootstrap 3, ready to drop right into your Sass powered applications.",
+            "homepage": "http://github.com/twbs/bootstrap-sass",
+            "keywords": [
+                "bootstrap",
+                "css",
+                "sass"
+            ],
+            "support": {
+                "issues": "https://github.com/twbs/bootstrap-sass/issues",
+                "source": "https://github.com/twbs/bootstrap-sass/tree/v3.4.3"
+            },
+            "time": "2022-02-28T07:48:53+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

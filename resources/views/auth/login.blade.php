@@ -6,7 +6,7 @@
 
         <!-- Email Address -->
         <div>
-            <label for="email">
+            <label for="email" class="fs-1">
                 Email
             </label>
             <input type="email" id="email" name="email">
