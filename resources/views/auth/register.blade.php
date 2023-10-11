@@ -36,6 +36,39 @@
             <input type="password" id="password_confirmation" name="password_confirmation">
         </div>
 
+        {{-- indirizzo --}}
+        <div class="mt-4">
+            <label for="password_confirmation">
+                Indirizzo
+            </label>
+            <input type="text" id="adress" name="adress">
+        </div>
+        
+          {{-- n. civico --}}
+          <div class="mt-4">
+            <label for="password_confirmation">
+                N. civico
+            </label>
+            <input type="text" id="adress_number" name="adress_number" maxlength="3">
+        </div>
+
+          {{-- p. iva --}}
+          <div class="mt-4">
+            <label for="password_confirmation">
+                Partita iva
+            </label>
+            <input type="text" id="adress_number" name="adress_number" minlength="11" maxlength="11">
+        </div>
+
+                
+            {{-- immagine profilo DA MODIFICARE LA TABELLA --}}
+          <div class="mt-4">
+            <label for="password_confirmation">
+                Partita iva
+            </label>
+            <input type="text" id="adress_number" name="adress_number" minlength="11" maxlength="11">
+        </div>
+
         <div>
             <a href="{{ route('login') }}">
                 {{ __('Already registered?') }}
