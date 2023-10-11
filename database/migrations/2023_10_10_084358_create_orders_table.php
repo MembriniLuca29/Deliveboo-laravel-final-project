@@ -23,14 +23,7 @@ return new class extends Migration
             $table->string('status')->max(50);
 
             $table->unsignedDecimal('total_price' , 5 , 2);
-            
-            $table->unsignedBigInteger('dish_id');
-            $table->foreign('dish_id')
-            ->references('id')
-            ->on('dishes')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->timestamps();
+
         });
     }
 

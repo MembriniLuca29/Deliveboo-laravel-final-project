@@ -20,7 +20,6 @@ class Order extends Model
         'email',
         'address',
         'status',
-        'total_price',
-        'restaurant_id',
+        'total_price'
     ];
 }
