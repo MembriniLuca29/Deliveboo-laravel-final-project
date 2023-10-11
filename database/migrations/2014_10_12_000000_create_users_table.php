@@ -17,19 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-
-            $table->string('address');
-            $table->string('address_number')->max(6);
-            $table->string('p_iva')->size(11);
-            $table->string('thumb')->max(2048)->nullable();
-
-
             $table->rememberToken();
             $table->timestamps();
         });
     }
 
-    /**
      * Reverse the migrations.
      */
     public function down(): void
