@@ -26,7 +26,6 @@ class StoreDishRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'description' => 'nullable',
-            'ingredients.*' => 'required|string|max:200',
             'visible' => 'nullable|boolean',
             'price' => 'required|numeric|min:0.10|max:500',
             'thumb' => 'nullable|max:2048',
@@ -42,7 +41,7 @@ class StoreDishRequest extends FormRequest
         'price.numeric' => 'Il campo è obbligatorio',
         'price.min' => 'Il prezzo deve essere almeno 0.10',
         'price.max' => 'Il prezzo non può superare 500.00',
-        'thumb' => 'URL immagine troppo lungo'
+        'thumb.size' => 'URL immagine troppo lungo',        
     ];
 }
 }
