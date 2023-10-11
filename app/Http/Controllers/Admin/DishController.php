@@ -13,6 +13,8 @@ use App\Models\User;
 use App\Http\Requests\Dish\StoreDishRequest;
 use App\Http\Requests\Dish\UpdateDishRequest;
 
+//helpers
+use Illuminate\Support\Facades\Storage;
 class DishController extends Controller
 {
     /**
@@ -63,7 +65,7 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view('admin.dishes.edit', compact('dish'));
+        return view('admin.dish.edit', compact('dish'));
     }
 
     /**
@@ -78,7 +80,7 @@ class DishController extends Controller
             'ingredients' => $formData['ingredients'],
             'price' => $formData['price'],
         ]);
-        return redirect()->route('admin.users.show', compact('user'));
+        return redirect()->route('admin.dish.show', compact('user'));
     }
 
     /**
@@ -86,8 +88,10 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+        if ($dish->cover_img) {
+            Storage::delete($dish->thumb);
+        }
         $dish->delete();
 
-    return redirect()->route('admin.users.index');
-    }
+        return redirect()->route('admin.dishes.index');    }
 }

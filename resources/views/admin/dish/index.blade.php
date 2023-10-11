@@ -9,14 +9,15 @@
                 + Aggiungi
             </a>
 
-            <table class="table">
+            <table class="table my-table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Descrizione</th>
+                        <th scope="col" >Descrizione</th>
                         <th scope="col">Prezzo</th>
                         <th scope="col">Immagine</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,14 +38,15 @@
                             <td>
                                 {{ $dish->thumb }}
                             </td>
-                            <td>
+                            <td class="d-flex justify-content-around align-item-center">
+                                <a href="" class="btn btn-primary">
                                 {{-- <a href="{{ route('dishes.show', ['dish' => $dish->id]) }}" class="btn btn-primary"> --}}
                                     Vedi
                                 </a>
-                                <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning">
+                                <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning ">
                                     Modifica
                                 </a>
-                                <form action="{{ route('dishes.destroy', ['dish' => $dish->id]) }}" method="dish" onsubmit="return confirm('Sei sicuro di voler eliminare questo piatto?');">
+                                <form action="{{ route('dishes.destroy', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo piatto?');">
                                     @csrf
                                     @method('DELETE')
 
