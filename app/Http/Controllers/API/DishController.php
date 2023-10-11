@@ -12,7 +12,7 @@ class DishController extends Controller
 {
     public function index()
     {
-        $dishes = Dish::paginate(10);
+        $dishes = Dish::all();
 
         return response()->json([
             'success' => true,
@@ -21,9 +21,9 @@ class DishController extends Controller
     }
    
 
-    public function show( string $slug)
+    public function show( string $id)
     {
-        $dishes = Dish::where('slug', $slug)->firstOrFail();
+        $dishes = Dish::where('id', $id)->firstOrFail();
         return response()->json([
             'success' => true,
             'results' => $dishes

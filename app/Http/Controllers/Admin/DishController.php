@@ -20,7 +20,8 @@ class DishController extends Controller
      */
     public function index()
     {
-        return redirect()->route('error.page');
+        $dishes = Dish::all();
+        return view('admin.dish.index', compact('dishes'));
     }
 
     /**
@@ -29,7 +30,7 @@ class DishController extends Controller
     public function create()
     {
         // forse è necessario un collegamento con altro
-        return view('admin.dishes.create', compact('dishes'));
+        return view('admin.dish.create', compact('dishes'));
     }
 
     /**
