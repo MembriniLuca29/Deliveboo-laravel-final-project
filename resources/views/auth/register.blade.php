@@ -1,7 +1,24 @@
 @extends('layouts.guest')
 
 @section('main-content')
-    <form method="POST" action="{{ route('register') }}">
+<div class="container h-100 my-style-register">
+    <div class=" h-100 w-100 d-flex justify-content-center align-items-center">
+        <div class="my-card bg-white px-5 py-4 rounded">
+            <div class="row">
+                <div class="col">
+                    <div class="box">
+                        form
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        info
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
@@ -45,5 +62,6 @@
                 Register
             </button>
         </div>
-    </form>
+    </form>  --}}
+</div>
 @endsection

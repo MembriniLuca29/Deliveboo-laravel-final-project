@@ -12,13 +12,12 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+
+                    {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    </button> --}}
+                    {{-- <div class="" id="navbarText"> --}}
+                        {{-- <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
                             @auth
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
@@ -30,14 +29,25 @@
                                     <a class="nav-link" href="#">Link 3</a>
                                 </li>
                             @else
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">Register</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">login</a>
-                                </li>
-                            @endauth
-                        </ul>
+                                </li> --}}
+                                
+                            {{-- @endauth --}}
+                        {{-- </ul>  --}}
+                        
+                        <nav class="d-flex justify-content-center align-items-center w-100">
+                            {{-- immagine logo  --}}
+                            <div class="mx-3">
+                                LOGO
+                            </div>
+                            <h1 class="mx-3 fs-1">
+                                DELIVEBOO
+                            </h1>
+                        </nav>
 
                         @auth
                             <form method="POST" action="{{ route('logout') }}">
@@ -48,15 +58,14 @@
                                 </button>
                             </form>
                         @endauth
-                    </div>
-                </div>
-            </nav>
+                    {{-- </div> --}}
+
         </header>
 
         <main class="py-4">
-            <div class="container">
+
                 @yield('main-content')
-            </div>
+
         </main>
     </body>
 </html>
