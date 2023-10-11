@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
+            $table->string('name')->max(50);
             $table->text('description')->nullable();
             $table->boolean('visible')->nullable();
             $table->unsignedDecimal('price' , 5 , 2);

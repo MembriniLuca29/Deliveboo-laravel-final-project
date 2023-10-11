@@ -14,9 +14,13 @@ class Order extends Model
     }
 
     protected $fillable=[
-        'total_price',
+        'name',
+        'last_name',
+        'phone_number',
+        'email',
         'address',
-        'address_number',
-        'user_id',
+        'status',
+        'total_price',
+        'restaurant_id',
     ];
 }
