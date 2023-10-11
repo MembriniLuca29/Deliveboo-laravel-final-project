@@ -64,7 +64,7 @@
             {{-- immagine profilo DA MODIFICARE ì--}}
           <div class="mt-4">
             <label for="thumb">
-                immgaine aziendale
+                Immagine Aziendale
             </label>
             <input type="file" id="thumb" name="thumb" accept="image/*">
         </div>
