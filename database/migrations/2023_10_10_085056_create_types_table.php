@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');            
+            $table->string('name')->max(50);            
             $table->string('thumb')->max(2048)->nullable();
             $table->timestamps();
         });
