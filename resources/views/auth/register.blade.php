@@ -38,7 +38,7 @@
 
         {{-- indirizzo --}}
         <div class="mt-4">
-            <label for="password_confirmation">
+            <label for="adress">
                 Indirizzo
             </label>
             <input type="text" id="adress" name="adress">
@@ -46,7 +46,7 @@
         
           {{-- n. civico --}}
           <div class="mt-4">
-            <label for="password_confirmation">
+            <label for="adress_number">
                 N. civico
             </label>
             <input type="text" id="adress_number" name="adress_number" maxlength="3">
@@ -54,19 +54,19 @@
 
           {{-- p. iva --}}
           <div class="mt-4">
-            <label for="password_confirmation">
+            <label for="p_iva">
                 Partita iva
             </label>
-            <input type="text" id="adress_number" name="adress_number" minlength="11" maxlength="11">
+            <input type="text" id="p_iva" name="p_iva" minlength="11" maxlength="11">
         </div>
 
                 
-            {{-- immagine profilo DA MODIFICARE LA TABELLA --}}
+            {{-- immagine profilo DA MODIFICARE ì--}}
           <div class="mt-4">
-            <label for="password_confirmation">
-                Partita iva
+            <label for="thumb">
+                immgaine aziendale
             </label>
-            <input type="text" id="adress_number" name="adress_number" minlength="11" maxlength="11">
+            <input type="file" id="thumb" name="thumb" accept="image/*">
         </div>
 
         <div>
