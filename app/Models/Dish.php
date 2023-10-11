@@ -9,8 +9,8 @@ class Dish extends Model
 {
     use HasFactory;
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function restaurant(){
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function orders(){
@@ -19,9 +19,11 @@ class Dish extends Model
 
     protected $fillable=[
         'name',
-        'ingredients',
+        'description',
+        'visible',
         'price',
-        'user_id',
+        'thumb',
+        'restaurant_id',
     ];
 
 }

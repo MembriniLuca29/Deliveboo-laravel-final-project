@@ -9,18 +9,17 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-
     public function dishes(){
         return $this->belongsToMany(Dish::class);
     }
 
     protected $fillable=[
-        'total_price',
+        'name',
+        'last_name',
+        'phone_number',
+        'email',
         'address',
-        'address_number',
-        'user_id',
+        'status',
+        'total_price'
     ];
 }

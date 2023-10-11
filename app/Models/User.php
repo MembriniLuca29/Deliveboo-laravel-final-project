@@ -12,18 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function types(){
-        return $this->belongsToMany(Type::class);
+    public function restaurants() {
+        return $this->hasMany(Restaurant::class);
     }
 
-    public function dishes(){
-        return $this->hasMany(Dish::class);
-    }
-
-
-    public function orders(){
-        return $this->hasMany(Order::class);
-    }
 
 
     /**
@@ -34,12 +26,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
-        'address',
-        'address_number',
-        'p_iva',
-        'thumb',
-
+        'password'
     ];
 
     /**

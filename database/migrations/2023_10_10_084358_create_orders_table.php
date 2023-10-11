@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedDecimal('total_price' , 5 , 2);
+
+            $table->string('name')->max(50);
+            $table->string('last_name')->max(50);
+            $table->string('phone_number')->max(13);
+            $table->string('email');
             $table->string('address');
-            $table->string('address_number')->max(6);
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->timestamps();
+
+            $table->string('status')->max(50);
+
+            $table->unsignedDecimal('total_price' , 5 , 2);
+
         });
     }
 
