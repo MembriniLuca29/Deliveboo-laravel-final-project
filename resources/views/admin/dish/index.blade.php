@@ -3,62 +3,44 @@
 @section('page-title', 'Tutti i piatti')
 
 @section('main-content')
-    <div class="row">
-        <div class="col">
+    <div class="row ">
+        <div class="container ">
             {{-- <a href="{{ route('admin.dish.create') }}" class="btn w-100 btn-success mb-5"> --}}
-                + Aggiungi
-            </a>
+            <div class="add-link"><a href="" class="btn btn-success">+ Aggiungi</a></div>
 
-            <table class="table my-table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col" >Descrizione</th>
-                        <th scope="col">Prezzo</th>
-                        <th scope="col">Immagine</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($dishes as $dish)
-                        <tr>
-                            <th scope="row">
-                                {{ $dish->id }}
-                            </th>
-                            <td>
-                                {{ $dish->name }}
-                            </td>
-                            <td>
-                                {{ $dish->description }}
-                            </td>
-                            <td>
-                                {{ $dish->price }}
-                            </td>
-                            <td>
-                                {{ $dish->thumb }}
-                            </td>
-                            <td class="d-flex justify-content-around align-item-center">
-                                <a href="" class="btn btn-primary">
-                                {{-- <a href="{{ route('dishes.show', ['dish' => $dish->id]) }}" class="btn btn-primary"> --}}
-                                    Vedi
-                                </a>
-                                <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning ">
-                                    Modifica
-                                </a>
-                                <form action="{{ route('dishes.destroy', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo piatto?');">
-                                    @csrf
-                                    @method('DELETE')
+            <div class="dish-container d-flex flex-wrap">
+                @foreach ($dishes as $dish)
+                    <div class="card " style="width: 18rem;">
+                        <img src="{{ $dish->thumb }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <div class="d-flex justify-content-between"><h5 class="card-title">{{ $dish->name }}</h5><h3>{{ $dish->price }}€</h3></div>
+                        <p class="card-text">{{ $dish->description }}</p>
+                        </div>
+                        <div class="button ">
+                         <a href="" class="btn btn-primary">
+                            {{-- <a href="{{ route('dishes.show', ['dish' => $dish->id]) }}" class="btn btn-primary"> --}}
+                                Vedi
+                            </a>
+                        <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning ">
+                            Modifica
+                        </a>
+                        <form action="{{ route('dishes.destroy', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo piatto?');">
+                            @csrf
+                            @method('DELETE')
 
-                                    <button type="submit" class="btn btn-danger">
-                                        Elimina
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-@endsection
+                            <button type="submit" class="btn btn-danger">
+                                Elimina
+                            </button>
+                        </form>
+                    </div>
+                  </div>
+                @endforeach
+            </div>
+            @endsection
+
+
+
+
+
+
+
