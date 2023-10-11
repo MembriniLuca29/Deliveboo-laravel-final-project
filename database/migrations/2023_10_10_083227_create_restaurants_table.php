@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->max(50);
             $table->string('address');
             $table->string('phone_number');
-            $table->string('thumb')->max(2048);
+            $table->string('thumb')->max(2048)->nullable();
             $table->string('p_iva')->size(11);
 
             $table->unsignedBigInteger('user_id');

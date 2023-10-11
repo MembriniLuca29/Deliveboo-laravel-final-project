@@ -25,7 +25,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.restaurant.create');
     }
 
     /**
@@ -33,7 +33,19 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        //
+        $data = $request->validated();
+        $user_id = Auth::id();
+        
+        Restaurant::create([
+            'name' => $data['name'],
+            'address' => $data['address'],
+            'phone_number' => $data['phone_number'],
+            'thumb' => $data['thumb'],
+            'p_iva' => $data['p_iva'],
+            'user_id' => $user_id
+        ]);
+
+        return redirect()->route('restaurants.index');
     }
 
     /**

@@ -27,8 +27,7 @@ class StoreRestaurantRequest extends FormRequest
             'address' => ['required'],
             'phone_number' => ['required'],
             'thumb' => ['nullable', 'max:2048'],
-            'p_iva' => ['required' , 'size:11'],
-            'user_id' => ['required', 'exists:users,id']
+            'p_iva' => ['required' , 'size:11']
         ];
     }
 

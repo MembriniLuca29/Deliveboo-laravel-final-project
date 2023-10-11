@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('page-title', 'Tutti i ristorant')
+@section('page-title', 'Tutti i ristoranti')
 
 @section('main-content')
     <div class="row">
         <div class="col">
-            {{-- <a href="{{ route('admin.dish.create') }}" class="btn w-100 btn-success mb-5"> --}}
-                + Aggiungi
+            <a href="{{ route('restaurants.create') }}">
+                Aggiungi Ristorante
             </a>
 
             <table class="table">
@@ -14,9 +14,6 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Descrizione</th>
-                        <th scope="col">Prezzo</th>
-                        <th scope="col">Immagine</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +27,7 @@
                             </td>
 
                             <td>
-                                {{-- <a href="{{ route('dishes.show', ['dish' => $dish->id]) }}" class="btn btn-primary"> --}}
+                                {{-- <a href="{{ route('dishes.show', ['dish' => $dish->id]) }}" class="btn btn-primary">
                                     Vedi
                                 </a>
                                 <a href="{{ route('restaurant.edit', ['dish' => $dish->id]) }}" class="btn btn-warning">
@@ -43,7 +40,7 @@
                                     <button type="submit" class="btn btn-danger">
                                         Elimina
                                     </button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endforeach
