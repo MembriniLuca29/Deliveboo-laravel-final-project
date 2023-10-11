@@ -24,28 +24,25 @@ class UpdateDishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255',
-            'ingridients' => 'required|array|min:1|max:40',
-            'ingredients.*' => 'required|string|max:200',
+            'name' => 'required|max:50',
+            'description' => 'nullable',
+            'visible' => 'nullable|boolean',
             'price' => 'required|numeric|min:0.10|max:500',
+            'thumb' => 'nullable|max:2048',
+            'restaurant_id' => 'required|exists:restaurants,id',
 
         ];
     }
     public function messages()
 {
     return [
-        'name.required' => 'Il campo nome è obbligatorio.',
-        'name.max' => 'Il campo nome non può superare i 255 caratteri.',
-        'ingredients.required' => 'Inserisci almeno un ingrediente.',
-        'ingredients.array' => 'Gli ingredienti devono essere in un formato di array.',
-        'ingredients.min' => 'Inserisci almeno un ingrediente.',
-        'ingredients.max' => 'Ha davvero più di 40 ingredienti.',
-        'ingredients.*.required' => 'Ogni ingrediente è obbligatorio.',
-        'ingredients.*.max' => 'Ogni ingrediente non può superare i 200 caratteri.',
+        'name.required' => 'Il campo è obbligatorio',
+        'name.max' => 'Il nome non può superare i 50 caratteri',
         'price.required' => 'Il campo prezzo è obbligatorio.',
-        'price.numeric' => 'Il campo prezzo deve essere un numero.',
-        'price.min' => 'Il prezzo deve essere almeno 0.10.',
-        'price.max' => 'Il prezzo non può superare 500.00.',
+        'price.numeric' => 'Il campo è obbligatorio',
+        'price.min' => 'Il prezzo deve essere almeno 0.10',
+        'price.max' => 'Il prezzo non può superare 500.00',
+        'thumb.size' => 'URL immagine troppo lungo'
     ];
 }
 }

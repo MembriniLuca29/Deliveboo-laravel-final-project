@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Order;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateOrderRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,10 +23,13 @@ class UpdateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'total_price' => ['required', 'max:999.99'],
-            'address' => ['required', 'max:255'],
-            'address_number' => ['required', 'max:6'],
-            'user_id' => ['required', 'exists:uses,id']
+            'name' => ['required', 'max:50'],
+            'last_name' => ['required', 'max:50'],
+            'phone_number' => ['required', 'max:13'],
+            'email' => ['required'],
+            'address' => ['required'],
+            'status' => ['nullable', 'max:50'],
+            'total_price' => ['required']
         ];
     }
 }
