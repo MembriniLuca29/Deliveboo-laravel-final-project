@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Order;
-use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 
 class OrderSeeder extends Seeder
@@ -20,12 +19,14 @@ class OrderSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         for ($i=0; $i < 10; $i++) { 
-            $user_id = User::inRandomOrder()->first();
             Order::create([
-                'total_price' => fake()->randomNumber(3),
+                'name' => fake()->name(),
+                'last_name' => fake()->name(),
+                'phone_number' => '1234567890',
+                'email' => fake()->email(),
                 'address' => fake()->address(),
-                'address_number' => rand(1,3),
-                'user_id' => $user_id->id
+                'status' => fake()->word(),
+                'total_price' => fake()->randomNumber(3)
             ]);
         }
     }

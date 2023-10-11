@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('status')->max(50);
 
             $table->unsignedDecimal('total_price' , 5 , 2);
-
+            
+            $table->timestamps();
         });
     }
 
