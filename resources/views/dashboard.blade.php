@@ -8,10 +8,10 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-center text-success">
-                        Ciao {{ auth()->user()->name }}, sei loggato!
+                        Bentornato {{ auth()->user()->name }}
                     </h1>
                     <br>
-                    La dashboard è una pagina privata (protetta dal middleware)
+                    
                 </div>
             </div>
         </div>
