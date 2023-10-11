@@ -40,4 +40,8 @@
             </button>
         </div>
     </form>
+    <h1>
+        {{ $errors->first('email') }}
+    </h1>
+    
 @endsection
