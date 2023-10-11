@@ -1,3 +1,5 @@
+@use "partials/variables" as *;
+
 main {
     background-color: $yellow-primary;
     width: 100%;
