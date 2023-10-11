@@ -41,7 +41,7 @@
             <label for="adress">
                 Indirizzo
             </label>
-            <input type="text" id="adress" name="adress">
+            <input type="text" id="address" name="address">
         </div>
         
           {{-- n. civico --}}
@@ -49,7 +49,7 @@
             <label for="adress_number">
                 N. civico
             </label>
-            <input type="text" id="adress_number" name="adress_number" maxlength="3">
+            <input type="text" id="address_number" name="address_number" maxlength="3">
         </div>
 
           {{-- p. iva --}}
