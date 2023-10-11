@@ -15,13 +15,15 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->text('ingredients');
+            $table->text('description')->nullable();
+            $table->boolean('visible')->nullable();
             $table->unsignedDecimal('price' , 5 , 2);
-            $table->unsignedBigInteger('user_id');
+            $table->string('thumb')->max(2048);
             
-            $table->foreign('user_id')
+            $table->unsignedBigInteger('restaurant_id');
+            $table->foreign('restaurant_id')
             ->references('id')
-            ->on('users')
+            ->on('restaurants')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
