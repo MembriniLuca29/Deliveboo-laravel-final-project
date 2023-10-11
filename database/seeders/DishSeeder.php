@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Dish;
-use App\Models\User;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Schema;
 
 class DishSeeder extends Seeder
@@ -21,12 +21,14 @@ class DishSeeder extends Seeder
 
         for ($i=0; $i < 20; $i++) { 
 
-            $user_id = User::inRandomOrder()->first();
+            $restaurant_id = Restaurant::inRandomOrder()->first()->id;
             Dish::create([
                 'name' => fake()->word(),
-                'ingredients' => fake()->sentence(),
+                'description' => fake()->sentence(),
+                'visible' => rand(0, 1),
                 'price' => fake()->randomNumber(2),
-                'user_id' => $user_id->id
+                'thumb' => fake()->word(),
+                'restaurant_id' => $restaurant_id
             ]);
         }
     }
