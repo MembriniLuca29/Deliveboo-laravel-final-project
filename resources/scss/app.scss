@@ -1,5 +1,7 @@
 @use "partials/variables" as *;
+
 @use "layout_guest.scss" as *;
+@use "register_blade.scss" as *;
 
 @import "~bootstrap/scss/bootstrap";
 
@@ -7,3 +9,5 @@
     box-sizing: border-box;
     margin: 0;
 }
+
+
