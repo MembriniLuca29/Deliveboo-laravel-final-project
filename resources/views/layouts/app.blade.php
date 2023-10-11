@@ -22,6 +22,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('dishes.index') }}">piatti</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('restaurants.index') }}">ristoranti</a>
+                            </li>
                         </ul>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\DishController;
-
+use App\Http\Controllers\Admin\RestaurantController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [MainController::class, 'dashboard'])->name('dashboard');
     Route::resource('dishes', DishController::class);
+    Route::resource('restaurants', RestaurantController::class);
   
     
 });
