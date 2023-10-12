@@ -30,9 +30,16 @@
                     
                     <div class="button ">
 
-                        <button class="btn btn-primary toggle-visibility" data-dish-id="{{ $dish->id }}" data-visible="{{ $dish->visible ? 'true' : 'false' }}">
-                            {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
+                        <button class="btn toggle-visibility 
+                            @if($dish->visible)
+                                btn-success
+                            @else
+                                btn-secondary
+                            @endif
+                            " data-dish-id="{{ $dish->id }}" data-visible="{{ $dish->visible ? 'true' : 'false' }}">
+                                {{ $dish->visible ? 'attivo' : 'disattivato' }}
                         </button>
+
 
                         <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning ">
                             Modifica
