@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 // Models
 use App\Models\Dish;
+use App\Models\User;
 
 // Requests
 use App\Http\Requests\Dish\StoreDishRequest;
@@ -21,7 +22,8 @@ class DishController extends Controller
      */
     public function index()
     {
-        // 
+        $dishes = Dish::all();
+        return view('admin.dish.index', compact('dishes'));
     }
 
     /**
@@ -29,7 +31,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view('admin.dish.create');
+        // forse è necessario un collegamento con altro
+        return view('admin.dish.create', compact('dishes'));
     }
 
     /**
@@ -38,16 +41,15 @@ class DishController extends Controller
     public function store(StoreDishRequest $request)
     {
         $formData = $request->validated();
-        $restaurant_id = session('restaurant_id');
 
         Dish::create([
             'name'=> $formData['name'],
-            'description'=> $formData['description'],
+            'ingridients'=> $formData['ingredients'],
             'price'=> $formData['price'],
-            'restaurant_id'=> $restaurant_id
+            'user_id'=> $formData['user_id'],
         ]);
 
-        return redirect()->route('restaurants.show', ['restaurant' => $restaurant_id]);
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -86,8 +88,10 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+        if ($dish->cover_img) {
+            Storage::delete($dish->thumb);
+        }
         $dish->delete();
-        
-        return redirect()->back();
-    }
+
+        return redirect()->route('admin.dishes.index');    }
 }

@@ -28,7 +28,8 @@ class StoreDishRequest extends FormRequest
             'description' => 'nullable',
             'visible' => 'nullable|boolean',
             'price' => 'required|numeric|min:0.10|max:500',
-            'thumb' => 'nullable|max:2048'
+            'thumb' => 'nullable|max:2048',
+            'restaurant_id' => 'required|exists:restaurants,id',
         ];
     }
     public function messages()
