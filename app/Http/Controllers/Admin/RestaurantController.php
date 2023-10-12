@@ -98,16 +98,17 @@ class RestaurantController extends Controller
         $data = $request->validated();
 
         $coverImagePath = $restaurant->thumb;
-        if (isset($formData['thumb'])) {
+
+        if (isset($data['thumb'])) {
             if ($restaurant->thumb) {
-                Storage::delete($restaurant->thumb);
+                Storage::disk('public')->delete($restaurant->thumb);
             }
 
-            $coverImagePath = Storage::put('uploads/images', $formData['thumb']);
+            $coverImagePath = Storage::disk('public')->put('uploads/images', $data['thumb']);
         }
-        else if (isset($formData['remove_thumb'])) {
+        else if (isset($data['remove_thumb'])) {
             if ($restaurant->thumb) {
-                Storage::delete($restaurant->thumb);
+                Storage::disk('public')->delete($restaurant->thumb);
             }
 
             $coverImagePath = null;
@@ -121,7 +122,9 @@ class RestaurantController extends Controller
             'p_iva' => $data['p_iva']
         ]);
 
-        $restaurant->types()->sync($data['type_id']);
+        if (isset($data['type_id'])) {
+            $restaurant->types()->sync($data['type_id']);
+        }
 
         return redirect()->route('dashboard');
     }

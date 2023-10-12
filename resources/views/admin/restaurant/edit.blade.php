@@ -9,7 +9,7 @@
         </span>
     </h1>
 
-    <form action="{{ route('restaurants.update', ['restaurant' => $restaurant]) }}" method="post">
+    <form action="{{ route('restaurants.update', ['restaurant' => $restaurant]) }}" method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
 
@@ -23,8 +23,8 @@
                 <img src="{{ asset('storage/' . $restaurant->thumb) }}" class="w-50" alt="{{ $restaurant->name }}">
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" name="remove_cover_img" id="remove_cover_img">
-                <label class="form-check-label" for="remove_cover_img">
+                <input class="form-check-input" type="checkbox" value="1" name="remove_thumb" id="remove_thumb">
+                <label class="form-check-label" for="remove_thumb">
                     Rimuovi immagine
                 </label>
             </div>

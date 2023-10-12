@@ -28,7 +28,8 @@ class UpdateRestaurantRequest extends FormRequest
             'phone_number' => ['required'],
             'p_iva' => ['required' , 'size:11'],
             'type_id' => ['nullable'],
-            'thumb' => ['nullable'],
+            'thumb' => ['nullable', 'image'],
+            'remove_thumb' => ['nullable']
         ];
     }
 
