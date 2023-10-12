@@ -96,9 +96,10 @@
                                             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Conferma Password">
                                             <label for="password_confirmation">Conferma Password</label>
                                         </div>
-                                        <button id="btn-1" type="submit" class="btn btn-warning px-4 my-1 mt-3">
+                                        <div class="mt-4"><small><a href="{{ route('login') }}">Sei già registrato? Accedi</a></small></div>
+                                        <button id="btn-1" type="submit" class="btn btn-warning px-4 my-1 mt-2">
                                             <strong>
-                                                Invia
+                                                Registrati
                                             </strong>
                                         </button>
                                     </form>
