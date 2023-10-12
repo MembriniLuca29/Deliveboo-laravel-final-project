@@ -21,7 +21,6 @@ use App\Http\Controllers\API\DishController;
 Route::name('api.')->group(function () {
 
     Route::resource('dishes', DishController::class)->only([
-        'index',
-        'show'
+        'index'
     ]);
 });

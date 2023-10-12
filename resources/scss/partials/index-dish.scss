@@ -1,4 +1,4 @@
-
+//index-dish
 .add-link{
     text-align: center;
     width: 50%;
@@ -24,4 +24,22 @@
         }
     }
     
+}
+
+
+//show-restaurant
+.divider{
+    width: 70%;
+    .price-container{
+        width: 40%;
+        min-width: 200px;
+        
+        
+    }
+    
+    .fix-error{
+        line-height: inherit;
+        
+    
+    }
 }

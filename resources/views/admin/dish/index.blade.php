@@ -18,22 +18,12 @@
                         </div>
                         <div class="button ">
                         
-                            <button class="btn btn-primary toggle-visibility" data-dish-id="{{ $dish->id }}" data-visible="{{ $dish->visible ? 'true' : 'false' }}">
-                                {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
+                            <button class="btn btn-primary toggle-visibility">
+                                aggiungi al carrello
                             </button>
                                 
                           
-                        <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning ">
-                            Modifica
-                        </a>
-                        <form action="{{ route('dishes.destroy', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo piatto?');">
-                            @csrf
-                            @method('DELETE')
-
-                            <button type="submit" class="btn btn-danger">
-                                Elimina
-                            </button>
-                        </form>
+        
                     </div>
                   </div>
      
