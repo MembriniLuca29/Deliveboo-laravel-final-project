@@ -20,10 +20,9 @@
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('dishes.index') }}">piatti</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('restaurants.index') }}">ristoranti</a>
+                                <a class="nav-link" href="{{ route('dashboard') }}">
+                                    Home
+                                </a>
                             </li>
                         </ul>
                         <form method="POST" action="{{ route('logout') }}">

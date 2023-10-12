@@ -15,9 +15,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::where('user_id', Auth::id())->get();
-
-        return view('admin.restaurant.index', compact('restaurants'));
+        // 
     }
 
     /**
@@ -45,7 +43,7 @@ class RestaurantController extends Controller
             'user_id' => $user_id
         ]);
 
-        return redirect()->route('restaurants.index');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -53,7 +51,12 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        $dishes = $restaurant->dishes()->get();
+
+        return view('admin.restaurant.show', [
+            'restaurant' => $restaurant,
+            'dishes' => $dishes
+        ]);
     }
 
     /**
@@ -77,6 +80,8 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+
+        return redirect()->route('dashboard');
     }
 }
