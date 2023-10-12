@@ -24,16 +24,16 @@
                             </h1>
                         </nav>
 
-                        @auth
+                        {{-- @auth
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
-                                {{-- logout button  --}}
+                                logout button 
                                 <button type="submit" class="btn btn-outline-danger">
                                     Log Out
                                 </button>
                             </form>
-                        @endauth
+                        @endauth --}}
 
         </header>
 

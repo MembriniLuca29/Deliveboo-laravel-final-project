@@ -23,7 +23,7 @@
                             </h1>
                         </nav>
 
-                        @auth
+                        {{-- @auth
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
@@ -31,7 +31,7 @@
                                     Log Out
                                 </button>
                             </form>
-                        @endauth
+                        @endauth --}}
         </header>
 
         <main class="py-4">
