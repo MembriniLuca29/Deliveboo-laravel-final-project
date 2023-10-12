@@ -48,7 +48,7 @@
                         <div id="registrer-form" class="box ms-5 me-5 text-center">
                             <h3 class="fs-4 mt-1 mb-4">Accesso Utente</h3>
 
-                            <div class="mt-2">
+                            <div class="mt-2 mb-2">
                                 {{ $errors->first('email') }}
                             </div>
 
