@@ -17,10 +17,12 @@
                         <p class="card-text">{{ $dish->description }}</p>
                         </div>
                         <div class="button ">
-                         <a href="" class="btn btn-primary">
-                            {{-- <a href="{{ route('dishes.show', ['dish' => $dish->id]) }}" class="btn btn-primary"> --}}
-                                Vedi
-                            </a>
+                        
+                            <button class="btn btn-primary toggle-visibility" data-dish-id="{{ $dish->id }}" data-visible="{{ $dish->visible ? 'true' : 'false' }}">
+                                {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
+                            </button>
+                                
+                          
                         <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning ">
                             Modifica
                         </a>
@@ -34,6 +36,8 @@
                         </form>
                     </div>
                   </div>
+     
+
                 @endforeach
             </div>
             @endsection
