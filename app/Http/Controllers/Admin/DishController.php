@@ -109,15 +109,18 @@ class DishController extends Controller
 }
 
 
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Dish $dish)
     {
+        $restaurantId = session('restaurant_id');
         if ($dish->thumb) {
             Storage::delete($dish->thumb);
         }
         $dish->delete();
 
-        return redirect()->route('admin.dishes.index');    }
+        return redirect()->route('restaurants.show', ['restaurant' => $restaurantId]);
+        }
 }
