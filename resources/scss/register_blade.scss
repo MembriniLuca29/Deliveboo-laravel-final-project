@@ -33,7 +33,9 @@
     }
     
     main {
-        background-color: $bg-color;
+        // background-color: $bg-color;
+        background-image: url(../../public/images/bg-2.png);
+        background-size: cover;
         width: 100%;
         height: calc(100vh - 6.25rem);
 
