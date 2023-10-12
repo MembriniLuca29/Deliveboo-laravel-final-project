@@ -23,7 +23,7 @@ class RestaurantSeeder extends Seeder
 
             $user_id = User::inRandomOrder()->first()->id;
 
-            $imagePath = '/images/restaurant.jpg';
+            $imagePath = 'images/restaurant.jpg';
 
             Restaurant::create([
             'name' => fake()->word(),

@@ -43,11 +43,17 @@ class RestaurantController extends Controller
         $data = $request->validated();
         $user_id = Auth::id();
         
+        $imagePath = null;
+        
+        if (isset($data['thumb'])) {
+            $imagePath = Storage::put('images', $data['thumb']);
+        }
+
         $restaurant = Restaurant::create([
                         'name' => $data['name'],
                         'address' => $data['address'],
                         'phone_number' => $data['phone_number'],
-                        'thumb' => $data['thumb'],
+                        'thumb' => $imagePath,
                         'p_iva' => $data['p_iva'],
                         'user_id' => $user_id
                     ]);

@@ -26,9 +26,9 @@ class UpdateRestaurantRequest extends FormRequest
             'name' => ['required', 'max:50'],
             'address' => ['required'],
             'phone_number' => ['required'],
-            'thumb' => ['nullable', 'max:2048'],
             'p_iva' => ['required' , 'size:11'],
-            'type_id' => ['nullable']
+            'type_id' => ['nullable'],
+            'thumb' => ['nullable'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UpdateRestaurantRequest extends FormRequest
             'phone_number.required' => 'Il campo è obbligatorio',
             'p_iva.required' => 'Il campo è obbligatorio',
             'p_iva.size' => 'Inserire un valore valido',
-            'thumb.size' => 'URL immagine troppo lungo'
+            'thumb.image' => 'Caricare un file di tipo .jpg, .png o .svg'
         ];
     }
 }

@@ -16,7 +16,7 @@
         <input type="text" name="name" placeholder="Name" maxlength="50" required value="{{ old('name', $restaurant->name) }}">
         <input type="text" name="address" placeholder="Address" maxlength="255" required value="{{ old('address', $restaurant->address) }}">
         <input type="text" name="phone_number" placeholder="Phone Number" maxlength="13" required value="{{ old('phone_number', $restaurant->phone_number) }}">
-        <input type="file" name="thumb" placeholder="thumb" accept=".jpg, .png, .svg">
+        <input type="file" name="thumb" placeholder="thumb" accept="image/*">
 
         @if ($restaurant->thumb)
             <div>
