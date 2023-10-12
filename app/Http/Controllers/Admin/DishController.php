@@ -87,8 +87,7 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $dish->delete();
-
-        $restaurant_id = session('restaurant_id');
-        return redirect()->route('restaurants.show', ['restaurant' => $restaurant_id]); 
+        
+        return redirect()->back();
     }
 }
