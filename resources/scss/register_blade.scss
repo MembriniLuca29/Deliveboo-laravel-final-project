@@ -1,5 +1,10 @@
 @use "./partials/variables.scss" as *;
 
+// @include media-breakpoint-only(xl) { 
+// @media (min-width: 993px) {
+    /* Stili specifici per schermi di grandi dimensioni */
+
+
 .my-style-register{
 
     .form-control:focus{
@@ -14,11 +19,16 @@
             height: 6.25rem;
             border-bottom: 6px solid black;
             background-color: $bg-color;
-        
-                h1{
-                    color: $brown-primary;
-                    font-size: 1.875rem;
-                }
+            
+
+            img{
+                width: 4.6875rem;
+            }
+
+            h1{
+                color: $brown-primary;
+                font-size: 3.5rem;
+            }
         }
     }
     
@@ -30,14 +40,42 @@
         .my-card{
             width: 70%;
             min-height: 30%;
-            transform: translate(0, -50%);
+            transform: translate(0, -20%);
+            
 
-            #registrer-form{
+            #registrer-form{        
 
-                form{
+                form{       // form di registrazione
 
                     input{
                         border: 3px solid $yellow-primary;
+                    }
+
+                    button{
+                        background-color: $yellow-primary;
+                        transition: all 0.25s ease;
+                        border: 4px solid $yellow-primary;
+                    }
+                    
+                    #btn-1:hover {    
+                        transform: translateY(-3px);
+                        background-color: $bg-color;
+                        // color: black;
+                        border: 4px solid $yellow-primary;
+                        // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+                    }
+                }
+            }
+
+            #benefits-info{     //"Cosa vuol dire essere partner deliveboo?" info box
+
+                @media (min-width: 1201px) {                    
+                    .infobox{
+    
+                        div{
+                            font-size: 1.0625rem;
+                            list-style:circle !important;
+                        }
                     }
                 }
             }
@@ -47,3 +85,4 @@
 
 
 }
+// }
