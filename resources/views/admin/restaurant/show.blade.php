@@ -2,12 +2,7 @@
 
 @section('page-title', 'Dashboard')
 
-@php
-    session(['restaurant_id' => $restaurant->id]);
-@endphp
-
 @section('main-content')
-
     <div class="row">
         <h1 class="text-center text-success">
             <span class="text-capitalize">
@@ -15,19 +10,21 @@
             </span>
         </h1>
 
-            <div class="add-link"><a href="{{ route('dishes.create') }}" class="btn btn-success my-4">+ Aggiungi</a></div>
+        <div class="add-link">
+            <a href="{{ route('dishes.create') }}" class="btn btn-success my-4">+ Aggiungi</a>
+        </div>
 
         {{-- Restaurants Cards --}}
-        
         @foreach ($dishes as $dish)
-        <div class="col-12 mb-3">
-            <div class="card">
-                <div class="card-body text-capitalize d-flex justify-content-between align-item-center">
-                    <div class="d-flex divider">
-                        <div class="price-container d-flex">{{ $dish->name }} </div>
-                        <div><h6 class="fix-error">{{ $dish->price }}€</h6></div>
-                    </div>
+            <div class="col-12 mb-3">
+                <div class="card">
+                    <div class="card-body text-capitalize d-flex justify-content-between align-item-center">
+                        <div class="d-flex divider">
+                            <div class="price-container d-flex">{{ $dish->name }} </div>
+                            <div><h6 class="fix-error">{{ $dish->price }}€</h6></div>
+                        </div>
 
+                        {{-- Pulsante Nascondi/Mostra --}}
                     <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">
                         @csrf
                         @method('PUT')
@@ -40,10 +37,7 @@
                             {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
                         </button>
                     </form>
-                    
     
-                    
-                           
                         <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning ">
                             Modifica
                         </a>
@@ -59,7 +53,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
         @endforeach
+   
     </div>
 @endsection
