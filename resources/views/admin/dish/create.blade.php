@@ -25,7 +25,7 @@
 
         <div class="form-group">
             <label for="thumb">Immagine:</label>
-            <input type="file" name="thumb" id="thumb" class="form-control" accept=".jpg, .png, .svg">
+            <input type="file" name="thumb" id="thumb" class="form-control" accept="image/*">
         </div>
         
         <input type="hidden" name="restaurant_id" value="{{ $restaurantId }}">

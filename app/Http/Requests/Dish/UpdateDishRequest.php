@@ -13,7 +13,7 @@ class UpdateDishRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::chec();
+        return Auth::check();
     }
 
     /**

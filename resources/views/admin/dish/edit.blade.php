@@ -15,32 +15,37 @@
                 </div>
             @endif
 
-            <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="dish" enctype="multipart/form-data">
+            <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="mb-3">
-                    <label for="title" class="form-label">nome</label>
-                    <input type="text" class="form-control" id="title" name="title" required maxlength="255" value="{{ old('title', $dish->title) }}">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" required maxlength="255" value="{{ old('name', $dish->name) }}">
                 </div>
 
                 <div class="mb-3">
-                    <label for="content" class="form-label">descrizione</label>
-                    <textarea class="form-control" id="content" name="content" rows="3">{{ old('content', $dish->content) }}</textarea>
+                    <label for="description" class="form-label">Descrizione</label>
+                    <textarea class="form-control" id="description" name="description" rows="3">{{ old('description', $dish->description) }}</textarea>
                 </div>
-
+                
                 <div class="mb-3">
-                    <label for="cover_img" class="form-label">Immagine</label>
-                    <input class="form-control" type="file" name="cover_img" id="cover_img" accept="image/*">
+                    <label for="price" class="form-label">Prezzo</label>
+                    <input type="text" class="form-control" id="price" name="price" required maxlength="255" value="{{ old('price', $dish->price) }}">
+                </div>
+                <input type="hidden" name="restaurant_id" value="{{ $restaurantId }}">
+                <div class="mb-3">
+                    <label for="thumb" class="form-label">Immagine</label>
+                    <input class="form-control" type="file" name="thumb" id="thumb" accept="image/*">
 
-                    @if ($dish->cover_img)
+                    @if ($dish->thumb)
                         <div>
                            
-                            <img src="{{ asset('storage/' . $dish->cover_img) }}" class="w-50" alt="{{ $dish->title }}">
+                            <img src="{{ asset('storage/' . $dish->thumb) }}" class="w-50" alt="{{ $dish->title }}">
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" name="remove_cover_img" id="remove_cover_img">
-                            <label class="form-check-label" for="remove_cover_img">
+                            <input class="form-check-input" type="checkbox" value="1" name="remove_thumb" id="remove_thumb">
+                            <label class="form-check-label" for="remove_thumb">
                                 Rimuovi immagine
                             </label>
                         </div>

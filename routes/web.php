@@ -36,5 +36,6 @@ Route::middleware('auth')->group(function () {
   
     
 });
+Route::put('/dishes/{dish}/toggle-visibility', 'DishController@toggleVisibility')->name('dishes.toggle-visibility');
 
 require __DIR__.'/auth.php';

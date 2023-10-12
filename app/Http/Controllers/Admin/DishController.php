@@ -76,23 +76,38 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view('admin.dish.edit', compact('dish'));
+        $restaurantId = session('restaurant_id');
+
+        return view('admin.dish.edit', compact('dish', 'restaurantId'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateDishRequest $request, Dish $dish)
-    {
-        $formData = $request->validated();
+{
+    $formData = $request->validated();
 
-        $dish->update([
-            'name' => $formData['name'],
-            'description' => $formData['description'],
-            'price' => $formData['price'],
-        ]);
-        return redirect()->route('admin.dish.show', compact('user'));
+    $restaurantId = session('restaurant_id');
+    $thumbPath = $dish->thumb; // Mantieni il percorso dell'immagine esistente
+
+    if ($request->hasFile('thumb')) {
+        $thumb = $request->file('thumb');
+        $thumbPath = $thumb->store('thumbs', 'public');
     }
+
+    $dish->update([
+        'name' => $formData['name'],
+        'description' => $formData['description'],
+        'price' => $formData['price'],
+        'thumb' => $thumbPath, // Aggiorna l'immagine o mantieni quella esistente
+        'restaurant_id' => $formData['restaurant_id'],
+    ]);
+
+    // Reindirizza l'utente alla pagina corretta usando la rotta
+    return redirect()->route('restaurants.show', ['restaurant' => $restaurantId]);
+}
+
 
     /**
      * Remove the specified resource from storage.

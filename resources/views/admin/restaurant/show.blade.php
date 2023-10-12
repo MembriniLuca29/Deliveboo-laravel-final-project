@@ -27,10 +27,9 @@
                         <div class="price-container d-flex">{{ $dish->name }} </div>
                         <div><h6 class="fix-error">{{ $dish->price }}€</h6></div>
                     </div>
-                    
-                    <div class="button ">
 
-                        <button class="btn toggle-visibility 
+                    <div class="button ">
+                            <button class="btn toggle-visibility 
                             @if($dish->visible)
                                 btn-success
                             @else
@@ -39,8 +38,6 @@
                             " data-dish-id="{{ $dish->id }}" data-visible="{{ $dish->visible ? 'true' : 'false' }}">
                                 {{ $dish->visible ? 'attivo' : 'disattivato' }}
                         </button>
-
-
                         <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning ">
                             Modifica
                         </a>
