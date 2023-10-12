@@ -72,11 +72,13 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+        $restaurantId = session('restaurant_id');
         $dishes = $restaurant->dishes()->get();
 
         return view('admin.restaurant.show', [
             'restaurant' => $restaurant,
             'dishes' => $dishes
+            
         ]);
     }
 

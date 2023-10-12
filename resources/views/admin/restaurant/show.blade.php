@@ -28,22 +28,19 @@
                         <div><h6 class="fix-error">{{ $dish->price }}€</h6></div>
                     </div>
 
-<div class="button ">
-    <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler nascondere il piatto?');" class="d-inline">
-        @csrf
-        @method('PUT')
-    
-        <input type="hidden" name="toggle_visibility" value="{{ $dish->visible ? '0' : '1' }}">
-        <button type="submit" class="btn  p-2
-            @if($dish->visible)
-                btn-primary
-            @else
-                btn-danger
-            @endif
-            ">
-            
-        </button>
-    </form>
+                    <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="name" value="{{ $dish->name }}">
+                        <input type="hidden" name="price" value="{{ $dish->price }}">
+                        <input type="hidden" name="restaurant_id" value="{{ $dish->restaurant_id }}">
+                        <input type="hidden" name="visible" value="{{ $dish->visible ? '0' : '1' }}">
+                        
+                        <button type="submit" class="btn p-2 {{ $dish->visible ? 'btn-primary' : 'btn-danger' }}">
+                            {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
+                        </button>
+                    </form>
+                    
     
                     
                            

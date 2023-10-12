@@ -32,6 +32,7 @@ class UpdateDishRequest extends FormRequest
             'restaurant_id' => 'required|exists:restaurants,id',
 
         ];
+        
     }
     public function messages()
 {

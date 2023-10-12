@@ -77,40 +77,40 @@ class DishController extends Controller
     public function edit(Dish $dish)
     {
         $restaurantId = session('restaurant_id');
-
+      
         return view('admin.dish.edit', compact('dish', 'restaurantId'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDishRequest $request, Dish $dish)
-{
-    $formData = $request->validated();
-
-    // Imposta il valore di 'visible' a 1 se presente, altrimenti a 0
-    $visible = isset($formData['visible']) ? 1 : 0;
-
-    $restaurantId = session('restaurant_id');
-    $thumbPath = $dish->thumb;
-
-    if ($request->hasFile('thumb')) {
-        $thumb = $request->file('thumb');
-        $thumbPath = $thumb->store('thumbs', 'public');
+    public function update(Request $request, Dish $dish)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:50',
+            'price' => 'required|numeric|min:0.10|max:500',
+            'restaurant_id' => 'required|exists:restaurants,id',
+            'description' => 'nullable',
+            'visible' => 'boolean',
+            'thumb' => 'nullable|max:2048',
+        ]);
+    
+        // Verifica se 'description' è presente nei dati validati, altrimenti assegnalo a null
+        $description = isset($validatedData['description']) ? $validatedData['description'] : null;
+    
+        $dish->update([
+            'name' => $validatedData['name'],
+            'description' => $description,
+            'price' => $validatedData['price'],
+            'visible' => $request->input('visible') ? 1 : 0,
+            'thumb' => $request->hasFile('thumb') ? $request->file('thumb')->store('thumbs', 'public') : $dish->thumb,
+            'restaurant_id' => $validatedData['restaurant_id'],
+        ]);
+    
+        return redirect()->route('restaurants.show', ['restaurant' => $dish->restaurant_id])->with('success', 'Piatto aggiornato con successo.');
     }
-
-    $dish->update([
-        'name' => $formData['name'],
-        'description' => $formData['description'],
-        'price' => $formData['price'],
-        'visible' => $visible,
-        'thumb' => $thumbPath,
-        'restaurant_id' => $formData['restaurant_id'],
-    ]);
-
-    return redirect()->route('restaurants.show', ['restaurant' => $restaurantId]);
-}
-
+    
 
 
 
