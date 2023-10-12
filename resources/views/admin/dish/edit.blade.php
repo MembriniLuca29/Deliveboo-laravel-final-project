@@ -33,6 +33,11 @@
                     <label for="price" class="form-label">Prezzo</label>
                     <input type="text" class="form-control" id="price" name="price" required maxlength="255" value="{{ old('price', $dish->price) }}">
                 </div>
+                <div class="mb-3">
+                    <label for="visible" class="form-label">Visibilità</label>
+                    <input type="checkbox" class="form-check-input" id="visible" name="visible" value="1" {{ $dish->visible ? 'checked' : '' }}>
+                </div>
+                
                 <input type="hidden" name="restaurant_id" value="{{ $restaurantId }}">
                 <div class="mb-3">
                     <label for="thumb" class="form-label">Immagine</label>

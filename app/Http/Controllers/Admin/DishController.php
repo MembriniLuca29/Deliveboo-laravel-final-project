@@ -88,8 +88,11 @@ class DishController extends Controller
 {
     $formData = $request->validated();
 
+    // Imposta il valore di 'visible' a 1 se presente, altrimenti a 0
+    $visible = isset($formData['visible']) ? 1 : 0;
+
     $restaurantId = session('restaurant_id');
-    $thumbPath = $dish->thumb; // Mantieni il percorso dell'immagine esistente
+    $thumbPath = $dish->thumb;
 
     if ($request->hasFile('thumb')) {
         $thumb = $request->file('thumb');
@@ -100,13 +103,14 @@ class DishController extends Controller
         'name' => $formData['name'],
         'description' => $formData['description'],
         'price' => $formData['price'],
-        'thumb' => $thumbPath, // Aggiorna l'immagine o mantieni quella esistente
+        'visible' => $visible,
+        'thumb' => $thumbPath,
         'restaurant_id' => $formData['restaurant_id'],
     ]);
 
-    // Reindirizza l'utente alla pagina corretta usando la rotta
     return redirect()->route('restaurants.show', ['restaurant' => $restaurantId]);
 }
+
 
 
 
