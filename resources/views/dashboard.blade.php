@@ -28,7 +28,9 @@
                         <a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-primary">
                             Vedi
                         </a>
-
+                        <a href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}" class="btn btn-warning">
+                            Modifica
+                        </a>
                         <form action="{{ route('restaurants.destroy', ['restaurant' => $restaurant->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo ristorante?');" class="d-inline">
                             @csrf
                             @method('DELETE')

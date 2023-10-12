@@ -32,7 +32,7 @@
                         <a href="{{ route('dishes.show', ['dish' => $dish]) }}" class="btn btn-primary">
                             Vedi
                         </a>
-
+                        
                         <form action="{{ route('dishes.destroy', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo piatto?');" class="d-inline">
                             @csrf
                             @method('DELETE')

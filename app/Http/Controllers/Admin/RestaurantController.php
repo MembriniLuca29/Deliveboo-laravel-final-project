@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Restaurant;
 use App\Http\Requests\Restaurant\StoreRestaurantRequest;
 use App\Http\Requests\Restaurant\UpdateRestaurantRequest;
+
+// FACADES
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+
+// MODELS
+use App\Models\Restaurant;
 use App\Models\Type;
+
+// CONTROLLERS
+use App\Http\Controllers\Controller;
 
 class RestaurantController extends Controller
 {
@@ -72,7 +79,9 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        $types = Type::all();
+    
+        return view('admin.restaurant.edit', ['restaurant' => $restaurant, 'types' => $types]);
     }
 
     /**
@@ -80,7 +89,35 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        $data = $request->validated();
+
+        $coverImagePath = $restaurant->thumb;
+        if (isset($formData['thumb'])) {
+            if ($restaurant->thumb) {
+                Storage::delete($restaurant->thumb);
+            }
+
+            $coverImagePath = Storage::put('uploads/images', $formData['thumb']);
+        }
+        else if (isset($formData['remove_thumb'])) {
+            if ($restaurant->thumb) {
+                Storage::delete($restaurant->thumb);
+            }
+
+            $coverImagePath = null;
+        }
+
+        $restaurant ->update([
+            'name' => $data['name'],
+            'address' => $data['address'],
+            'phone_number' => $data['phone_number'],
+            'thumb' => $coverImagePath,
+            'p_iva' => $data['p_iva']
+        ]);
+
+        $restaurant->types()->sync($data['type_id']);
+
+        return redirect()->route('dashboard');
     }
 
     /**
