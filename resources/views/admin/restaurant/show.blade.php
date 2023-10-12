@@ -44,7 +44,7 @@
                         <a href="{{ route('dishes.edit', ['dish' => $dish->id]) }}" class="btn btn-warning ">
                             Modifica
                         </a>
-
+                        
                         <form action="{{ route('dishes.destroy', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo piatto?');" class="d-inline">
                             @csrf
                             @method('DELETE')
