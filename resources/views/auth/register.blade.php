@@ -42,7 +42,7 @@
                         <nav class="d-flex justify-content-center align-items-center w-100">
                             {{-- immagine logo  --}}
                             <div class="mx-3">
-                                {{-- <img src="../../../public/img/icon logo.png" alt="Logo"> --}}
+                                <img src="images/iconlogo.png" alt="Logo">
                             </div>
                             <h1 class="mx-3 fw-bold">
                                 D E L I V E B O O
