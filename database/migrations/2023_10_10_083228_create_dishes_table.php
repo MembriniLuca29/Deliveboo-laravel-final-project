@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->boolean('visible')->nullable();
             $table->unsignedDecimal('price' , 5 , 2);
-            $table->string('thumb')->max(2048);
+            $table->string('thumb')->max(2048)->nullable();
             
             $table->unsignedBigInteger('restaurant_id');
             $table->foreign('restaurant_id')
