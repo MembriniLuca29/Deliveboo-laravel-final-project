@@ -48,6 +48,10 @@
                         <div id="registrer-form" class="box ms-5 me-5 text-center">
                             <h3 class="fs-4 mt-1 mb-4">Accesso Utente</h3>
 
+                            <div class="mt-2">
+                                {{ $errors->first('email') }}
+                            </div>
+
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
@@ -94,14 +98,13 @@
                                 <div id="register_redirect" class="mt-4">
                                     <small><a class="text-decoration-none" href="{{ route('register') }}">Non hai un account? Registrati</a></small>
                                 </div>
+
+
                             </form>
                         </div>
 
                     </div>
                 </div>
-                <h1>
-                    {{ $errors->first('email') }}
-                </h1>
             </div>
 
         </main>
