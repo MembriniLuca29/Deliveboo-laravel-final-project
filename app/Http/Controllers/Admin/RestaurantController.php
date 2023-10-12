@@ -7,6 +7,7 @@ use App\Http\Requests\Restaurant\StoreRestaurantRequest;
 use App\Http\Requests\Restaurant\UpdateRestaurantRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 
 class RestaurantController extends Controller
 {
@@ -23,7 +24,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('admin.restaurant.create');
+        $types = Type::all();
+        return view('admin.restaurant.create', compact('types'));
     }
 
     /**
@@ -34,14 +36,20 @@ class RestaurantController extends Controller
         $data = $request->validated();
         $user_id = Auth::id();
         
-        Restaurant::create([
-            'name' => $data['name'],
-            'address' => $data['address'],
-            'phone_number' => $data['phone_number'],
-            'thumb' => $data['thumb'],
-            'p_iva' => $data['p_iva'],
-            'user_id' => $user_id
-        ]);
+        $restaurant = Restaurant::create([
+                        'name' => $data['name'],
+                        'address' => $data['address'],
+                        'phone_number' => $data['phone_number'],
+                        'thumb' => $data['thumb'],
+                        'p_iva' => $data['p_iva'],
+                        'user_id' => $user_id
+                    ]);
+
+        if (isset($data['type_id'])) {
+            foreach ($data['type_id'] as $type) {
+                $restaurant->types()->attach($type);
+            }
+        }
 
         return redirect()->route('dashboard');
     }
