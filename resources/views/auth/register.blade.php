@@ -96,7 +96,9 @@
                                             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Conferma Password">
                                             <label for="password_confirmation">Conferma Password</label>
                                         </div>
-
+                                        <button type="submit">
+                                            Register
+                                        </button>
                                     </form>
                                 </div>
                             </div>
