@@ -5,9 +5,6 @@
 @section('main-content')
     <div class="row ">
         <div class="container ">
-            {{-- <a href="{{ route('admin.dish.create') }}" class="btn w-100 btn-success mb-5"> --}}
-            <div class="add-link"><a href="" class="btn btn-success">+ Aggiungi</a></div>
-
             <div class="dish-container d-flex flex-wrap">
                 @foreach ($dishes as $dish)
                     <div class="card " style="width: 18rem;">

@@ -27,11 +27,11 @@
                         </ul>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <button type="submit" class="btn btn-outline-danger">
-                                Log Out
+                                Logout
                             </button>
                         </form>
+                        
                     </div>
                 </div>
             </nav>
