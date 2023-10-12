@@ -46,7 +46,7 @@ class RestaurantController extends Controller
         $imagePath = null;
         
         if (isset($data['thumb'])) {
-            $imagePath = Storage::put('images', $data['thumb']);
+            $imagePath = Storage::disk('public')->put('uploads/images', $data['thumb']);
         }
 
         $restaurant = Restaurant::create([
