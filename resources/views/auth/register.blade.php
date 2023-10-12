@@ -42,9 +42,9 @@
                         <nav class="d-flex justify-content-center align-items-center w-100">
                             {{-- immagine logo  --}}
                             <div class="mx-3">
-                                LOGO
+                                {{-- <img src="../../../public/img/icon logo.png" alt="Logo"> --}}
                             </div>
-                            <h1 class="mx-3 fs-1 fw-bold">
+                            <h1 class="mx-3 fw-bold">
                                 D E L I V E B O O
                             </h1>
                         </nav>
@@ -96,8 +96,10 @@
                                             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Conferma Password">
                                             <label for="password_confirmation">Conferma Password</label>
                                         </div>
-                                        <button type="submit">
-                                            Register
+                                        <button id="btn-1" type="submit" class="btn btn-warning px-4 my-1 mt-3">
+                                            <strong>
+                                                Invia
+                                            </strong>
                                         </button>
                                     </form>
                                 </div>
@@ -105,8 +107,14 @@
 
                             <div class="col">
                                 {{-- "Quali sono i benefici di essere partner?" Box di info  --}}
-                                <div id="benefits-info" class="box ms-2 me-5">
-                                    info
+                                <div id="benefits-info" class="box ms-2 me-5 mt-2">
+                                    <div class="infobox ms-3 mt-4 d-xxl-block">
+                                        <h3 class="fs-5 mb-3">Cosa vuol dire essere partner Deliveboo?</h4>
+                                        <div class="mb-3 ms-2">"Espandi la tua attività grazie a Deliveboo, raggiungendo nuovi clienti ogni giorno."</div>
+                                        <div class="mb-3 ms-2">"Un modo semplice ed efficacie per gestire le ordinazioni ed avere tutto sotto controllo."</div>
+                                        <div class="mb-3 ms-2 d-none d-lg-block">"Con Deliveboo vedrai aumentare la visibilità online del tuo ristorante come mai prima d'ora."</div>
+                                        <div class="mb-3 ms-2 d-none d-xxl-block">"Deliveboo ha il sistema di consegne più ottimizzato sul mercato, i tuoi clienti saranno sempre soddisfatti."</div>
+                                    </div>
                                 </div>
                             </div>
 
