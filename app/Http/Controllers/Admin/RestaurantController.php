@@ -134,6 +134,11 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+
+        if ($restaurant->thumb) {
+            Storage::disk('public')->delete($restaurant->thumb);
+        }
+        
         $restaurant->delete();
 
         return redirect()->route('dashboard');
