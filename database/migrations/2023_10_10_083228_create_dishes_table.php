@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('name')->max(50);
             $table->text('description')->nullable();
-            $table->boolean('visible')->nullable();
+            $table->boolean('visible')->default(true);
             $table->unsignedDecimal('price' , 5 , 2);
             $table->string('thumb')->max(2048);
             
