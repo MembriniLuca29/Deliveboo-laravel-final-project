@@ -24,6 +24,9 @@
                     <div>
                         {{ $restaurant->name }}
                     </div>
+                    <div style="width:200px; height:100px;">
+                        <img src="{{ $restaurant->thumb }}" alt="" class="w-100">
+                    </div>
                     <div>
                         <a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-primary">
                             Vedi

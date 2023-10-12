@@ -22,12 +22,15 @@ class DishSeeder extends Seeder
         for ($i=0; $i < 20; $i++) { 
 
             $restaurant_id = Restaurant::inRandomOrder()->first()->id;
+
+            $imagePath = $imagePath = '/images/meal.jpg';;
+
             Dish::create([
                 'name' => fake()->word(),
                 'description' => fake()->sentence(),
                 'visible' => rand(0, 1),
                 'price' => fake()->randomNumber(2),
-                'thumb' => fake()->word(),
+                'thumb' => $imagePath,
                 'restaurant_id' => $restaurant_id
             ]);
         }
