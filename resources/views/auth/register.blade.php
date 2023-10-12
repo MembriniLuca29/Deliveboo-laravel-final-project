@@ -92,7 +92,7 @@
                                     <div class="infobox ms-3 mt-4 d-xxl-block">
                                         <h3 class="fs-5 mb-3">Cosa vuol dire essere partner Deliveboo?</h4>
                                         <div class="mb-3 ms-2">"Con Deliveboo espandi la tua attività, raggiungendo nuovi clienti ogni giorno."</div>
-                                        <div class="mb-3 ms-2">"È un modo semplice ed efficacie per gestire le ordinazioni ed avere tutto sotto controllo."</div>
+                                        <div class="mb-3 ms-2">"È un modo semplice ed efficace per gestire le ordinazioni ed avere tutto sotto controllo."</div>
                                         <div class="mb-3 ms-2 d-none d-lg-block">"Da Partner vedrai aumentare la visibilità online del tuo ristorante come mai prima d'ora."</div>
                                         <div class="mb-3 ms-2 d-none d-xxl-block">"Deliveboo ha il sistema di consegne più ottimizzato sul mercato, i tuoi clienti saranno sempre soddisfatti."</div>
                                     </div>
