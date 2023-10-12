@@ -30,10 +30,11 @@ class DishController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        // forse è necessario un collegamento con altro
-        return view('admin.dish.create', compact('dishes'));
-    }
+{
+    $restaurantId = session('restaurant_id');
+    // forse è necessario un collegamento con altro
+    return view('admin.dish.create', compact('restaurantId'));
+}
 
     /**
      * Store a newly created resource in storage.
@@ -42,14 +43,24 @@ class DishController extends Controller
     {
         $formData = $request->validated();
 
+        $restaurantId = session('restaurant_id');
+
+        $thumbPath = null;
+
+        if ($request->hasFile('thumb')) {
+            $thumb = $request->file('thumb');
+            $thumbPath = $thumb->store('thumbs', 'public');
+        }
+
         Dish::create([
-            'name'=> $formData['name'],
-            'ingridients'=> $formData['ingredients'],
-            'price'=> $formData['price'],
-            'user_id'=> $formData['user_id'],
+            'name' => $formData['name'],
+            'ingredients' => $formData['description'],
+            'price' => $formData['price'],
+            'thumb' => $thumbPath,
+            'restaurant_id' => $formData['restaurant_id'],
         ]);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('restaurants.show', ['restaurant' => $restaurantId]);
     }
 
     /**
@@ -77,7 +88,7 @@ class DishController extends Controller
 
         $dish->update([
             'name' => $formData['name'],
-            'ingredients' => $formData['ingredients'],
+            'description' => $formData['description'],
             'price' => $formData['price'],
         ]);
         return redirect()->route('admin.dish.show', compact('user'));
@@ -88,7 +99,7 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        if ($dish->cover_img) {
+        if ($dish->thumb) {
             Storage::delete($dish->thumb);
         }
         $dish->delete();

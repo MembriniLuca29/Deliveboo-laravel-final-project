@@ -15,8 +15,7 @@
             </span>
         </h1>
 
-         {{-- <a href="{{ route('admin.dish.create') }}" class="btn w-100 btn-success mb-5"> --}}
-            <div class="add-link"><a href="" class="btn btn-success my-4">+ Aggiungi</a></div>
+            <div class="add-link"><a href="{{ route('dishes.create') }}" class="btn btn-success my-4">+ Aggiungi</a></div>
 
         {{-- Restaurants Cards --}}
         
