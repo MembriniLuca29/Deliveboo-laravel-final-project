@@ -5,13 +5,13 @@
 @section('main-content')
     <h1>Aggiungi un ristorante</h1>
 
-    <form action="{{ route('restaurants.store') }}" method="POST">
+    <form action="{{ route('restaurants.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <input type="text" name="name" placeholder="Name" maxlength="50" required>
         <input type="text" name="address" placeholder="Address" maxlength="255" required>
         <input type="text" name="phone_number" placeholder="Phone Number" maxlength="13" required>
-        <input type="file" name="thumb" placeholder="thumb" accept=".jpg, .png, .svg">
+        <input type="file" name="thumb" placeholder="thumb" accept="image/*">
         <input type="text" name="p_iva" placeholder="p_iva" maxlength="11" required>
         
         <div>
@@ -28,5 +28,7 @@
                 Aggiungi
             </button>
         </div>
+
+        {{ $errors }}
     </form>
 @endsection

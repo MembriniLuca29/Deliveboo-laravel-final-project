@@ -9,22 +9,22 @@
         </span>
     </h1>
 
-    <form action="{{ route('restaurants.update', ['restaurant' => $restaurant]) }}" method="post">
+    <form action="{{ route('restaurants.update', ['restaurant' => $restaurant]) }}" method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
 
         <input type="text" name="name" placeholder="Name" maxlength="50" required value="{{ old('name', $restaurant->name) }}">
         <input type="text" name="address" placeholder="Address" maxlength="255" required value="{{ old('address', $restaurant->address) }}">
         <input type="text" name="phone_number" placeholder="Phone Number" maxlength="13" required value="{{ old('phone_number', $restaurant->phone_number) }}">
-        <input type="file" name="thumb" placeholder="thumb" accept=".jpg, .png, .svg">
+        <input type="file" name="thumb" placeholder="thumb" accept="image/*">
 
         @if ($restaurant->thumb)
             <div>
                 <img src="{{ asset('storage/' . $restaurant->thumb) }}" class="w-50" alt="{{ $restaurant->name }}">
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" name="remove_cover_img" id="remove_cover_img">
-                <label class="form-check-label" for="remove_cover_img">
+                <input class="form-check-input" type="checkbox" value="1" name="remove_thumb" id="remove_thumb">
+                <label class="form-check-label" for="remove_thumb">
                     Rimuovi immagine
                 </label>
             </div>

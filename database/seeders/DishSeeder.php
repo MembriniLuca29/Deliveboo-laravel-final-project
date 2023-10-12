@@ -23,7 +23,7 @@ class DishSeeder extends Seeder
 
             $restaurant_id = Restaurant::inRandomOrder()->first()->id;
 
-            $imagePath = $imagePath = '/images/meal.jpg';;
+            $imagePath = $imagePath = 'images/meal.jpg';;
 
             Dish::create([
                 'name' => fake()->word(),
