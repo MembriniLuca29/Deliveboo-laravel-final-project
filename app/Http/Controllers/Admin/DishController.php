@@ -86,10 +86,9 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        if ($dish->cover_img) {
-            Storage::delete($dish->thumb);
-        }
         $dish->delete();
 
-        return redirect()->route('admin.restaurant.show');    }
+        $restaurant_id = session('restaurant_id');
+        return redirect()->route('restaurants.show', ['restaurant' => $restaurant_id]); 
+    }
 }
