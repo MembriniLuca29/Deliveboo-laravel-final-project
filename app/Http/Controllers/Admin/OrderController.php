@@ -23,9 +23,12 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->validated();
+
+        $order = Order::create($data);
+    return response()->json($order, 201);
     }
 
     /**

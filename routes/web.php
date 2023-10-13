@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\DashboardController;
 
 /*
@@ -33,10 +34,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('dishes', DishController::class);
     Route::resource('restaurants', RestaurantController::class);
-  
+    Route::resource('order', OrderController::class);
+
     
 });
-Route::put('/dishes/{dish}/toggle-visibility', 'DishController@toggleVisibility')->name('dishes.toggle-visibility');
+
 Route::post('/logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
 
 require __DIR__.'/auth.php';
