@@ -2,6 +2,11 @@
 
 
 .my-style-login{
+
+    .form-control:focus{
+        border-color: unset;
+        box-shadow: unset;
+    }
     
 
     header{
