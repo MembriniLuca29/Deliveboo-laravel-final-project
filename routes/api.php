@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\TypeController;
+use App\Http\Controllers\API\DishController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,8 +38,11 @@ Route::name('type.')
 ->prefix('type')
 ->group(function() {
 Route::get('type', [TypeController::class, 'index'])->name('index');
+});
 
-
-
+Route::name('dish.')
+->prefix('dish')
+->group(function() {
+Route::get('dish', [DishController::class, 'index'])->name('index');
 });
 });
