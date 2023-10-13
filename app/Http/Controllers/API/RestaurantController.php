@@ -30,9 +30,9 @@ class RestaurantController extends Controller
         ]);
     }
 
-    public function byType(string $id) {
+    public function byType(string $name) {
 
-        $type = Type::where('id', $id)->firstOrFail();
+        $type = Type::where('name', $name)->first();
         $restaurants = $type->restaurants()->get();
 
         return response()->json([
