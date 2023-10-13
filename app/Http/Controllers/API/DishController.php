@@ -30,4 +30,10 @@ class DishController extends Controller
         ]);
     }
 
+    public function getDishes()
+    {
+            $dishes = Dish::all();
+            return response()->json($dishes);
+        }
+
 }
