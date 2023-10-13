@@ -127,4 +127,6 @@ class DishController extends Controller
 
         return redirect()->route('restaurants.show', ['restaurant' => $restaurantId]);
         }
+
 }
+
