@@ -12,28 +12,17 @@ class DishController extends Controller
 {
     public function index()
     {
+        // public function index(Request $request)
+        // {
+        // $restaurantId = $request->input('restaurant_id');
+
+        // // Ottieni i piatti che corrispondono all'id del ristorante
+        // $dishes = Dish::where('restaurant_id', $restaurantId)->get();
+
         $dishes = Dish::all();
-
         return response()->json([
             'success' => true,
             'results' => $dishes
         ]);
     }
-   
-
-    public function show( string $id)
-    {
-        $dishes = Dish::where('id', $id)->firstOrFail();
-        return response()->json([
-            'success' => true,
-            'results' => $dishes
-        ]);
-    }
-
-    public function getDishes()
-    {
-            $dishes = Dish::all();
-            return response()->json($dishes);
-        }
-
 }
