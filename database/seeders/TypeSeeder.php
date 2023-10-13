@@ -32,15 +32,15 @@ class TypeSeeder extends Seeder
         ];
 
         $thumbs = [
-            'img-1',
-            'img-2',
-            'img-3',
-            'img-4',
-            'img-5',
-            'img-6',
-            'img-7',
-            'img-8',
-            'img-9',
+            '/assets/img_cibo_italiano_png.png',
+            '/assets/img_cibo_vegetariano_png.png',
+            '/assets/img_cibo_vegano_png.png',
+            '/assets/img_pizza_png.png',
+            '/assets/img_sushi_png.png',
+            '/assets/img_cibo_cinese_png.png',
+            '/assets/img_cibo_messicano_png.png',
+            '/assets/img_cibo_thailandese_png.png',
+            '/assets/img_hamburger_png.png',
         ];
 
         foreach ($types as $key => $type) {
