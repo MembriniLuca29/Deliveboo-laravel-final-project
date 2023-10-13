@@ -29,6 +29,8 @@ Route::name('api.')->group(function () {
         ->prefix('restaurant')
         ->group(function() {
     Route::get('restaurant', [RestaurantController::class, 'index'])->name('index');
+    Route::get('restaurant/show', [RestaurantController::class, 'show'])->name('show');
+    
     
 });
    
