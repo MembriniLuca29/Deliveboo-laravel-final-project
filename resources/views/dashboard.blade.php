@@ -9,12 +9,9 @@
             <span class="text-capitalize">
                 {{ auth()->user()->name }}
             </span>
-        </h1>
-
-        <a href="{{ route('restaurants.create') }}">
-            Aggiungi Ristorante
+        </h1>           
         </a>
-
+        <div class="text-center px-5"><a href="{{ route('restaurants.create') }}" class="btn btn-success my-4 px-5">+  Aggiungi Ristorante</a></div>
         {{-- Restaurants Cards --}}
         
         @foreach ($restaurants as $restaurant)
