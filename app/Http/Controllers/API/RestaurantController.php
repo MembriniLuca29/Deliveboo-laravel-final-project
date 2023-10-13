@@ -12,7 +12,7 @@ class RestaurantController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::inRandomOrder()->limit(4)->get();
 
         return response()->json([
             'success' => true,
