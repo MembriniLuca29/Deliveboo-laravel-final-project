@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 //controller collegato
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\OrderController;
-
+use App\Http\Controllers\API\TypeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,5 +33,12 @@ Route::name('api.')->group(function () {
     
     
 });
-   
+Route::name('type.')
+->prefix('type')
+->group(function() {
+Route::get('type', [TypeController::class, 'index'])->name('index');
+
+
+
+});
 });
