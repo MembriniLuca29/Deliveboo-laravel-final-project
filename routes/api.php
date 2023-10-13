@@ -23,4 +23,11 @@ Route::name('api.')->group(function () {
     Route::resource('dishes', DishController::class)->only([
         'index'
     ]);
+
+    Route::post('/order', 'Admin\OrderController@create');
+
+
+    Route::resource('order', OrderController::class)->only([
+        'show'
+    ]);
 });
