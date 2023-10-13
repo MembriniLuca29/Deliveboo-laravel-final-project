@@ -4,8 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 //controller collegato
+use App\Http\Controllers\API\RestaurantController;
+use App\Http\Controllers\API\OrderController;
 
-use App\Http\Controllers\API\DishController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,15 +20,16 @@ use App\Http\Controllers\API\DishController;
 
 
 Route::name('api.')->group(function () {
-
-    Route::resource('dishes', DishController::class)->only([
-        'index'
-    ]);
-
-    Route::post('/order', 'Admin\OrderController@create');
-
-
+   
     Route::resource('order', OrderController::class)->only([
         'show'
     ]);
+
+    Route::name('restaurant.')
+        ->prefix('restaurant')
+        ->group(function() {
+    Route::get('restaurant', [RestaurantController::class, 'index'])->name('index');
+    
+});
+   
 });

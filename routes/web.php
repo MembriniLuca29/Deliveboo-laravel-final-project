@@ -35,9 +35,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('dishes', DishController::class);
     Route::resource('restaurants', RestaurantController::class);
     Route::resource('order', OrderController::class);
+
     
 });
-Route::put('/dishes/{dish}/toggle-visibility', 'DishController@toggleVisibility')->name('dishes.toggle-visibility');
+
 Route::post('/logout', 'Auth\AuthenticatedSessionController@destroy')->name('logout');
 
 require __DIR__.'/auth.php';
