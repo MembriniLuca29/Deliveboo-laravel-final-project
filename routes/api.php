@@ -31,18 +31,15 @@ Route::name('api.')->group(function () {
         ->group(function() {
     Route::get('restaurant', [RestaurantController::class, 'index'])->name('index');
     Route::get('restaurant/show', [RestaurantController::class, 'show'])->name('show');
-    
+    Route::get('restaurant/{name}', [RestaurantController::class, 'byType'])->name('byType');
     
 });
 Route::name('type.')
 ->prefix('type')
 ->group(function() {
 Route::get('type', [TypeController::class, 'index'])->name('index');
-});
 
-Route::name('dish.')
-->prefix('dish')
-->group(function() {
-Route::get('dish', [DishController::class, 'index'])->name('index');
+
+
 });
 });

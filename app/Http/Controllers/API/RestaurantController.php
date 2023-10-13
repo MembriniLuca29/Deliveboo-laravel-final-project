@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Type;
 
 // Models collegati
 use App\Models\Restaurant;
@@ -27,5 +28,17 @@ class RestaurantController extends Controller
             'success' => true,
             'result' => $restaurant
         ]);
+    }
+
+    public function byType(string $name) {
+
+        $type = Type::where('name', $name)->first();
+        $restaurants = $type->restaurants()->get();
+
+        return response()->json([
+            'success' => true,
+            'restaurants' => $restaurants
+        ]);
+
     }
 }
