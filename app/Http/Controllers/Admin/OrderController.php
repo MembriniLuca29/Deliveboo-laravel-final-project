@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+// Models
+use App\Models\User;
+use App\Models\Order;
 
 // Form Requests
 use App\Http\Requests\Order\StoreOrderRequest;
@@ -16,9 +19,13 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(String $user_id)
     {
-        //
+        $user = User::find($user_id);
+        $orders = $user->restaurants()->dishes()->orders;
+
+        return view('dashboard', compact('orders'));
+
     }
 
     /**
@@ -29,7 +36,8 @@ class OrderController extends Controller
         $data = $request->validated();
 
         $order = Order::create($data);
-    return response()->json($order, 201);
+        
+        return response()->json($order, 201);
     }
 
     /**
@@ -49,7 +57,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        
+        return view('admin.orders.show', compact($order));
     }
 
     /**
