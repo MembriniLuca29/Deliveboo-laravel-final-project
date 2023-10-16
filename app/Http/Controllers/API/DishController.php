@@ -10,11 +10,10 @@ use App\Models\Dish;
 
 class DishController extends Controller
 {
-    public function index(Request $request)
+    public function index($restaurant_id)
     {
-       
-        $dishes = Dish::all();
-    
+        $dishes = Dish::where('restaurant_id', $restaurant_id)->get();
+
         return response()->json([
             'success' => true,
             'results' => $dishes

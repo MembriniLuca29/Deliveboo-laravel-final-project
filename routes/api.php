@@ -41,5 +41,11 @@ Route::get('type', [TypeController::class, 'index'])->name('index');
 
 
 
+
 });
+Route::name('dish.')
+    ->prefix('dish')
+    ->group(function() {
+        Route::get('dish/{restaurant_id}', [DishController::class, 'index'])->name('index');
+    });
 });
