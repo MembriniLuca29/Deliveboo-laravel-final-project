@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('page-title', 'Dashboard')
-
+@php
+    session(['restaurant_id' => $restaurant->id]);
+@endphp
 @section('main-content')
     <div class="row">
         <h1 class="text-center text-success">
