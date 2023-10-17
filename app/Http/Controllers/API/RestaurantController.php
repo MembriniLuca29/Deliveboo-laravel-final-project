@@ -4,10 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Type;
+
 
 // Models collegati
 use App\Models\Restaurant;
+use App\Models\Type;
 
 class RestaurantController extends Controller
 {
@@ -32,27 +33,34 @@ class RestaurantController extends Controller
 
     public function filter (string $search) {
 
-        $restaurantsByType = [];
-        $restaurantsByName = [];
+        $restaurants = [];
+        $types = Type::all();
 
         if ($search != 'all') {
-            $type = Type::where('name', 'LIKE', "{$search}%")->first();
+            
+            foreach ($types as $type) {
 
-            if ($type) {
-                $restaurantsByType = $type->restaurants()->get(); 
+                if (str_contains($search, $type->name)) {
+                    $restaurantsByType = $type->restaurants()->get();
+
+                    foreach ($restaurantsByType as $singleRestaurant) {
+                        $restaurants[] = $singleRestaurant;
+                    }
+                }
+
             }
 
-            $restaurantsByName = Restaurant::where('name', 'LIKE', "{$search}%")->get();
         }
         else {
-            $restaurantsByType = Restaurant::all();
-        }
-        
+            $restaurants = Restaurant::all();
+        }     
                
         return response()->json([
             'success' => true,
-            'restaurantsByType' => $restaurantsByType,
-            'restaurantsByName' => $restaurantsByName
+            'restaurants' => $restaurants,
         ]);
+
+        
+        
     }
 }
