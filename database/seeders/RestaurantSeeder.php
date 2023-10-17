@@ -19,21 +19,20 @@ class RestaurantSeeder extends Seeder
         Restaurant::truncate();
         Schema::enableForeignKeyConstraints();
 
-        for ($i=0; $i < 10; $i++) { 
+        $users = User::all();
 
-            $user_id = User::inRandomOrder()->first()->id;
+        $imagePath = '/uploads/images/restaurant.jpg';
 
-            $imagePath = '/uploads/images/restaurant.jpg';
-
+        foreach ($users as $user) {
             Restaurant::create([
-            'name' => fake()->word(),
-            'address' => fake()->address(),
-            'phone_number' => '1234567890',
-            'thumb' => $imagePath,
-            'p_iva' => '12345678912',
-            'user_id' => $user_id
-            
-        ]);
+                'name' => fake()->word(),
+                'address' => fake()->address(),
+                'phone_number' => '1234567890',
+                'thumb' => $imagePath,
+                'p_iva' => '12345678912',
+                'user_id' => $user->id
+                ]);
         }
+        
     }
 }

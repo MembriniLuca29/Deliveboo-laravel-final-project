@@ -24,6 +24,7 @@ return new class extends Migration
                 ->on('restaurants')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->primary(['type_id', 'restaurant_id']);
         });
     }
 
