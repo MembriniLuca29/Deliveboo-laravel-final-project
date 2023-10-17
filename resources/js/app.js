@@ -22,3 +22,14 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+
+document.getElementById('registrer-form').addEventListener('submit', function(event) {
+    // Impedisci il comportamento predefinito del modulo
+    event.preventDefault();
+    console.log('testing');
+    // Esegui qui il codice che vuoi quando il modulo viene inviato
+    //   var input = document.getElementById('inputField').value;
+    //   alert('Hai inserito: ' + input);
+})
+
