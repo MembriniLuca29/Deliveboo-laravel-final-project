@@ -30,6 +30,7 @@
         
         <input type="hidden" name="restaurant_id" value="{{ $restaurantId }}">
 
+
         <div class="form-group mt-3">
             <button type="submit" class="btn btn-primary">Aggiungi</button>
         </div>
