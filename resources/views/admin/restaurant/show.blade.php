@@ -3,6 +3,7 @@
 @section('page-title', 'Dashboard')
 @php
     session(['restaurant_id' => $restaurant->id]);
+@endphp
 
 {{-- ASIDE NAV SECTION  --}}
 @section('aside-nav-content')
