@@ -32,13 +32,11 @@ class RestaurantController extends Controller
 
     public function filter (string $search) {
 
-        if ($search == '') {
-            $restaurantsByType = null;
-            $restaurantsByName = Restaurant::all();
-        }
-        else {
+        $restaurantsByType = [];
+        $restaurantsByName = [];
+
+        if ($search != 'all') {
             $type = Type::where('name', 'LIKE', "{$search}%")->first();
-            $restaurantsByType = null;
 
             if ($type) {
                 $restaurantsByType = $type->restaurants()->get(); 
@@ -46,6 +44,10 @@ class RestaurantController extends Controller
 
             $restaurantsByName = Restaurant::where('name', 'LIKE', "{$search}%")->get();
         }
+        else {
+            $restaurantsByType = Restaurant::all();
+        }
+        
                
         return response()->json([
             'success' => true,
