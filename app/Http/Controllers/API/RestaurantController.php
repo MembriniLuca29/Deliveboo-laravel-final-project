@@ -30,27 +30,22 @@ class RestaurantController extends Controller
         ]);
     }
 
-    public function byType(string $name) {
-
-        $type = Type::where('name', $name)->first();
-        $restaurants = $type->restaurants()->get();
-
-        return response()->json([
-            'success' => true,
-            'restaurants' => $restaurants
-        ]);
-
-    }
-
     public function filter (string $search) {
 
-        $type = Type::where('name', 'LIKE', "{$search}%")->first();
-        $restaurantsByType = null;
-        if ($type) {
-            $restaurantsByType = $type->restaurants()->get(); 
+        if ($search == '') {
+            $restaurantsByType = null;
+            $restaurantsByName = Restaurant::all();
         }
+        else {
+            $type = Type::where('name', 'LIKE', "{$search}%")->first();
+            $restaurantsByType = null;
 
-        $restaurantsByName = Restaurant::where('name', 'LIKE', "{$search}%")->get();
+            if ($type) {
+                $restaurantsByType = $type->restaurants()->get(); 
+            }
+
+            $restaurantsByName = Restaurant::where('name', 'LIKE', "{$search}%")->get();
+        }
                
         return response()->json([
             'success' => true,
