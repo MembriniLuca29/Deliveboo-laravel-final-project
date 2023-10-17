@@ -54,7 +54,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                    <form class="needs-validation" method="POST" action="{{ route('register') }}" novalidate>
+                                    <form  method="POST" action="{{ route('register') }}" novalidate>
                                         @csrf
 
                                         {{-- name --}}
