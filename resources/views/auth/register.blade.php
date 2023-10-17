@@ -45,7 +45,15 @@
                                 {{-- Form di registrazione  --}}
                                 <div id="registrer-form" class="box ms-5 me-2 text-center">
                                     <h3 class="fs-4 mt-1 mb-4">Registrazione Utente</h3>
-
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                     <form class="needs-validation" method="POST" action="{{ route('register') }}" novalidate>
                                         @csrf
 
