@@ -9,7 +9,7 @@
 @section('aside-nav-content')
     <div class="my-style-home-dashboard-aside">
         {{-- Elemento aside Navbar  --}}
-        <a href="#" class="ms-4 text-decoration-none text-black underline-hover">
+        <a href="#" class="ms-4 text-decoration-none text-black underline-hover">   {{-- QUA C'E' NA CLASE DA CAMBIARE  E ANCHE IN TUTTI GLI ALTRI A--}}
             <div class="lh-1 mt-3 mb-1 fs-4 underline-hover">
                 <img class="ms-1 mb-1" width="31" height="31" src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/48/external-dish-thanksgiving-tanah-basah-basic-outline-tanah-basah.png" alt="external-dish-thanksgiving-tanah-basah-basic-outline-tanah-basah"/>
                 <span class="ms-1">Pietanze</span>
