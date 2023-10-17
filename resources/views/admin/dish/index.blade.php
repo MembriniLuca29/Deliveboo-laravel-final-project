@@ -2,6 +2,13 @@
 
 @section('page-title', 'Tutti i piatti')
 
+{{-- ASIDE NAV SECTION  --}}
+@section('aside-nav-content')
+    <div class="my-style-home-dashboard-aside">
+
+    </div>
+@endsection
+
 @section('main-content')
     <div class="row ">
         <div class="container ">
