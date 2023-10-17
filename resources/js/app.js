@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 innerDiv.classList.remove('attivo');
             });
             div.classList.add('attivo');
+            
+            console.log(typeof window.location.href);
         });
     });
 });
