@@ -46,31 +46,43 @@
                                 <div id="registrer-form" class="box ms-5 me-2 text-center">
                                     <h3 class="fs-4 mt-1 mb-4">Registrazione Utente</h3>
 
-                                    <form method="POST" action="{{ route('register') }}">
+                                    <form class="needs-validation" method="POST" action="{{ route('register') }}" novalidate>
                                         @csrf
 
                                         {{-- name --}}
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="name@example.com">
-                                            <label for="name">Nome</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="name@example.com" required>
+                                            <label for="name">Nome<span class="text-danger"> *</span></label>
+                                            <div class="invalid-feedback">
+                                                Il nome utente è obbligatorio.
+                                            </div>
                                         </div>
 
                                         {{-- email address --}}
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
-                                            <label for="email">Indirizzo Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"required>
+                                            <label for="email">Indirizzo Email<span class="text-danger"> *</span></label>
+                                            <div class="invalid-feedback">
+                                                L'email è obbligatorio.
+                                            </div>
                                         </div>
 
                                         {{-- password --}}
                                         <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password"required>
+                                            <label for="password">Password<span class="text-danger"> *</span></label>
+                                            <div class="invalid-feedback">
+                                                La password è obbligatoria.
+                                            </div>
                                         </div>
 
                                         {{-- password_confirmation --}}
                                         <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Conferma Password">
-                                            <label for="password_confirmation">Conferma Password</label>
+                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Conferma Password"required>
+                                            <label for="password_confirmation">Conferma Password<span class="text-danger"> *</span></label>
+                                            <div class="invalid-feedback">
+                                                La conferma della password è obbligatoria.
+                                            </div>
                                         </div>
 
                                         {{-- submit button  --}}
