@@ -1,15 +1,71 @@
 @use "partials/variables" as *;
 
-nav{
-    width: 100%;
-    height: 6.25rem;
-    border-bottom: 6px solid black;
-    background-color: $bg-color;
+
+body{
+    // font-family:;
+    height: 100vh;
+    overflow: hidden; 
+
+    #my-container{
+        background-color: $bg-color;
+
+        aside{
+            background-color: $yellow-primary;
+            border-radius: 1.875rem 0 0 1.875rem;
+            font-size: 1.75rem;
+            border-right: 2px solid black;
+
+            #aside-title{
+                
+            }
+            .underline-hover{
+                position: relative;
+                display: inline-block;
+                overflow: hidden;
+                width: 100%;
+            }
+            .underline-hover::after{
+                content: "";
+                position: absolute;
+                top: 90%; /* regolazione altezza linea */
+                left: 0;
+                width: 200px; /* regolazione lunghezza linea */
+                height: 3px; /* regolazione spessore della linea */
+                background-color: white; /* regolazion colore della linea */
+                transform: scaleX(0); /* Inizialmente la linea è invisibile */
+                transform-origin: left; /* Imposta l'origine della trasformazione a sinistra */
+                transition: transform 0.3s ease; /* Aggiunge un effetto di transizione quando appare */
+            }
+            .underline-hover:hover:after {
+                transform: scaleX(1); /* Quando passi sopra il div, la linea appare da sinistra a destra */
+            }
+            .underline-hover.attivo:after {
+                transform: scaleX(1); /* Quando passi sopra il div, la linea appare da sinistra a destra */
+            }
+
+            #login-button{
+                bottom: 1.875rem;
+
+                button{
+
+                    div{
+                        transition: all 0.25s ease;
+                    }
+                    div:hover{
+                        transform: scale(1.050);
+                    }
+                }
+            }
 
 
-}
 
-main {
-    background-color: $bg-color;
-    width: 100%;
+        }
+    
+        main {
+            background-color: white;
+            border-radius: 0 1.875rem 1.875rem 0;
+        }
+    }
+    
+
 }
