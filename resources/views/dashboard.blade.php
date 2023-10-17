@@ -2,7 +2,7 @@
 
 @section('page-title', 'Dashboard')
 
-{{-- ASIDE NAV ELEMENTS  --}}
+{{-- ASIDE NAV SECTION  --}}
 @section('aside-nav-content')
     <div class="my-style-home-dashboard-aside">
 
@@ -48,30 +48,48 @@
                                     {{-- Restaurants searchbar  --}}
                                     <form id="res-search" class="d-flex" role="search">
                                         <input class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca il ristorante di cui hai bisogno..." aria-label="Search">
-                                        {{-- <button class="btn btn-outline-success" type="submit">Search</button> --}}
                                     </form>
 
                                     {{-- restaurants list section --}}
-                                    <div id="res-list" class="pt-3 overflow-auto overflow-x-hidden px-2">
+                                    <div id="res-list" class="pt-3 px-4 overflow-auto overflow-x-hidden">
 
                                         @foreach ($restaurants as $restaurant)
                                         {{-- my single restaurant item  --}}
-                                        <div class="item bg-secondary mb-3 p-2 row">
+                                        <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row">
+
+                                            {{-- Restaurant thumb --}}
                                             <div class="col-4">
                                                 <div class="img-box bg-white rounded h-100">
                                                     <img src="{{ asset('storage/'.$restaurant->thumb) }}" alt="">
                                                 </div>
                                             </div>
+                                            {{-- Restaurant Name --}}
                                             <div class="col-4">
-                                                <div class="text-center">
-                                                    {{ $restaurant->name }}
+                                                <div class="d-flex flex-column justify-content-center h-100 align-items-center">
+                                                    <h2 class="fw-semibold fs-5">                                                    
+                                                        {{ $restaurant->name }}
+                                                    </h2>
                                                 </div>
                                             </div>
+
+                                            {{-- restaurant interaction buttons --}}
                                             <div class="col-4">
-                                                <div class="text-center">
-                                                    Bottoni interazioni
+                                                <div id="res-int-buttons" class="d-flex flex-column justify-content-center h-100 align-items-center">
+                                                    {{-- Restaurant show button --}}
+                                                    <div class="details-button">
+                                                        <div type="submit" class="btn btn-1 btn-blue px-3 mb-3 fw-semibold">
+                                                                <a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}">Dettagli</a>
+                                                        </div>
+                                                    </div>
+                                                    {{-- Restaurant edit button --}}
+                                                    <div class="edit-button">
+                                                        <div type="submit" class="btn btn-1 btn-yellow px-3 fw-semibold">
+                                                                <a class="text-decoration-none" href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}">Modifica</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                         </div> 
                                         @endforeach
                                         
