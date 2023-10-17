@@ -39,7 +39,6 @@ class RestaurantController extends Controller
         if ($search != 'all') {
             
             foreach ($types as $type) {
-
                 if (str_contains($search, $type->name)) {
                     $restaurantsByType = $type->restaurants()->get();
 
@@ -47,7 +46,6 @@ class RestaurantController extends Controller
                         $restaurants[] = $singleRestaurant;
                     }
                 }
-
             }
 
         }
