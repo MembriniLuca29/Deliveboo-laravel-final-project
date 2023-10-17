@@ -1,5 +1,6 @@
 @use "partials/variables" as *;
 
+
 body{
     // font-family:;
     height: 100vh;
@@ -61,8 +62,7 @@ body{
         }
     
         main {
-            background-color: aliceblue;
-            width: 100%;
+            background-color: white;
             border-radius: 0 1.875rem 1.875rem 0;
         }
     }

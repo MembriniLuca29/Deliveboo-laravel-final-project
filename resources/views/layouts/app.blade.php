@@ -20,32 +20,9 @@
 
             <div class="container d-flex h-100 shadow-lg rounded-5 p-0">
                 
-                <aside class="col-xl-2 col-lg-3 py-4 d-flex flex-column position-relative">
-                    {{-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                        <div class="container">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarText">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('dashboard') }}">
-                                            Home
-                                        </a>
-                                    </li>
-                                </ul>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-outline-danger">
-                                        Logout
-                                    </button>
-                                </form>
-                                
-                            </div>
-                        </div>
-                    </nav> --}}
+                <aside class="col-xl-2 col-lg-3 col-md-4 py-4 d-flex flex-column position-relative">
         
-                    <div id="aside-title" class="ms-4 lh-1 mb-5">Deliveboo Dashboard</div>
+                    <div id="aside-title" class="ms-4 lh-1 mb-5">Deliveboo<br>Dashboard</div>
 
                     {{-- Elemento aside Navbar  --}}
                     <a href="{{ route('dashboard') }}" class="ms-4 text-decoration-none text-black">
@@ -76,7 +53,7 @@
 
                 </aside>
         
-                <main class="py-4 col-xl-10 col-lg-9">
+                <main class="py-4 col-xl-10 col-lg-9 col-md-8">
                     {{-- <div class="container"> --}}
                         @yield('main-content')
                     {{-- </div> --}}
