@@ -25,6 +25,9 @@ Route::name('api.')->group(function () {
     Route::resource('order', OrderController::class)->only([
         'show'
     ]);
+    Route::prefix('orders')->group(function () {
+        Route::post('/', [OrderController::class, 'create']);
+    });
 
     Route::name('restaurant.')->prefix('restaurant')->group(function() {
 
