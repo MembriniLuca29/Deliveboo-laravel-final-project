@@ -37,11 +37,21 @@ class RestaurantController extends Controller
         $types = Type::all();
 
         if ($search != 'all') {
-            
-            foreach ($types as $type) {
-                if (str_contains($search, $type->name)) {
-                    $restaurantsByType = $type->restaurants()->get();
 
+            $searchTerms = explode(' ', $search);
+    
+            foreach ($types as $type) {
+                $match = false;
+                foreach ($searchTerms as $term) {
+                    if (str_contains($type->name, $term)) {
+                        $match = true;
+                        break;
+                    }
+                }
+                
+                if ($match) {
+                    $restaurantsByType = $type->restaurants()->get();
+                    
                     foreach ($restaurantsByType as $singleRestaurant) {
                         $restaurants[] = $singleRestaurant;
                     }
