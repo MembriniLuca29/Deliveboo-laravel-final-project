@@ -33,12 +33,13 @@ class RestaurantController extends Controller
 
     public function filter (string $search) {
 
+        $searchLower = strtolower($search);
         $restaurants = [];
         $types = Type::all();
 
-        if ($search != 'all') {
+        if ($searchLower != 'all') {
 
-            $searchTerms = explode(' ', $search);
+            $searchTerms = explode(' ', $searchLower);
     
             foreach ($types as $type) {
                 $match = false;
