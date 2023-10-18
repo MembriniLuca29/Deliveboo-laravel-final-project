@@ -46,7 +46,8 @@ class DishController extends Controller
     {
         $formData = $request->validated();
 
-        $restaurantId = session('restaurant_id');
+        $user = User::find(Auth::id());
+        $restaurantId = $user->restaurants()->first()->id;
 
         $thumbPath = null;
 
