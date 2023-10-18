@@ -89,6 +89,7 @@
             </div>
         </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             // funzione JavaScript per salvare gli hover nella navbar
             document.addEventListener("DOMContentLoaded", function() {
@@ -109,6 +110,7 @@
                 
                 });
             });
+
         </script>
     </body>
 </html>

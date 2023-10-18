@@ -46,4 +46,6 @@ Route::name('api.')->group(function () {
         
     });
 
+    Route::get('orders/{id}', [OrderController::class, 'index']);
+
 });

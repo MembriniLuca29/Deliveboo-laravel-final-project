@@ -24,7 +24,7 @@ class OrderController extends Controller
     public function index()
     {
         $user = User::find(Auth::id());
-        $restaurant = Restaurant::find($user->id);
+        $restaurant = $user->restaurants()->first();
         $dishes = $restaurant->dishes()->get();
 
         $orders = [];
@@ -94,7 +94,7 @@ class OrderController extends Controller
 
     public function stats() {
         $user = User::find(Auth::id());
-        $restaurant = Restaurant::find($user->id);
+        $restaurant = $user->restaurants()->first();
 
         return view('admin.order.stats', ['restaurant' => $restaurant]);
     }

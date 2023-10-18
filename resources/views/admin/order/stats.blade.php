@@ -4,4 +4,13 @@
 
 @section('main-content')
 
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+    var userId = {{ Auth::id() }};
+</script>
 @endsection
+
+
