@@ -1,0 +1,43 @@
+@use "partials/variables" as *;
+
+#my-style-dashboard-restaurant-edit{
+
+    .form-control:focus{
+        border-color: unset;
+        box-shadow: unset;
+    }
+
+    
+    #main-content{
+        
+        #main-top-cont{
+
+        }
+
+        #main-bot-cont{
+            height: 73%;
+
+            #res-edit-form{
+                // form di Mofica restaurant
+
+                input{
+                    border: 2px solid $yellow-primary;
+                }
+
+                button{
+                    background-color: $yellow-primary;
+                    transition: all 0.25s ease;
+                    border: 4px solid $yellow-primary;
+                }
+                
+                #btn-1:hover {    
+                    transform: translateY(-3px);
+                    background-color: $bg-color;
+                    // color: black;
+                    border: 4px solid $yellow-primary;
+                    // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+                }
+            }
+        }
+    }
+}

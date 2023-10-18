@@ -11,18 +11,31 @@
             <div class="px-4  h-100">
 
                 {{-- intestazione main  --}}
+                
                 <div class="header d-inline">
-                    <h1 class="lh-1 mb-0 fw-normal text-capitalize">
-                        Ciao {{ auth()->user()->name }},
-                    </h1>
-                    <span class="fs-3 border-bottom border-warning border-3">
-                        qui puoi gestire e monitorare il tuo ristorante
-                        @if($restaurant)
-                            <span class="fs-2">
-                                "{{ $restaurant->name }}"
+                    {{-- IF RESTAURANT EXIST --}}
+                    @if($restaurant)
+                        <h1 class="lh-1 mb-0 fw-normal text-capitalize">
+                            Ciao {{ auth()->user()->name }},
+                        </h1>
+                        <span class="fs-3 border-bottom border-warning border-3">
+                            qui puoi gestire e monitorare il tuo ristorante
+                                <span class="fs-2">
+                                    "{{ $restaurant->name }}"
+                                </span>
+                        </span>
+                    @else
+                        <div class="px-5 pt-3">
+                            <h1 class="lh-1 mb-0 mt-5 fw-normal text-capitalize">
+                                Ciao {{ auth()->user()->name }},
+                            </h1>
+                        
+                            <span class="fs-3 border-bottom border-warning border-3">
+                                non ci sono ancora ristoranti, aggiungine uno!
                             </span>
-                        @endif
-                    </span>
+                        </div>
+                    @endif
+
                 </div>
 
                     
@@ -33,7 +46,7 @@
                         @if (!$restaurant)
                         
                         {{-- bottone aggiunta ristorante  --}}
-                        <div class="add-button">
+                        <div class="add-button px-5">
                             <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
                                 <a class="text-decoration-none" href="{{ route('restaurants.create') }}">
                                         + Aggiungi Ristorante
