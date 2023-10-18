@@ -17,117 +17,121 @@
                     </h1>
                     <span class="fs-3 border-bottom border-warning border-3">
                         qui puoi gestire e monitorare il tuo ristorante
-                        <span class="fs-2">
-                            "{{ $restaurant->name }}"
-                        </span>
+                        @if($restaurant)
+                            <span class="fs-2">
+                                "{{ $restaurant->name }}"
+                            </span>
+                        @endif
                     </span>
                 </div>
 
-                <div id="main-content" class="mt-5 h-100">
-
-                    {{-- main top content  --}}
-                    <div id="main-top-cont" class="pt-4 d-flex justify-content-between">
-                        <div class="fs-3">
-                            Le tue pietanze
-                        </div>
-
-                        {{-- bottone aggiunta Pietanze  --}}
-                        <div class="add-button">
-                            <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
-                                    <a class="text-decoration-none" href="{{ route('dishes.create') }}">+ Aggiungi</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- bottone aggiunta ristorante  --}}
                     @if (!$restaurant)
-                        <div class="add-button">
-                            <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
-                                    <a class="text-decoration-none" href="{{ route('restaurants.create') }}">
-                                        + Aggiungi Ristorante
-                                    </a>
+
+                    <div id="main-content" class="mt-5 h-100">
+
+                        {{-- main top content  --}}
+                        <div id="main-top-cont" class="pt-4 d-flex justify-content-between">
+                            <div class="fs-3">
+                                Le tue pietanze
                             </div>
-                        </div>
-                    
 
-                    {{-- main bottom content  --}}
-                    @else
-                    <div id="main-bot-cont" class="w-100">
-                        <div class="px-4 pt-1 pb-3 h-100">
-                            <div class="h-100 border-start border-end border-warning border-3 px-5">
-                                <div class="mx-1 pt-1 h-100">
+                            {{-- bottone aggiunta Pietanze  --}}
 
-                                    {{-- Dishes searchbar  --}}
-                                    <form id="res-search" class="d-flex" role="search">
-                                        <input class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca il ristorante di cui hai bisogno..." aria-label="Search">
-                                    </form>
-
-                                    {{-- Dishes list section --}}
-                                    <div id="res-list" class="mt-3 px-4 overflow-auto overflow-x-hidden">
-
-                                        @foreach ($dishes as $dish)
-                                        {{-- my single dishes item  --}}
-                                        <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row">
-
-                                            {{-- dishes thumb --}}
-                                            <div class="col-4">
-                                                <div class="img-box bg-white rounded h-100">
-                                                    <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
-                                                </div>
-                                            </div>
-                                            {{-- dishes Name --}}
-                                            <div class="col-4">
-                                                <div class="d-flex flex-column justify-content-center h-100 ms-4 mb-2">
-                                                    <h2 class="fw-semibold fs-5">                                                    
-                                                        Nome : {{ $dish->name }}
-                                                    </h2>
-                                                    <h2 class="fw-semibold fs-5">                                                    
-                                                        Prezzo : {{ $dish->price }} €
-                                                    </h2>
-                                                </div>
-                                            </div>
-
-                                            {{-- dishes interaction buttons --}}
-                                            <div class="col-4">
-                                                <div id="res-int-buttons" class="d-flex flex-column justify-content-center h-100 align-items-center">
-                                                    {{-- dieses visibility button --}}
-                                                    <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <input type="hidden" name="name" value="{{ $dish->name }}">
-                                                        <input type="hidden" name="price" value="{{ $dish->price }}">
-                                                        <input type="hidden" name="restaurant_id" value="{{ $dish->restaurant_id }}">
-                                                        <input type="hidden" name="visible" value="{{ $dish->visible ? '0' : '1' }}">
-                                                        
-                                                        <button type="submit" class="btn p-2 mb-2 {{ $dish->visible ?  'btn-danger' : 'btn-primary'}}">
-                                                            {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
-                                                        </button>
-                                                    </form>
-                                                    {{-- <div class="details-button">
-                                                        <div type="submit" class="btn btn-1 btn-blue px-3 mb-3 fw-semibold">
-                                                                <a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}">a</a>
-                                                        </div>
-                                                    </div> --}}
-                                                    
-                                                    {{-- Dish edit button --}}
-                                                    <div class="edit-button">
-                                                        <div type="submit" class="btn btn-1 btn-yellow px-3 fw-semibold">
-                                                                <a class="text-decoration-none" href="{{ route('dishes.edit', ['dish' => $dish->id]) }}">Modifica</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div> 
-                                        @endforeach
-                                        
-                                    </div>
-
+                            <div class="add-button">
+                                <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
+                                        <a class="text-decoration-none" href="{{ route('dishes.create') }}">+ Aggiungi</a>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
+                        {{-- bottone aggiunta ristorante  --}}
+                            <div class="add-button">
+                                <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
+                                        <a class="text-decoration-none" href="{{ route('restaurants.create') }}">
+                                            + Aggiungi Ristorante
+                                        </a>
+                                </div>
+                            </div>
+                        
+
+                    {{-- main bottom content  --}}
+                    @else
+                        <div id="main-bot-cont" class="w-100">
+                            <div class="px-4 pt-1 pb-3 h-100">
+                                <div class="h-100 border-start border-end border-warning border-3 px-5">
+                                    <div class="mx-1 pt-1 h-100">
+
+                                        {{-- Dishes searchbar  --}}
+                                        <form id="res-search" class="d-flex" role="search">
+                                            <input class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca il ristorante di cui hai bisogno..." aria-label="Search">
+                                        </form>
+
+                                        {{-- Dishes list section --}}
+                                        <div id="res-list" class="mt-3 px-4 overflow-auto overflow-x-hidden">
+
+                                            @foreach ($dishes as $dish)
+                                            {{-- my single dishes item  --}}
+                                            <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row">
+
+                                                {{-- dishes thumb --}}
+                                                <div class="col-4">
+                                                    <div class="img-box bg-white rounded h-100">
+                                                        <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
+                                                    </div>
+                                                </div>
+                                                {{-- dishes Name --}}
+                                                <div class="col-4">
+                                                    <div class="d-flex flex-column justify-content-center h-100 ms-4 mb-2">
+                                                        <h2 class="fw-semibold fs-5">                                                    
+                                                            Nome : {{ $dish->name }}
+                                                        </h2>
+                                                        <h2 class="fw-semibold fs-5">                                                    
+                                                            Prezzo : {{ $dish->price }} €
+                                                        </h2>
+                                                    </div>
+                                                </div>
+
+                                                {{-- dishes interaction buttons --}}
+                                                <div class="col-4">
+                                                    <div id="res-int-buttons" class="d-flex flex-column justify-content-center h-100 align-items-center">
+                                                        {{-- dieses visibility button --}}
+                                                        <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="name" value="{{ $dish->name }}">
+                                                            <input type="hidden" name="price" value="{{ $dish->price }}">
+                                                            <input type="hidden" name="restaurant_id" value="{{ $dish->restaurant_id }}">
+                                                            <input type="hidden" name="visible" value="{{ $dish->visible ? '0' : '1' }}">
+                                                            
+                                                            <button type="submit" class="btn p-2 mb-2 {{ $dish->visible ?  'btn-danger' : 'btn-primary'}}">
+                                                                {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
+                                                            </button>
+                                                        </form>
+                                                        {{-- <div class="details-button">
+                                                            <div type="submit" class="btn btn-1 btn-blue px-3 mb-3 fw-semibold">
+                                                                    <a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}">a</a>
+                                                            </div>
+                                                        </div> --}}
+                                                        
+                                                        {{-- Dish edit button --}}
+                                                        <div class="edit-button">
+                                                            <div type="submit" class="btn btn-1 btn-yellow px-3 fw-semibold">
+                                                                    <a class="text-decoration-none" href="{{ route('dishes.edit', ['dish' => $dish->id]) }}">Modifica</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div> 
+                                            @endforeach
+                                            
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     @endif
                 </div>
 

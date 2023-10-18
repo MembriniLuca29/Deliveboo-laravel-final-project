@@ -15,10 +15,11 @@ class DashboardController extends Controller
         $user = User::find(Auth::id());
         $restaurant = $user->restaurants()->first();
         
+        $dishes='';
         if ($restaurant) {
             $dishes = $restaurant->dishes()->get();
         }
-
+        
         return view('dashboard', [
             'restaurant' => $restaurant,
             'dishes' => $dishes
