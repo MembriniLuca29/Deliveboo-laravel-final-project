@@ -13,7 +13,7 @@
                 {{-- intestazione main  --}}
                 
                 <div class="header d-inline">
-                    {{-- IF RESTAURANT DOESNT EXIST --}}
+                    {{-- IF RESTAURANT EXIST --}}
                     @if($restaurant)
                         <h1 class="lh-1 mb-0 fw-normal text-capitalize">
                             Ciao {{ auth()->user()->name }},
