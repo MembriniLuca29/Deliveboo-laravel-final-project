@@ -4,6 +4,8 @@
 @use "register_blade.scss" as *;
 @use "login_blade.scss" as *;
 @use "dashboard_home_style.scss" as *;
+@use "dashboard_restaurant_create.scss" as *;
+@use "dashboard_restaurant_edit.scss" as *;
 
 @import "~bootstrap/scss/bootstrap";
 
