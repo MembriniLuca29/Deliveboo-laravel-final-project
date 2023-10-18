@@ -5,9 +5,11 @@
 @section('main-content')
 
 
-    @foreach ($orders as $order)
-        @foreach ($order as $dish)
-            {{ $dish->name }}
+    @foreach ($orders as $orderArray)
+        @foreach ($orderArray as $order)
+            <div>
+                {{ $order->name }}
+            </div>
         @endforeach
     @endforeach
 

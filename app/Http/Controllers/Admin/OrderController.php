@@ -24,14 +24,15 @@ class OrderController extends Controller
     public function index()
     {
         $user = User::find(Auth::id());
-        $dishes = Restaurant::find($user->id)->dishes()->get();
+        $restaurant = Restaurant::find($user->id);
+        $dishes = $restaurant->dishes()->get();
 
         $orders = [];
         foreach ($dishes as $dish) {
             $orders[] = $dish->orders()->get();
         }
         
-        return view('admin.order.index', compact('orders'));
+        return view('admin.order.index', ['orders' => $orders, 'restaurant' => $restaurant]);
 
     }
 
