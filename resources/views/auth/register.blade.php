@@ -35,7 +35,7 @@
                                 {{-- Form di registrazione  --}}
                                 <div id="registrer-form" class="box ms-5 me-2 text-center">
                                     <h3 class="fs-4 mt-1 mb-4">Registrazione Utente</h3>
-                                    @if ($errors->any())
+                                         @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>
                                             @foreach ($errors->all() as $error)
@@ -44,7 +44,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                    <form  method="POST" action="{{ route('register') }}" novalidate>
+                                    <form method="POST" action="{{ route('register') }}">
                                         @csrf
 
                                         {{-- name --}}
@@ -57,7 +57,7 @@
                                         </div>
 
                                         {{-- email address --}}
-                                        <div class="form-floating mb-3">
+                                       <div class="form-floating mb-3">
                                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" required>
                                             <label for="email">Indirizzo Email</label>
                                             @error('email')
