@@ -17,7 +17,11 @@
                   <li class="list-group-item">numero: {{ $order->phone_number }} </li>
                   <li class="list-group-item">email: {{ $order->email }}</li>
                   <li class="list-group-item">stato: {{ $order->status}}</li>
-                  <li class="list-group-item">piatti: {{ $order->dishes}}</li>
+                  <ul>
+                    @foreach (json_decode($order->dishes) as $dish)
+                        <li>{{ $dish->name }}</li>
+                    @endforeach
+                </ul>
                 </ul>
               </div>
         @endforeach
