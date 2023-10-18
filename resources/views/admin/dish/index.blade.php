@@ -21,20 +21,16 @@
                         <p class="card-text">{{ $dish->description }}</p>
                         </div>
                         <div class="button ">
-                        
                             <button class="btn btn-primary toggle-visibility">
                                 aggiungi al carrello
                             </button>
-                                
-                          
-        
+                        </div>
                     </div>
-                  </div>
-     
-
                 @endforeach
             </div>
-            @endsection
+        </div>
+    </div>
+@endsection
 
 
 
