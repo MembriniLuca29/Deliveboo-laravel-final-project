@@ -93,6 +93,9 @@ class OrderController extends Controller
     }
 
     public function stats() {
+        $user = User::find(Auth::id());
+        $restaurant = Restaurant::find($user->id);
 
+        return view('admin.order.stats', ['restaurant' => $restaurant]);
     }
 }
