@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 // Models
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Restaurant;
 
 // Form Requests
 use App\Http\Requests\Order\StoreOrderRequest;
@@ -19,12 +21,17 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(String $user_id)
+    public function index()
     {
-        $user = User::find($user_id);
-        $orders = $user->restaurants()->dishes()->orders;
+        $user = User::find(Auth::id());
+        $dishes = Restaurant::find($user->id)->dishes()->get();
 
-        return view('dashboard', compact('orders'));
+        $orders = [];
+        foreach ($dishes as $dish) {
+            $orders[] = $dish->orders()->get();
+        }
+        
+        return view('admin.order.index', compact('orders'));
 
     }
 
@@ -57,7 +64,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('admin.orders.show', compact($order));
+        
     }
 
     /**
@@ -82,5 +89,9 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
+    }
+
+    public function stats() {
+
     }
 }

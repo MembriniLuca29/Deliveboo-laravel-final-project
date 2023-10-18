@@ -34,7 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('dishes', DishController::class);
     Route::resource('restaurants', RestaurantController::class);
-    Route::resource('order', OrderController::class);
+    Route::get('order', [OrderController::class, 'index'])->name('orders');
+    Route::get('stats', [OrderController::class, 'stats'])->name('orders.stats');
 
     
 });
