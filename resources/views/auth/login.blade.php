@@ -24,8 +24,6 @@
                             </h1>
                         </nav>
 
-                     
-
         </header>
 
         <main class="py-4">

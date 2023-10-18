@@ -13,15 +13,15 @@
     <body class="my-style-register">
         
         <header>        
-                        <nav class="d-flex justify-content-center align-items-center w-100">
-                            {{-- immagine logo  --}}
-                            <div class="mx-3">
-                                <img src="images/iconlogo.png" alt="Logo">
-                            </div>
-                            <h1 class="mx-3 fw-bold">
-                                D E L I V E B O O
-                            </h1>
-                        </nav>
+            <nav class="d-flex justify-content-center align-items-center w-100">
+                {{-- immagine logo  --}}
+                <div class="mx-3">
+                    <img src="images/iconlogo.png" alt="Logo">
+                </div>
+                <h1 class="mx-3 fw-bold">
+                    D E L I V E B O O
+                </h1>
+            </nav>
         </header>
 
         <main class="py-4">
@@ -33,18 +33,18 @@
 
                             <div class="col">
                                 {{-- Form di registrazione  --}}
-                                <div id="registrer-form" class="box ms-5 me-2 text-center">
+                                <div id="register-form-div" class="box ms-5 me-2 text-center">
                                     <h3 class="fs-4 mt-1 mb-4">Registrazione Utente</h3>
                                     @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                    <form  method="POST" action="{{ route('register') }}" novalidate>
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    <form id="register-form" method="POST" action="{{ route('register') }}" novalidate>
                                         @csrf
 
                                         {{-- name --}}
@@ -115,6 +115,8 @@
             </div>
             
         </main>
+
+        <script>
+        </script>
     </body>
-    </html>
-  
+</html>
