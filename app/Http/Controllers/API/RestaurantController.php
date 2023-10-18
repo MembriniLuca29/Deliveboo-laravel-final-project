@@ -4,10 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Type;
+
 
 // Models collegati
 use App\Models\Restaurant;
+use App\Models\Type;
 
 class RestaurantController extends Controller
 {
@@ -30,32 +31,45 @@ class RestaurantController extends Controller
         ]);
     }
 
-    public function byType(string $name) {
-
-        $type = Type::where('name', $name)->first();
-        $restaurants = $type->restaurants()->get();
-
-        return response()->json([
-            'success' => true,
-            'restaurants' => $restaurants
-        ]);
-
-    }
-
     public function filter (string $search) {
 
-        $type = Type::where('name', 'LIKE', "{$search}%")->first();
-        $restaurantsByType = null;
-        if ($type) {
-            $restaurantsByType = $type->restaurants()->get(); 
-        }
+        $searchLower = strtolower($search);
+        $restaurants = [];
+        $types = Type::all();
 
-        $restaurantsByName = Restaurant::where('name', 'LIKE', "{$search}%")->get();
+        if ($searchLower != 'all') {
+
+            $searchTerms = explode(' ', $searchLower);
+    
+            foreach ($types as $type) {
+                $match = false;
+                foreach ($searchTerms as $term) {
+                    if (str_contains($type->name, $term)) {
+                        $match = true;
+                        break;
+                    }
+                }
+                
+                if ($match) {
+                    $restaurantsByType = $type->restaurants()->get();
+                    
+                    foreach ($restaurantsByType as $singleRestaurant) {
+                        $restaurants[] = $singleRestaurant;
+                    }
+                }
+            }
+
+        }
+        else {
+            $restaurants = Restaurant::all();
+        }     
                
         return response()->json([
             'success' => true,
-            'restaurantsByType' => $restaurantsByType,
-            'restaurantsByName' => $restaurantsByName
+            'restaurants' => $restaurants,
         ]);
+
+        
+        
     }
 }

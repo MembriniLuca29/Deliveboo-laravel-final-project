@@ -22,16 +22,6 @@
                                 D E L I V E B O O
                             </h1>
                         </nav>
-
-                        {{-- @auth
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <button type="submit" class="btn btn-outline-danger">
-                                    Log Out
-                                </button>
-                            </form>
-                        @endauth --}}
         </header>
 
         <main class="py-4">
@@ -45,42 +35,62 @@
                                 {{-- Form di registrazione  --}}
                                 <div id="registrer-form" class="box ms-5 me-2 text-center">
                                     <h3 class="fs-4 mt-1 mb-4">Registrazione Utente</h3>
-
-                                    <form method="POST" action="{{ route('register') }}">
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                    <form  method="POST" action="{{ route('register') }}" novalidate>
                                         @csrf
 
                                         {{-- name --}}
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="name@example.com">
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="name@example.com" value="{{ old('name') }}" required>
                                             <label for="name">Nome</label>
+                                            @error('name')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         {{-- email address --}}
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" required>
                                             <label for="email">Indirizzo Email</label>
+                                            @error('email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         {{-- password --}}
+                                        
                                         <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required>
                                             <label for="password">Password</label>
+                                            @error('password')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         {{-- password_confirmation --}}
                                         <div class="form-floating mb-3">
-                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Conferma Password">
+                                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" placeholder="Conferma Password" required>
                                             <label for="password_confirmation">Conferma Password</label>
+                                            @error('password_confirmation')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
 
                                         {{-- submit button  --}}
                                         <button id="btn-1" type="submit" class="btn btn-warning px-4 my-1 mt-4">
-                                            <strong>
-                                                Registrati
-                                            </strong>
+                                            <strong>Registrati</strong>
                                         </button>
                                         {{-- Already registered? --}}
                                         <div class="mt-1"><small><a href="{{ route('login') }}">Sei già registrato? Accedi</a></small></div>
+
 
                                     </form>
                                 </div>
@@ -107,49 +117,4 @@
         </main>
     </body>
     </html>
-    {{-- <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <!-- Name -->
-        <div>
-            <label for="name">
-                Name
-            </label>
-            <input type="text" id="name" name="name">
-        </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <label for="email">
-                Email
-            </label>
-            <input type="email" id="email" name="email">
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <label for="password">
-                Password
-            </label>
-            <input type="password" id="password" name="password">
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <label for="password_confirmation">
-                Conferma Password
-            </label>
-            <input type="password" id="password_confirmation" name="password_confirmation">
-        </div>
-
-        <div>
-            <a href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <button type="submit">
-                Register
-            </button>
-        </div>
-    </form>  --}}
-    
+  

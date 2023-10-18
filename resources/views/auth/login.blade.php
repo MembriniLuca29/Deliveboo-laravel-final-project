@@ -24,16 +24,7 @@
                             </h1>
                         </nav>
 
-                        {{-- @auth
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                logout button 
-                                <button type="submit" class="btn btn-outline-danger">
-                                    Log Out
-                                </button>
-                            </form>
-                        @endauth --}}
+                     
 
         </header>
 
@@ -51,54 +42,63 @@
                             <div class="mt-2 mb-2">
                                 {{ $errors->first('email') }}
                             </div>
-
+                            @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
                                 {{-- Email  --}}
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" required>
                                     <label for="email">Indirizzo Email</label>
+                                    @error('email')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-
-                                {{-- Password --}}
+                                
                                 <div class="form-floating mb-1">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required>
                                     <label for="password">Password</label>
+                                    @error('password')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-
+                                
                                 
                                 <div class="d-flex justify-content-end">
-
                                     @if (Route::has('password.request'))
                                         <a id="pass_recovery" href="{{ route('password.request') }}" class="text-dark text-decoration-none">
                                             {{ __('Forgot your password?') }}
                                         </a>
                                     @endif
                                 </div>
-
-                                {{-- Remember Me --}}
+                                
                                 <div class="mt-4">
                                     <label for="remember_me">
                                         <div id="rememb_me">
-                                            <input  class="" id="remember_me" type="checkbox" name="remember">
+                                            <input class="" id="remember_me" type="checkbox" name="remember">
                                             <span class="ms-1">Ricordami</span>
                                         </div>
                                     </label>
                                 </div>
                                 
-                                {{-- submit button  --}}
                                 <button id="btn-1" type="submit" class="btn btn-warning px-4 my-1 mt-2">
                                     <strong>
                                         Accedi
                                     </strong>
                                 </button>
-
-                                {{-- register redirect --}}
+                                
                                 <div id="register_redirect" class="mt-4">
                                     <small><a class="text-decoration-none" href="{{ route('register') }}">Non hai un account? Registrati</a></small>
                                 </div>
-
+                                
 
                             </form>
                         </div>
@@ -111,50 +111,3 @@
     </body>
 </html>
 
-{{-- @extends('layouts.guest')
-
-@section('main-content')
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <label for="email">
-                Email
-            </label>
-            <input type="email" id="email" name="email">
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <label for="password">
-                Password
-            </label>
-            <input type="password" id="password" name="password">
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me">
-                <input id="remember_me" type="checkbox" name="remember">
-                <span>Remember me</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <button type="submit">
-                Log in
-            </button>
-        </div>
-    </form>
-    <h1>
-        {{ $errors->first('email') }}
-    </h1>
-    
-@endsection --}}

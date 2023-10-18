@@ -28,7 +28,8 @@
             <input type="file" name="thumb" id="thumb" class="form-control" accept="image/*">
         </div>
         
-        <input type="hidden" name="restaurant_id" value="{{ $restaurantId }}">
+        <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
+
 
         <div class="form-group mt-3">
             <button type="submit" class="btn btn-primary">Aggiungi</button>

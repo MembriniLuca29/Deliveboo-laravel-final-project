@@ -2,6 +2,13 @@
 
 @section('page-title', 'Tutti i piatti')
 
+{{-- ASIDE NAV SECTION  --}}
+@section('aside-nav-content')
+    <div class="my-style-home-dashboard-aside">
+
+    </div>
+@endsection
+
 @section('main-content')
     <div class="row ">
         <div class="container ">
@@ -14,20 +21,16 @@
                         <p class="card-text">{{ $dish->description }}</p>
                         </div>
                         <div class="button ">
-                        
                             <button class="btn btn-primary toggle-visibility">
                                 aggiungi al carrello
                             </button>
-                                
-                          
-        
+                        </div>
                     </div>
-                  </div>
-     
-
                 @endforeach
             </div>
-            @endsection
+        </div>
+    </div>
+@endsection
 
 
 

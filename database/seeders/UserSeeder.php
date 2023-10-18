@@ -15,10 +15,16 @@ class UserSeeder extends Seeder
     public function run(): void
     {
 
-        User::create([
-            'name' => fake()->name(),
-            'email' => fake()->email(),
-            'password' => 'password'
-        ]);
+        Schema::disableForeignKeyConstraints();
+        User::truncate();
+        Schema::enableForeignKeyConstraints();
+
+        for ($i=0; $i < 10; $i++) { 
+            User::create([
+                'name' => fake()->name(),
+                'email' => fake()->email(),
+                'password' => 'password'
+            ]);
+        }
     }
 }
