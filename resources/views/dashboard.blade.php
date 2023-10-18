@@ -25,11 +25,27 @@
                     </span>
                 </div>
 
-                    @if (!$restaurant)
-
+                    
+                
                     <div id="main-content" class="mt-5 h-100">
+                        
+                        {{-- IF RESTAURANT DOESNT EXIST --}}
+                        @if (!$restaurant)
+                        
+                        {{-- bottone aggiunta ristorante  --}}
+                        <div class="add-button">
+                            <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
+                                <a class="text-decoration-none" href="{{ route('restaurants.create') }}">
+                                        + Aggiungi Ristorante
+                                </a>
+                            </div>
+                        </div>
+                        
 
-                        {{-- main top content  --}}
+                        {{-- IF RESTAURANT EXISTS --}}
+                        @else
+                        
+                        {{-- DISHES --}}
                         <div id="main-top-cont" class="pt-4 d-flex justify-content-between">
                             <div class="fs-3">
                                 Le tue pietanze
@@ -43,19 +59,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        {{-- bottone aggiunta ristorante  --}}
-                            <div class="add-button">
-                                <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
-                                        <a class="text-decoration-none" href="{{ route('restaurants.create') }}">
-                                            + Aggiungi Ristorante
-                                        </a>
-                                </div>
-                            </div>
                         
-
-                    {{-- main bottom content  --}}
-                    @else
                         <div id="main-bot-cont" class="w-100">
                             <div class="px-4 pt-1 pb-3 h-100">
                                 <div class="h-100 border-start border-end border-warning border-3 px-5">
