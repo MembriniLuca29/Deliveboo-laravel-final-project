@@ -64,7 +64,7 @@ class DishController extends Controller
             'restaurant_id' => $formData['restaurant_id'],
         ]);
 
-        return redirect()->route('restaurants.show', ['restaurant' => $restaurantId]);
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -113,7 +113,7 @@ class DishController extends Controller
             'restaurant_id' => $validatedData['restaurant_id'],
         ]);
     
-        return redirect()->route('restaurants.show', ['restaurant' => $dish->restaurant_id])->with('success', 'Piatto aggiornato con successo.');
+        return redirect()->route('dashboard')->with('success', 'Piatto aggiornato con successo.');
     }
     
 
