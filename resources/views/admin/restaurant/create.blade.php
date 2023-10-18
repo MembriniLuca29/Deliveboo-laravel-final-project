@@ -11,8 +11,8 @@
                 
                 <div class="header d-inline">
                     <span>
-                        <h1 class="lh-1 mb-0 fw-normal text-capitalize border-bottom border-warning border-3 pt-3 pb-5">
-                            <span class="py-5">Ciao {{ auth()->user()->name }}</span>
+                        <h1 class="lh-1 mb-0 fw-normal border-bottom border-warning border-3 pt-3 pb-4">
+                            <span class="py-5">Ciao {{ auth()->user()->name }},<span class="fs-2 mb-1"> sembra che tu non abbia attività</span></span>
                         </h1>
                     </span>
                 </div>
@@ -22,7 +22,7 @@
                 <div id="main-content" class="mt-5 h-100">
                     
                     {{-- intestazione main --}}
-                    <div id="main-top-cont" class="py-2 d-flex justify-content-between">
+                    <div id="main-top-cont" class="py-2 pb-3 d-flex justify-content-between">
                         <div class="fs-2">
                             Aggiungi il tuo ristorante
                         </div>
@@ -36,7 +36,7 @@
                                         {{-- Form to create restaurant --}}
                                         <form id="res-create-form" action="{{ route('restaurants.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
-    
+
                                             <div class="row">
                                                 {{-- Restaurant Name --}}
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
