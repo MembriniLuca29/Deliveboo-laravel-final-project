@@ -47,7 +47,7 @@
                                 </div>
                             </a>
                             {{-- Elemento aside Navbar  --}}
-                            <a href="{{ route('orders') }}" class="ms-4 text-decoration-none text-black parent">
+                            <a href="#" class="ms-4 text-decoration-none text-black parent">
                                 <div class="lh-1 my-1 fs-4 underline-hover">
                                     <img class="ms-1 me-1 mb-1" width="28" height="28" src="https://img.icons8.com/material-outlined/24/invoice.png" alt="invoice"/>
                                     Ordinazioni
@@ -55,7 +55,7 @@
                             </a>
 
                             {{-- Elemento aside Navbar  --}}
-                            <a href="{{ route('orders.stats') }}" class="ms-4 text-decoration-none text-black parent">
+                            <a href="#" class="ms-4 text-decoration-none text-black parent">
                                 <div class="lh-1 my-2 fs-4 underline-hover">
                                     <img class="mb-2 mx-1" width="32" height="32" src="https://img.icons8.com/windows/32/statistics.png" alt="statistics"/>
                                     Statistiche
