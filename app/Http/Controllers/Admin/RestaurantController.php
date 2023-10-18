@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 // MODELS
 use App\Models\Restaurant;
 use App\Models\Type;
+use App\Models\User;
 
 // CONTROLLERS
 use App\Http\Controllers\Controller;
@@ -31,8 +32,10 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        $user = User::find(Auth::id());
+        $restaurant = $user->restaurants()->first();
         $types = Type::all();
-        return view('admin.restaurant.create', compact('types'));
+        return view('admin.restaurant.create', ['types' => $types, 'restaurant' => $restaurant]);
     }
 
     /**
@@ -72,14 +75,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        $restaurantId = session('restaurant_id');
-        $dishes = $restaurant->dishes()->get();
-
-        return view('admin.restaurant.show', [
-            'restaurant' => $restaurant,
-            'dishes' => $dishes
-            
-        ]);
+        
     }
 
     /**

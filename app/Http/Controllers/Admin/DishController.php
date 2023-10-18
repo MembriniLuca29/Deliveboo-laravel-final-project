@@ -15,6 +15,8 @@ use App\Http\Requests\Dish\UpdateDishRequest;
 
 //helpers
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 class DishController extends Controller
 {
     /**
@@ -31,9 +33,10 @@ class DishController extends Controller
      */
     public function create()
 {
-    $restaurantId = session('restaurant_id');
+    $user = User::find(Auth::id());
+    $restaurant = $user->restaurants()->first();
     // forse è necessario un collegamento con altro
-    return view('admin.dish.create', compact('restaurantId'));
+    return view('admin.dish.create', compact('restaurant'));
 }
 
     /**
@@ -43,7 +46,8 @@ class DishController extends Controller
     {
         $formData = $request->validated();
 
-        $restaurantId = session('restaurant_id');
+        $user = User::find(Auth::id());
+        $restaurantId = $user->restaurants()->first()->id;
 
         $thumbPath = null;
 
@@ -60,7 +64,7 @@ class DishController extends Controller
             'restaurant_id' => $formData['restaurant_id'],
         ]);
 
-        return redirect()->route('restaurants.show', ['restaurant' => $restaurantId]);
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -76,9 +80,10 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        $restaurantId = session('restaurant_id');
+        $user = User::find(Auth::id());
+        $restaurant = $user->restaurants()->first();
       
-        return view('admin.dish.edit', compact('dish', 'restaurantId'));
+        return view('admin.dish.edit', compact('dish', 'restaurant'));
     }
     
 
@@ -108,7 +113,7 @@ class DishController extends Controller
             'restaurant_id' => $validatedData['restaurant_id'],
         ]);
     
-        return redirect()->route('restaurants.show', ['restaurant' => $dish->restaurant_id])->with('success', 'Piatto aggiornato con successo.');
+        return redirect()->route('dashboard')->with('success', 'Piatto aggiornato con successo.');
     }
     
 

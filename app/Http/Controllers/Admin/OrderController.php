@@ -33,10 +33,11 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-        $data = $request->validated();
+        $data = $request->all(); 
+        $data['status'] = 'Pending'; 
 
         $order = Order::create($data);
-        
+
         return response()->json($order, 201);
     }
 

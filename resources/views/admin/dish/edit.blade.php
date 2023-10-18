@@ -34,7 +34,7 @@
                     <input type="text" class="form-control" id="price" name="price" required maxlength="255" value="{{ old('price', $dish->price) }}">
                 </div>
                 
-                <input type="hidden" name="restaurant_id" value="{{ $restaurantId }}">
+                <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                 <div class="mb-3">
                     <label for="thumb" class="form-label">Immagine</label>
                     <input class="form-control" type="file" name="thumb" id="thumb" accept="image/*">

@@ -33,7 +33,7 @@
 
                             <div class="col">
                                 {{-- Form di registrazione  --}}
-                                <div id="registrer-form" class="box ms-5 me-2 text-center">
+                                <div id="register-form-div" class="box ms-5 me-2 text-center">
                                     <h3 class="fs-4 mt-1 mb-4">Registrazione Utente</h3>
                                          @if ($errors->any())
                                     <div class="alert alert-danger">

@@ -2,12 +2,6 @@
 
 @section('page-title', 'Dashboard')
 
-{{-- ASIDE NAV SECTION  --}}
-@section('aside-nav-content')
-    <div class="my-style-home-dashboard-aside">
-
-    </div>
-@endsection
 
 {{-- MAIN CONTENT SECTION  --}}
 @section('main-content')
@@ -18,135 +12,136 @@
 
                 {{-- intestazione main  --}}
                 <div class="header d-inline">
-                    <h1 class="lh-1 mb-0 fw-normal">Ciao {{ auth()->user()->name }},</h1>
-                    <span class="fs-3 border-bottom border-warning border-3">qui puoi gestire e monitorare i tuoi ristoranti!</span>
+                    <h1 class="lh-1 mb-0 fw-normal text-capitalize">
+                        Ciao {{ auth()->user()->name }},
+                    </h1>
+                    <span class="fs-3 border-bottom border-warning border-3">
+                        qui puoi gestire e monitorare il tuo ristorante
+                        @if($restaurant)
+                            <span class="fs-2">
+                                "{{ $restaurant->name }}"
+                            </span>
+                        @endif
+                    </span>
                 </div>
 
-                <div id="main-content" class="mt-5 h-100">
-
-                    {{-- main top content  --}}
-                    <div id="main-top-cont" class="pt-4 d-flex justify-content-between">
-                        <div class="fs-3">
-                            I Tuoi Ristoranti
-                        </div>
-
+                    
+                
+                    <div id="main-content" class="mt-5 h-100">
+                        
+                        {{-- IF RESTAURANT DOESNT EXIST --}}
+                        @if (!$restaurant)
+                        
                         {{-- bottone aggiunta ristorante  --}}
                         <div class="add-button">
                             <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
-                                    <a class="text-decoration-none" href="{{ route('restaurants.create') }}">+ Aggiungi</a>
+                                <a class="text-decoration-none" href="{{ route('restaurants.create') }}">
+                                        + Aggiungi Ristorante
+                                </a>
                             </div>
                         </div>
+                        
 
-                    </div>
+                        {{-- IF RESTAURANT EXISTS --}}
+                        @else
+                        
+                        {{-- DISHES --}}
+                        <div id="main-top-cont" class="pt-4 d-flex justify-content-between">
+                            <div class="fs-3">
+                                Le tue pietanze
+                            </div>
 
-                    {{-- main bottom content  --}}
-                    <div id="main-bot-cont" class="w-100">
-                        <div class="px-4 pt-1 pb-3 h-100">
-                            <div class="h-100 border-start border-end border-warning border-3 px-5">
-                                <div class="mx-1 pt-1 h-100">
+                            {{-- bottone aggiunta Pietanze  --}}
 
-                                    {{-- Restaurants searchbar  --}}
-                                    <form id="res-search" class="d-flex" role="search">
-                                        <input class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca il ristorante di cui hai bisogno..." aria-label="Search">
-                                    </form>
-
-                                    {{-- restaurants list section --}}
-                                    <div id="res-list" class="pt-3 px-4 overflow-auto overflow-x-hidden">
-
-                                        @foreach ($restaurants as $restaurant)
-                                        {{-- my single restaurant item  --}}
-                                        <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row">
-
-                                            {{-- Restaurant thumb --}}
-                                            <div class="col-4">
-                                                <div class="img-box bg-white rounded h-100">
-                                                    <img src="{{ asset('storage/'.$restaurant->thumb) }}" alt="">
-                                                </div>
-                                            </div>
-                                            {{-- Restaurant Name --}}
-                                            <div class="col-4">
-                                                <div class="d-flex flex-column justify-content-center h-100 align-items-center">
-                                                    <h2 class="fw-semibold fs-5">                                                    
-                                                        {{ $restaurant->name }}
-                                                    </h2>
-                                                </div>
-                                            </div>
-
-                                            {{-- restaurant interaction buttons --}}
-                                            <div class="col-4">
-                                                <div id="res-int-buttons" class="d-flex flex-column justify-content-center h-100 align-items-center">
-                                                    {{-- Restaurant show button --}}
-                                                    <div class="details-button">
-                                                        <div type="submit" class="btn btn-1 btn-blue px-3 mb-3 fw-semibold">
-                                                                <a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}">Dettagli</a>
-                                                        </div>
-                                                    </div>
-                                                    {{-- Restaurant edit button --}}
-                                                    <div class="edit-button">
-                                                        <div type="submit" class="btn btn-1 btn-yellow px-3 fw-semibold">
-                                                                <a class="text-decoration-none" href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}">Modifica</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div> 
-                                        @endforeach
-                                        
-                                    </div>
-
+                            <div class="add-button">
+                                <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
+                                        <a class="text-decoration-none" href="{{ route('dishes.create') }}">+ Aggiungi</a>
                                 </div>
                             </div>
                         </div>
+                        
+                        <div id="main-bot-cont" class="w-100">
+                            <div class="px-4 pt-1 pb-3 h-100">
+                                <div class="h-100 border-start border-end border-warning border-3 px-5">
+                                    <div class="mx-1 pt-1 h-100">
 
-                    </div>
+                                        {{-- Dishes searchbar  --}}
+                                        <form id="res-search" class="d-flex" role="search">
+                                            <input class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca il ristorante di cui hai bisogno..." aria-label="Search">
+                                        </form>
+
+                                        {{-- Dishes list section --}}
+                                        <div id="res-list" class="mt-3 px-4 overflow-auto overflow-x-hidden">
+
+                                            @foreach ($dishes as $dish)
+                                            {{-- my single dishes item  --}}
+                                            <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row">
+
+                                                {{-- dishes thumb --}}
+                                                <div class="col-4">
+                                                    <div class="img-box bg-white rounded h-100">
+                                                        <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
+                                                    </div>
+                                                </div>
+                                                {{-- dishes Name --}}
+                                                <div class="col-4">
+                                                    <div class="d-flex flex-column justify-content-center h-100 ms-4 mb-2">
+                                                        <h2 class="fw-semibold fs-5">                                                    
+                                                            Nome : {{ $dish->name }}
+                                                        </h2>
+                                                        <h2 class="fw-semibold fs-5">                                                    
+                                                            Prezzo : {{ $dish->price }} €
+                                                        </h2>
+                                                    </div>
+                                                </div>
+
+                                                {{-- dishes interaction buttons --}}
+                                                <div class="col-4">
+                                                    <div id="res-int-buttons" class="d-flex flex-column justify-content-center h-100 align-items-center">
+                                                        {{-- dieses visibility button --}}
+                                                        <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <input type="hidden" name="name" value="{{ $dish->name }}">
+                                                            <input type="hidden" name="price" value="{{ $dish->price }}">
+                                                            <input type="hidden" name="restaurant_id" value="{{ $dish->restaurant_id }}">
+                                                            <input type="hidden" name="visible" value="{{ $dish->visible ? '0' : '1' }}">
+                                                            
+                                                            <button type="submit" class="btn p-2 mb-2 {{ $dish->visible ?  'btn-danger' : 'btn-primary'}}">
+                                                                {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
+                                                            </button>
+                                                        </form>
+                                                        {{-- <div class="details-button">
+                                                            <div type="submit" class="btn btn-1 btn-blue px-3 mb-3 fw-semibold">
+                                                                    <a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}">a</a>
+                                                            </div>
+                                                        </div> --}}
+                                                        
+                                                        {{-- Dish edit button --}}
+                                                        <div class="edit-button">
+                                                            <div type="submit" class="btn btn-1 btn-yellow px-3 fw-semibold">
+                                                                    <a class="text-decoration-none" href="{{ route('dishes.edit', ['dish' => $dish->id]) }}">Modifica</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div> 
+                                            @endforeach
+                                            
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    @endif
                 </div>
 
 
             </div>
         </div>
-        {{-- <div class="row">
-            <h1 class="text-center text-success">
-                Bentornato 
-                <span class="text-capitalize">
-                    {{ auth()->user()->name }}
-                </span>
-            </h1>           
-            </a>
-            <div class="text-center px-5"><a href="{{ route('restaurants.create') }}" class="btn btn-success my-4 px-5">+  Aggiungi Ristorante</a></div>
-            Restaurants Cards
-            
-            @foreach ($restaurants as $restaurant)
-            <div class="col-12 mb-3">
-                <div class="card">
-                    <div class="card-body text-capitalize d-flex justify-content-between">
-                        <div>
-                            {{ $restaurant->name }}
-                        </div>
-                        STILE IN LINEA ORRRIBBBBILE!
-                        <div style="width:200px; height:100px;">
-                            <img src="{{ asset('storage/'.$restaurant->thumb) }}" alt="" class="w-100">
-                        </div>
-                        <div>
-                            <a href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}" class="btn btn-primary">
-                                Vedi
-                            </a>
-                            <a href="{{ route('restaurants.edit', ['restaurant' => $restaurant]) }}" class="btn btn-warning">
-                                Modifica
-                            </a>
-                            <form action="{{ route('restaurants.destroy', ['restaurant' => $restaurant->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo ristorante?');" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-    
-                                <button type="submit" class="btn btn-danger">
-                                    Elimina
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div> --}}
     </div>
+
 @endsection
