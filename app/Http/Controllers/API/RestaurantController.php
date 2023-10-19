@@ -36,15 +36,8 @@ class RestaurantController extends Controller
 
         $types = $request->input('search');
 
-        $restaurants = DB::table('restaurants')
-            ->select('restaurants.*')
-            ->where(function ($query) use ($types) {
-                $query->selectRaw('COUNT(DISTINCT types.name)')
-                    ->from('restaurant_type')
-                    ->join('types', 'restaurant_type.type_id', '=', 'types.id')
-                    ->whereColumn('restaurant_type.restaurant_id', 'restaurants.id')
-                    ->whereIn('types.name', $types)
-                    ->havingRaw('COUNT(DISTINCT types.name) >='.count($types));
+        $restaurants = Restaurant::whereHas('types', function ($query) use ($types) {
+                    $query->whereIn('name', $types);
                 }, '>=', count($types))
         ->get();
 
