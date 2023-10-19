@@ -4,11 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 // Models collegati
 use App\Models\Restaurant;
 use App\Models\Type;
+
 
 class RestaurantController extends Controller
 {
@@ -33,40 +34,24 @@ class RestaurantController extends Controller
 
     public function filter (Request $request) {
 
-        $search = $request->input('search', []);
-        
-        $restaurants = [];
+        $types = $request->input('search');
 
-        foreach ($search as $field) {
-            foreach (Type::all() as $type) {
-                if ($type->name == strtolower($field)) {
-                    $restaurants = array_merge($restaurants, $type->restaurants()->get()->toArray());
-                }
-            }
-            
-        }
+        $restaurants = DB::table('restaurants')
+            ->select('restaurants.*')
+            ->where(function ($query) use ($types) {
+                $query->selectRaw('COUNT(DISTINCT types.name)')
+                    ->from('restaurant_type')
+                    ->join('types', 'restaurant_type.type_id', '=', 'types.id')
+                    ->whereColumn('restaurant_type.restaurant_id', 'restaurants.id')
+                    ->whereIn('types.name', $types)
+                    ->havingRaw('COUNT(DISTINCT types.name) >='.count($types));
+                }, '>=', count($types))
+        ->get();
 
-        $uniqueRestaurants = [];
-
-        foreach ($restaurants as $restaurant) {
-            if (count($uniqueRestaurants) == 0) {
-                $uniqueRestaurants[] = $restaurant;
-            } else {
-                $unique = true;
-                foreach ($uniqueRestaurants as $uniqueRestaurant) {
-                    if ($uniqueRestaurant['id'] == $restaurant['id']) {
-                        $unique = false;
-                    } 
-                }
-                if ($unique) {
-                    $uniqueRestaurants[] = $restaurant;
-                 }
-            }
-        }
-               
+                
         return response()->json([
             'success' => true,
-            'restaurants' => $uniqueRestaurants
+            'restaurants' => $restaurants
         ]);
 
     }
