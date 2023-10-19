@@ -33,7 +33,7 @@
                     <label for="price" class="form-label">Prezzo</label>
                     <input type="text" class="form-control" id="price" name="price" required maxlength="255" value="{{ old('price', $dish->price) }}">
                 </div>
-                
+                <input type="hidden" name="visible" value="{{ old('visible', $dish->visible) }}">
                 <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                 <div class="mb-3">
                     <label for="thumb" class="form-label">Immagine</label>

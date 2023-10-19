@@ -82,6 +82,7 @@ class DishController extends Controller
     {
         $user = User::find(Auth::id());
         $restaurant = $user->restaurants()->first();
+        $dish->original_visible = $dish->visible;
       
         return view('admin.dish.edit', compact('dish', 'restaurant'));
     }
