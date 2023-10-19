@@ -31,45 +31,43 @@ class RestaurantController extends Controller
         ]);
     }
 
-    public function filter (string $search) {
+    public function filter (Request $request) {
 
-        $searchLower = strtolower($search);
+        $search = $request->input('search', []);
+        
         $restaurants = [];
-        $types = Type::all();
 
-        if ($searchLower != 'all') {
-
-            $searchTerms = explode(' ', $searchLower);
-    
-            foreach ($types as $type) {
-                $match = false;
-                foreach ($searchTerms as $term) {
-                    if (str_contains($type->name, $term)) {
-                        $match = true;
-                        break;
-                    }
-                }
-                
-                if ($match) {
-                    $restaurantsByType = $type->restaurants()->get();
-                    
-                    foreach ($restaurantsByType as $singleRestaurant) {
-                        $restaurants[] = $singleRestaurant;
-                    }
+        foreach ($search as $field) {
+            foreach (Type::all() as $type) {
+                if ($type->name == strtolower($field)) {
+                    $restaurants = array_merge($restaurants, $type->restaurants()->get()->toArray());
                 }
             }
-
+            
         }
-        else {
-            $restaurants = Restaurant::all();
-        }     
+
+        $uniqueRestaurants = [];
+
+        foreach ($restaurants as $restaurant) {
+            if (count($uniqueRestaurants) == 0) {
+                $uniqueRestaurants[] = $restaurant;
+            } else {
+                $unique = true;
+                foreach ($uniqueRestaurants as $uniqueRestaurant) {
+                    if ($uniqueRestaurant['id'] == $restaurant['id']) {
+                        $unique = false;
+                    } 
+                }
+                if ($unique) {
+                    $uniqueRestaurants[] = $restaurant;
+                 }
+            }
+        }
                
         return response()->json([
             'success' => true,
-            'restaurants' => $restaurants,
+            'restaurants' => $uniqueRestaurants
         ]);
 
-        
-        
     }
 }

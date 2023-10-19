@@ -30,7 +30,7 @@ Route::name('api.')->group(function () {
 
         Route::get('restaurant', [RestaurantController::class, 'index'])->name('index');
         Route::get('restaurant/show', [RestaurantController::class, 'show'])->name('show');
-        Route::get('restaurant/results/{search}', [RestaurantController::class, 'filter'])->name('filter');
+        Route::get('results', [RestaurantController::class, 'filter'])->name('filter');
 
     });
 
