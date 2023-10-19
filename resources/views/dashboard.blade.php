@@ -20,7 +20,7 @@
                         </h1>
                         <span class="fs-3 border-bottom border-warning border-3">
                             qui puoi gestire e monitorare il tuo ristorante
-                                <span class="fs-2">
+                                <span class="fs-2 text-capitalize">
                                     "{{ $restaurant->name }}"
                                 </span>
                         </span>
