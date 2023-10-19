@@ -80,7 +80,7 @@
 
                                         {{-- Dishes searchbar  --}}
                                         <form id="res-search" class="d-flex" role="search">
-                                            <input class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca il ristorante di cui hai bisogno..." aria-label="Search">
+                                            <input class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca la pietanza di cui hai bisogno..." aria-label="Search">
                                         </form>
 
                                         {{-- Dishes list section --}}
