@@ -14,7 +14,6 @@
         
         <header>        
                         <nav class="d-flex justify-content-center align-items-center w-100">
-                            {{-- immagine logo  --}}
                             <div class="mx-3">
                                 <img src="images/iconlogo.png" alt="Logo">
                             </div>
@@ -32,92 +31,73 @@
                         <div class="row">
 
                             <div class="col">
-                                {{-- Form di registrazione  --}}
+                                
                                 <div id="register-form-div" class="box ms-5 me-2 text-center">
                                     <h3 class="fs-4 mt-1 mb-4">Registrazione Utente</h3>
-                                     {{-- @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                     @endif --}}
-                                    <form method="POST" action="{{ route('register') }}">
+                                         @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                    <form method="POST" action="{{ route('register') }}" id="registerForm">
                                         @csrf
 
-                                        {{-- name --}}
+                                       
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="name@example.com" value="{{ old('name') }}" required>
-                                            <label for="name">
-                                                Nome
-                                                <span class="text-danger">
-                                                    *
-                                                </span>
-                                            </label>
+                                            <label for="name">Nome</label>
                                             @error('name')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
-                                        {{-- email address --}}
+                                      
                                        <div class="form-floating mb-3">
                                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" required>
-                                            <label for="email">
-                                                Indirizzo Email
-                                                <span class="text-danger">
-                                                    *
-                                                </span>
-                                            </label>
+                                            <label for="email">Indirizzo Email</label>
                                             @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
-                                        {{-- password --}}
+                                   
                                         
                                         <div class="form-floating mb-3">
                                             <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required>
-                                            <label for="password">
-                                                Password
-                                                <span class="text-danger">
-                                                    *
-                                                </span>
-                                            </label>
+                                            <label for="password">Password</label>
                                             @error('password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
-                                        {{-- password_confirmation --}}
+                                     
                                         <div class="form-floating mb-3">
                                             <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" placeholder="Conferma Password" required>
-                                            <label for="password_confirmation">
-                                                Conferma Password
-                                                <span class="text-danger">
-                                                    *
-                                                </span>
-                                            </label>
+                                            <label for="password_confirmation">Conferma Password</label>
                                             @error('password_confirmation')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
-                                        {{-- submit button  --}}
+                                        <div id="error-messages" class="alert alert-danger d-none"></div>
+                                       
                                         <button id="btn-1" type="submit" class="btn btn-warning px-4 my-1 mt-4">
                                             <strong>Registrati</strong>
                                         </button>
-                                        {{-- Already registered? --}}
+                                        
                                         <div class="mt-1"><small><a href="{{ route('login') }}">Sei già registrato? Accedi</a></small></div>
 
-
+                                        
                                     </form>
                                 </div>
                             </div>
 
                             <div class="col">
-                                {{-- "Quali sono i benefici di essere partner?" Box di info  --}}
+                                
                                 <div id="benefits-info" class="box ms-2 me-5 mt-2">
                                     <div class="infobox ms-3 mt-4 d-xxl-block">
                                         <h3 class="fs-5 mb-3">Cosa vuol dire essere partner Deliveboo?</h4>
@@ -135,6 +115,97 @@
             </div>
             
         </main>
+        <script>
+    async function validateForm() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('password_confirmation').value;
+    const errorMessages = document.getElementById('error-messages');
+    errorMessages.textContent = '';
+    errorMessages.classList.add('d-none');
+
+    if (name.trim() === '') {
+        showError('Il campo Nome è obbligatorio.');
+        return false;
+    }
+
+    if (!isValidEmail(email)) {
+        showError('Inserisci un indirizzo email valido.');
+        return false;
+    }
+
+    if (password.length < 6) {
+        showError('La password deve contenere almeno 6 caratteri.');
+        return false;
+    }
+
+    if (password !== confirmPassword) {
+        showError('Le password non corrispondono.');
+        return false;
+    }
+
+    const response = await fetch('/check-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({ email: email })
+    });
+
+    const data = await response.json();
+
+    if (!data.available) {
+        showError("Questa email è già registrata. provare un'altra email");
+        return false;
+    }
+
+    return true;
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function showError(message) {
+    const errorMessages = document.getElementById('error-messages');
+    errorMessages.textContent = message;
+    errorMessages.classList.remove('d-none');
+}
+
+const registerForm = document.getElementById('registerForm');
+const errorMessages = document.getElementById('error-messages');
+
+registerForm.addEventListener('submit', async function(event) {
+    event.preventDefault();
+    errorMessages.classList.add('d-none');
+
+    if (await validateForm()) {
+        try {
+            const formData = new FormData(registerForm);
+            const response = await fetch(registerForm.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                window.location.href = "{{ route('restaurants.create') }}";
+            } else {
+                if (data.error) {
+                    showError(data.error);
+                } else {
+                    showError('Si è verificato un errore durante la registrazione.');
+                }
+            }
+        } catch (error) {
+            console.error('Errore durante l\'invio del form:', error);
+        }
+    }
+});
+        </script>
     </body>
     </html>
-  

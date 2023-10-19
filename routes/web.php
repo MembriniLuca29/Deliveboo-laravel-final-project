@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\RestaurantController;
@@ -19,6 +20,15 @@ use App\Http\Controllers\Admin\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/check-email', function (Request $request) {
+    $email = $request->input('email');
+
+    // Esegui la logica per verificare se l'email è già presente nel database
+    $existingEmail = DB::table('users')->where('email', $email)->exists();
+
+    // Restituisci una risposta JSON indicando se l'email è disponibile o meno
+    return response()->json(['available' => !$existingEmail]);
+});
 
 Route::get('/', function () {
     return view('home');

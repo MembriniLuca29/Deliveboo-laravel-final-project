@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 
 class RegisteredUserController extends Controller
 {
@@ -28,24 +29,31 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+    public function store(Request $request): JsonResponse
+{
+    $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+        'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+    // Creazione dell'utente
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
+    event(new Registered($user));
+Auth::login($user); // Assicurati di autenticare l'utente
+return response()->json(['success' => true, 'redirect' => route('restaurants.create')]);
 
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect()->route('restaurants.create');
+    if ($user) {
+        // Se l'utente è stato creato con successo, invia una risposta JSON di successo
+        return response()->json(['success' => true, 'redirect' => route('restaurants.create')]);
+    } else {
+        // Se c'è stato un errore durante la creazione dell'utente, invia una risposta JSON con errore
+        return response()->json(['success' => false, 'errors' => ['Errore durante la registrazione']]);
     }
+}
+
 }
