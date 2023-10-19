@@ -20,6 +20,8 @@ use App\Http\Controllers\Admin\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/login', 'AuthenticatedSessionController@store')->name('login');
+
 Route::post('/check-email', function (Request $request) {
     $email = $request->input('email');
 

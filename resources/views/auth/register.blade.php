@@ -135,8 +135,8 @@
         return false;
     }
 
-    if (password.length < 6) {
-        showError('La password deve contenere almeno 6 caratteri.');
+    if (password.length < 8) {
+        showError('La password deve contenere almeno 8 caratteri.');
         return false;
     }
 

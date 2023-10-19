@@ -24,18 +24,16 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request)
     {
-        $request->authenticate();
-
-        $request->session()->regenerate();
-
-        if (Restaurant::where('user_id', auth()->id())->count() == 0) {
-
-            return redirect()->route('restaurants.create');
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return response()->json(['success' => true, 'message' => 'Login successful']);
         }
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+    
+        return response()->json(['success' => false, 'error' => 'email o password errati.'], 401);
     }
 
     /**
