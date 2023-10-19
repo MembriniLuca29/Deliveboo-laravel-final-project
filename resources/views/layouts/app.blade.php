@@ -81,7 +81,7 @@
 
                 </aside>
         
-                <main class="py-4 col-xl-10 col-lg-9 col-md-8 overflow-auto">
+                <main class="py-4 col-xl-10 col-lg-9 col-md-8">
                     {{-- <div class="container"> --}}
                         @yield('main-content')
                     {{-- </div> --}}

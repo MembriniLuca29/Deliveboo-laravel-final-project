@@ -42,7 +42,11 @@
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="name@example.com" maxlength="50" required>
-                                                        <label for="name">Nome</label>
+                                                        <label for="name">Nome 
+                                                            <span class="text-danger">
+                                                                *
+                                                            </span>
+                                                        </label>
                                                         @error('name')
                                                             <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror
@@ -52,7 +56,11 @@
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="form-floating mb-3">
                                                         <input  type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" placeholder="Indirizzo" maxlength="255" required>
-                                                        <label for="address">Indirizzo completo</label>
+                                                        <label for="address">Indirizzo completo
+                                                            <span class="text-danger">
+                                                                *
+                                                            </span>
+                                                        </label>
                                                         @error('address')
                                                             <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror
@@ -62,7 +70,11 @@
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" placeholder="Numero di telefono" maxlength="13" required>
-                                                        <label for="phone_number">Telefono</label>
+                                                        <label for="phone_number">Telefono
+                                                            <span class="text-danger">
+                                                                *
+                                                            </span>
+                                                        </label>
                                                         @error('phone_number')
                                                             <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror
@@ -72,7 +84,11 @@
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control @error('p_iva') is-invalid @enderror" id="p_iva" name="p_iva" placeholder="p_iva" maxlength="11" required>
-                                                        <label for="p_iva">Partita Iva</label>
+                                                        <label for="p_iva">Partita Iva
+                                                            <span class="text-danger">
+                                                                *
+                                                            </span>
+                                                        </label>
                                                         @error('p_iva')
                                                             <div class="invalid-feedback">{{ $message }}</div>
                                                         @enderror

@@ -35,22 +35,27 @@
                                 {{-- Form di registrazione  --}}
                                 <div id="register-form-div" class="box ms-5 me-2 text-center">
                                     <h3 class="fs-4 mt-1 mb-4">Registrazione Utente</h3>
-                                         @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
+                                     {{-- @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                     @endif --}}
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf
 
                                         {{-- name --}}
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="name@example.com" value="{{ old('name') }}" required>
-                                            <label for="name">Nome</label>
+                                            <label for="name">
+                                                Nome
+                                                <span class="text-danger">
+                                                    *
+                                                </span>
+                                            </label>
                                             @error('name')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -59,7 +64,12 @@
                                         {{-- email address --}}
                                        <div class="form-floating mb-3">
                                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" required>
-                                            <label for="email">Indirizzo Email</label>
+                                            <label for="email">
+                                                Indirizzo Email
+                                                <span class="text-danger">
+                                                    *
+                                                </span>
+                                            </label>
                                             @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -69,7 +79,12 @@
                                         
                                         <div class="form-floating mb-3">
                                             <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required>
-                                            <label for="password">Password</label>
+                                            <label for="password">
+                                                Password
+                                                <span class="text-danger">
+                                                    *
+                                                </span>
+                                            </label>
                                             @error('password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -78,7 +93,12 @@
                                         {{-- password_confirmation --}}
                                         <div class="form-floating mb-3">
                                             <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" placeholder="Conferma Password" required>
-                                            <label for="password_confirmation">Conferma Password</label>
+                                            <label for="password_confirmation">
+                                                Conferma Password
+                                                <span class="text-danger">
+                                                    *
+                                                </span>
+                                            </label>
                                             @error('password_confirmation')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
