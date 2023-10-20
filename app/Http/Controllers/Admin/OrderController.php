@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 // Models
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Restaurant;
 
 // Form Requests
 use App\Http\Requests\Order\StoreOrderRequest;
@@ -19,12 +21,18 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(String $user_id)
+    public function index()
     {
-        $user = User::find($user_id);
-        $orders = $user->restaurants()->dishes()->orders;
+        $user = User::find(Auth::id());
+        $restaurant = $user->restaurants()->first();
+        $dishes = $restaurant->dishes()->get();
 
-        return view('dashboard', compact('orders'));
+        $orders = [];
+        foreach ($dishes as $dish) {
+            $orders[] = $dish->orders()->get();
+        }
+        
+        return view('admin.order.index', ['orders' => $orders, 'restaurant' => $restaurant]);
 
     }
 
@@ -58,7 +66,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('admin.orders.show', compact($order));
+        
     }
 
     /**
@@ -74,14 +82,40 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-        //
+        $request->validate([
+            'status' => ['required', 'in:inviato,produzione,completato'],
+            // ... (altri campi, se presenti) ...
+        ]);
+    
+        // Aggiorna lo stato dell'ordine
+        $order->update(['status' => $request->input('status')]);
+    
+        // Redirect back senza ricaricare la pagina
+        return redirect()->back()->with('success', 'Stato dell\'ordine aggiornato con successo.');
     }
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Order $order)
     {
         $order->delete();
+    }
+
+    public function stats() {
+        $user = User::find(Auth::id());
+        $restaurant = $user->restaurants()->first();
+
+        return view('admin.order.stats', ['restaurant' => $restaurant]);
+    }
+
+    public function updateStatus(Request $request, Order $order)
+    {
+        $request->validate([
+            'status' => 'required|in:inviato,produzione,completato', // Aggiungi gli altri stati se necessario
+        ]);
+    
+        $order->update(['status' => $request->input('status')]);
+    
+        return redirect()->route('orders')->with('success', 'Stato dell\'ordine aggiornato con successo.');
     }
 }
