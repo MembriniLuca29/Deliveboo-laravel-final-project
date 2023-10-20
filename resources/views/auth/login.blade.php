@@ -19,7 +19,7 @@
                                 <img src="images/iconlogo.png" alt="Logo">
                             </div>
                                 {{-- title  --}}
-                            <h1 class="mx-3 fw-bold">
+                            <h1 class="mx-3 fw-bold d-none d-sm-block">
                                 D E L I V E B O O
                             </h1>
                         </nav>
