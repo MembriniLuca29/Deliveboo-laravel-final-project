@@ -15,7 +15,7 @@ class RestaurantController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::inRandomOrder()->limit(4)->get();
+        $restaurants = Restaurant::inRandomOrder()->limit(6)->get();
 
         return response()->json([
             'success' => true,
