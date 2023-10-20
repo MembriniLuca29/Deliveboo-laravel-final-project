@@ -28,7 +28,7 @@ class UpdateOrderRequest extends FormRequest
             'phone_number' => ['required', 'max:13'],
             'email' => ['required'],
             'address' => ['required'],
-            'status' => ['nullable', 'max:50'],
+            'status' => ['required', 'in:inviato,produzione,completato'],
             'total_price' => ['required']
         ];
     }

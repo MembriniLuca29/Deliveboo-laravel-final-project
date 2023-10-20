@@ -81,9 +81,17 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-        //
+        $request->validate([
+            'status' => ['required', 'in:inviato,produzione,completato'],
+            // ... (altri campi, se presenti) ...
+        ]);
+    
+        // Aggiorna lo stato dell'ordine
+        $order->update(['status' => $request->input('status')]);
+    
+        // Redirect back senza ricaricare la pagina
+        return redirect()->back()->with('success', 'Stato dell\'ordine aggiornato con successo.');
     }
-
     /**
      * Remove the specified resource from storage.
      */
@@ -97,5 +105,16 @@ class OrderController extends Controller
         $restaurant = $user->restaurants()->first();
 
         return view('admin.order.stats', ['restaurant' => $restaurant]);
+    }
+
+    public function updateStatus(Request $request, Order $order)
+    {
+        $request->validate([
+            'status' => 'required|in:inviato,produzione,completato', // Aggiungi gli altri stati se necessario
+        ]);
+    
+        $order->update(['status' => $request->input('status')]);
+    
+        return redirect()->route('orders')->with('success', 'Stato dell\'ordine aggiornato con successo.');
     }
 }
