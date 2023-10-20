@@ -45,6 +45,62 @@
             transform: translate(0, -10%);
             
 
+            /* On screens that are 769px or less,   ...*/
+            @media screen and (max-width: 769px) {
+                #register-form-div{        
+                    margin: 0 60px !important;
+
+                    form{       // form di registrazione
+    
+                        input{
+                            border: 3px solid $yellow-primary;
+                        }
+    
+                        button{
+                            background-color: $yellow-primary;
+                            transition: all 0.25s ease;
+                            border: 4px solid $yellow-primary;
+                        }
+                        
+                        #btn-1:hover {    
+                            transform: translateY(-3px);
+                            background-color: $bg-color;
+                            // color: black;
+                            border: 4px solid $yellow-primary;
+                            // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+                        }
+                    }
+                }
+            }
+            /* On screens that are 450px or less,   ...*/
+            @media screen and (max-width: 450px) {
+                #register-form-div{        
+                    margin: 0 30px !important;
+
+                    form{       // form di registrazione
+
+                        input{
+                            border: 3px solid $yellow-primary;
+                        }
+
+                        button{
+                            background-color: $yellow-primary;
+                            transition: all 0.25s ease;
+                            border: 4px solid $yellow-primary;
+                        }
+                        
+                        #btn-1:hover {    
+                            transform: translateY(-3px);
+                            background-color: $bg-color;
+                            // color: black;
+                            border: 4px solid $yellow-primary;
+                            // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+                        }
+                    }
+                }
+            }
+
+
             #register-form-div{        
 
                 form{       // form di registrazione
@@ -76,15 +132,66 @@
     
                         div{
                             font-size: 1.0625rem;
-                            list-style:circle !important;
                         }
                     }
                 }
             }
         }
-    
     }
 
+    /* On screens that are 993px or less,   ...*/
+    @media screen and (max-width: 993px) {
 
+        main {
+            // background-color: $bg-color;
+            background-image: url(../../public/images/bg-2.png);
+            background-size: cover;
+            width: 100%;
+            height: calc(100vh - 6.25rem);
+    
+            .my-card{
+                width: 100%;
+                min-height: 30%;
+                transform: translate(0, 0);
+                
+    
+                #register-form-div{        
+    
+                    form{       // form di registrazione
+    
+                        input{
+                            border: 3px solid $yellow-primary;
+                        }
+    
+                        button{
+                            background-color: $yellow-primary;
+                            transition: all 0.25s ease;
+                            border: 4px solid $yellow-primary;
+                        }
+                        
+                        #btn-1:hover {    
+                            transform: translateY(-3px);
+                            background-color: $bg-color;
+                            // color: black;
+                            border: 4px solid $yellow-primary;
+                            // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+                        }
+                    }
+                }
+    
+                #benefits-info{     //"Cosa vuol dire essere partner deliveboo?" info box
+    
+                    @media (min-width: 1201px) {                    
+                        .infobox{
+        
+                            div{
+                                font-size: 1.0625rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 // }
