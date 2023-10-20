@@ -131,7 +131,7 @@ class DishController extends Controller
         }
         $dish->delete();
 
-        return redirect()->route('restaurants.show', ['restaurant' => $restaurantId]);
+        return redirect()->route('dashboard');
         }
 
 }

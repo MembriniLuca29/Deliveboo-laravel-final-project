@@ -59,6 +59,13 @@
                     <button type="submit" class="btn btn-warning">
                         Aggiorna
                     </button>
+
+                    <form method="POST" action="{{ route('dishes.destroy', $dish->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+
                 </div>
             </form>
         </div>
