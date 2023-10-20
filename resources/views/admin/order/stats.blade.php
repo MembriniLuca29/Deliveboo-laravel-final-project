@@ -8,9 +8,11 @@
     <canvas id="myChart"></canvas>
 </div>
 
+@vite('resources/js/chart.js')
 <script>
     var userId = {{ Auth::id() }};
 </script>
+
 @endsection
 
 
