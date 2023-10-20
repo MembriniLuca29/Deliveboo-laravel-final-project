@@ -18,6 +18,7 @@ class OrderController extends Controller
     {
         $user = User::find($id);
         $restaurant = $user->restaurants()->first();
+        $dishes = $restaurant->dishes()->get();
 
         $stats = $restaurant->dishes()->withCount('orders')->get();
         $orders = [];
@@ -28,7 +29,7 @@ class OrderController extends Controller
         return response()->json([
             'success' => true,
             'orders' => $orders,
-            'dishes' => $orders
+            'dishes' => $dishes
         ]);
     }
 
