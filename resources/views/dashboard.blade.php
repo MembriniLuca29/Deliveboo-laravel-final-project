@@ -93,7 +93,9 @@
                                                 {{-- dishes thumb --}}
                                                 <div class="col-4">
                                                     <div class="img-box bg-white rounded h-100">
-                                                        <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
+                                                        @if ($dish->thumb)
+                                                            <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 {{-- dishes Name --}}
