@@ -1,3 +1,9 @@
  .order-card{
     width: 95%;
+    .status{
+      display: flex;
+    }
+    select{
+      max-width: 200px;
+    }
  }

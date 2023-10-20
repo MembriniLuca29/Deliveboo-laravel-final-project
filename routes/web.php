@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('restaurants', RestaurantController::class);
     Route::get('order', [OrderController::class, 'index'])->name('orders');
     Route::get('stats', [OrderController::class, 'stats'])->name('orders.stats');
+    Route::put('/orders/{order}', [OrderController::class, 'update'])->name('order.update');
+
 
     
 });
