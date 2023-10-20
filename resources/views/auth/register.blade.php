@@ -17,7 +17,7 @@
                             <div class="mx-3">
                                 <img src="images/iconlogo.png" alt="Logo">
                             </div>
-                            <h1 class="mx-3 fw-bold">
+                            <h1 class="mx-3 fw-bold d-none d-sm-block">
                                 D E L I V E B O O
                             </h1>
                         </nav>
@@ -96,14 +96,14 @@
                                 </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col d-none d-md-block">
                                 
                                 <div id="benefits-info" class="box ms-2 me-5 mt-2">
                                     <div class="infobox ms-3 mt-4 d-xxl-block">
                                         <h3 class="fs-5 mb-3">Cosa vuol dire essere partner Deliveboo?</h4>
                                         <div class="mb-3 ms-2">"Con Deliveboo espandi la tua attività, raggiungendo nuovi clienti ogni giorno."</div>
                                         <div class="mb-3 ms-2">"È un modo semplice ed efficace per gestire le ordinazioni ed avere tutto sotto controllo."</div>
-                                        <div class="mb-3 ms-2 d-none d-lg-block">"Da Partner vedrai aumentare la visibilità online del tuo ristorante come mai prima d'ora."</div>
+                                        <div class="mb-3 ms-2">"Da Partner vedrai aumentare la visibilità online del tuo ristorante come mai prima d'ora."</div>
                                         <div class="mb-3 ms-2 d-none d-xxl-block">"Deliveboo ha il sistema di consegne più ottimizzato sul mercato, i tuoi clienti saranno sempre soddisfatti."</div>
                                     </div>
                                 </div>
