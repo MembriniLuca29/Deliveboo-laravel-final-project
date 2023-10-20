@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Restaurant;
+use App\Models\Dish;
 
 class OrderController extends Controller
 {
@@ -17,22 +18,19 @@ class OrderController extends Controller
     {
         $user = User::find($id);
         $restaurant = $user->restaurants()->first();
-        $dishes = $restaurant->dishes()->get();
 
+        $stats = $restaurant->dishes()->withCount('orders')->get();
         $orders = [];
-        foreach ($dishes as $dish) {
-            $orders[] = $dish->orders()->get();
+        foreach ($stats as $stat) {
+            $orders[] = $stat->orders_count;
         }
         
         return response()->json([
             'success' => true,
             'orders' => $orders,
-            'dishes' => $dishes
+            'dishes' => $orders
         ]);
     }
 
-    public function show(string $id)
-    {
-      
-    }
 }
+

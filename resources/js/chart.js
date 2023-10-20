@@ -9,7 +9,7 @@ axios.get(`http://127.0.0.1:8000/api/orders/${userId}`)
     .then(response => {
         orders = response.data.orders;
         dishes = response.data.dishes;
-        
+        console.log(orders);
         const event = new Event('complete');
         document.dispatchEvent(event);
                
@@ -26,22 +26,12 @@ function fetchNames(array) {
     }
 }
 
-function countSold(array) {
-    for (let index = 0; index < array.length; index++) {
-        const element = array[index];
-        sold.push(element.length);   
-    }
-}
-
 // AFTER AXIOS RESPONSE HAS ARRIVED
 document.addEventListener('complete', () => {
 
     // Fetch names for labels
     fetchNames(dishes);
 
-    // Fetch values
-    countSold(orders)
-    console.log(sold);
 
     // CHART CREATION
     const ctx = document.getElementById('myChart');
@@ -51,7 +41,7 @@ document.addEventListener('complete', () => {
         labels: names,
         datasets: [{
             label: 'Pieces Sold',
-            data: sold,
+            data: orders,
             borderWidth: 1
         }]
         },
