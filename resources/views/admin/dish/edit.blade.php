@@ -60,13 +60,15 @@
                         Aggiorna
                     </button>
 
-                    <form method="POST" action="{{ route('dishes.destroy', $dish->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                 
 
                 </div>
+            </form>
+            {{-- NON METTERE IL FORM DENTRO L'ALTRO FORM SE VUOI SPOSTARLO USA RELATIVE O ABSOLUTE --}}
+            <form method="POST" action="{{ route('dishes.destroy', $dish->id) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
             </form>
         </div>
     </div>
