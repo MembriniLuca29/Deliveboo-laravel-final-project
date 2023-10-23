@@ -10,6 +10,7 @@
         <div class="px-0 px-lg-4 px-xl-5 h-100">
             <div id="cont-2" class="px-4  h-100">
 
+                
                 {{-- intestazione main  --}}
                 
                 <div class="header d-inline">
