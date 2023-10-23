@@ -39,9 +39,9 @@
                 </li>
                   <li class="list-group-item"></li>
                   <ul>
-                    @foreach (json_decode($order->dishes) as $dish)
-                        <li>{{ $dish->name }}</li>
-                    @endforeach
+                    @foreach ($order->dishes as $dish)
+                <li>{{ $dish->pivot->quantity }} {{ $dish->name }} </li>
+            @endforeach
                 </ul>
                 </ul>
               </div>
