@@ -25,7 +25,7 @@ class StoreOrderRequest extends FormRequest
         return [
             'name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],
-            'phone_number' => ['required', 'max:13'],
+            'phone_number' => ['required', 'string', 'max:13'],
             'email' => ['required'],
             'address' => ['required'],
             'status' => ['nullable', 'max:50'],

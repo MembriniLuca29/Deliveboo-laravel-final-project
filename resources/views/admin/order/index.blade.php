@@ -5,9 +5,7 @@
 @section('main-content')
 
 
-    @foreach ($orders as $orderArray)
-        @foreach ($orderArray as $order)
-        @if ($order->status !== 'completato')
+@foreach ($orders as $order)
 
             <div class="card order-card ms-4 mb-2" >
                 <div class="card-header">
@@ -41,14 +39,13 @@
                 </li>
                   <li class="list-group-item"></li>
                   <ul>
-                    @foreach (json_decode($order->dishes) as $dish)
-                        <li>{{ $dish->name }}</li>
-                    @endforeach
+                    @foreach ($order->dishes as $dish)
+                <li>{{ $dish->pivot->quantity }} {{ $dish->name }} </li>
+            @endforeach
                 </ul>
                 </ul>
               </div>
-              @endif
-        @endforeach
+             
     @endforeach
 
 @endsection

@@ -61,11 +61,18 @@ class OrderController extends Controller
             'status' => $data['status'],
         ]);
 
-        // Aggiungi i piatti all'ordine tramite la relazione many-to-many
-        $order->dishes()->attach($data['dishes']);
+        $dishesWithQuantities = [];
+    foreach ($data['dishes'] as $dish) {
+        // Verifica che l'id del piatto sia presente e che la quantità sia un numero positivo
+        if (isset($dish['id']) && isset($dish['quantity']) && is_numeric($dish['quantity']) && $dish['quantity'] > 0) {
+            $dishesWithQuantities[$dish['id']] = ['quantity' => $dish['quantity']];
+        }
+    }
 
-        // Restituisci una risposta appropriata al frontend
-        return response()->json(['message' => 'Ordine creato con successo'], 201);
+    $order->dishes()->attach($dishesWithQuantities);
+
+    // Restituisci una risposta appropriata al frontend
+    return response()->json(['message' => 'Ordine creato con successo'], 201);
     }
 }
 
