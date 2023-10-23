@@ -7,7 +7,7 @@
     <div class="my-style-home-dashboard-main  h-100">
 
         <div class="px-0 px-lg-3 px-xl-5 h-100">
-            <div id="cont-2" class="px-4  h-100">
+            <div id="cont-2" class="px-2 px-md-2 px-xl-3 px-xl-4  h-100">
 
                 
                 {{-- intestazione main  --}}
@@ -87,27 +87,40 @@
                         
                         {{-- DISHES --}}
                         <div id="main-top-cont" class="pt-4 d-flex justify-content-between">
-                            <div class="fs-3">
+                            {{-- situation on small screen devices  --}}
+                            <div class="fs-5 d-block d-md-none mt-2">
                                 Le tue pietanze
                             </div>
+                            {{-- situation on mid screen devices  --}}
+                            <div class="fs-4 d-none d-md-block d-xl-none">
+                                Le tue pietanze
+                            </div>
+                            {{-- situation on large screen devices  --}}
+                            <div class="fs-3 d-none d-xl-block">
+                                Le tue pietanze
+                            </div>
+                            
 
                             {{-- bottone aggiunta Pietanze  --}}
-
                             <div class="add-button">
-                                <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
-                                        <a class="text-decoration-none" href="{{ route('dishes.create') }}">+ Aggiungi</a>
+                                <div type="submit" class="btn btn-1 btn-green py-0 py-md-1 px-md-3 mb-1 mb-md-3 fw-semibold">
+                                        <a class="text-decoration-none" href="{{ route('dishes.create') }}">
+                                            <span class=" fs-2 d-md-none">+</span>
+                                            <span class="d-none d-md-inline">+ Aggiungi</span>
+                                        </a>
                                 </div>
                             </div>
                         </div>
                         
                         <div id="main-bot-cont" class="w-100">
-                            <div class="px-4 pt-1 pb-3 h-100">
-                                <div class="h-100 border-start border-end border-warning border-3 px-5">
+                            <div class="px-1 px-md-2 px-lg-3 px-xl-4 pt-1 pb-3 h-100">
+                                <div class="h-100 border-start border-end border-warning border-3 px-1 px-md-2 px-lg-3 px-xl-5">
                                     <div class="mx-1 pt-1 h-100">
 
                                         {{-- Dishes searchbar  --}}
                                         <form id="res-search" class="d-flex" role="search">
-                                            <input class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca la pietanza di cui hai bisogno..." aria-label="Search">
+                                            <input class="d-md-none form-control border-1 border-dark py-2" type="search" placeholder="Cerca una pietanza..." aria-label="Search">
+                                            <input class="d-none d-md-block form-control border-1 border-dark py-2" type="search" placeholder="Cerca la pietanza di cui hai bisogno..." aria-label="Search">
                                         </form>
 
                                         {{-- Dishes list section --}}

@@ -19,7 +19,7 @@
 
                     
                 
-                <div id="main-content" class="mt-5 h-100">
+                <div id="main-content" class="mt-md-2 mt-lg-3 mt-xl-4 h-100">
                     
                     {{-- intestazione main --}}
                     <div id="main-top-cont" class="py-2 pb-3 d-flex justify-content-between">
@@ -29,9 +29,9 @@
                     </div>
                     
                     <div id="main-bot-cont" class="w-100">
-                        <div class="px-4 pt-1 pb-3 h-100">
-                            <div class="h-100 border-start border-end border-warning border-3 px-5">
-                                <div class="mx-1 pt-5 h-100">
+                        <div class="px-1 px-md-2 px-lg-3 px-xl-4 pt-1 pb-3 h-100">
+                            <div class="overflow-x-hidden overflow-y-auto h-100 border-start border-end border-warning border-3 px-1 px-md-2 px-lg-3 px-xl-5">
+                                <div class="mx-1 py-5 h-100">
                                     <div>
                                         {{-- Form to create restaurant --}}
                                         <form id="res-create-form" action="{{ route('restaurants.store') }}" method="POST" enctype="multipart/form-data">
