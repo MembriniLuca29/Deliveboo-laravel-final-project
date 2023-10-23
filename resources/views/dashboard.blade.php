@@ -2,7 +2,6 @@
 
 @section('page-title', 'Dashboard')
 
-
 {{-- MAIN CONTENT SECTION  --}}
 @section('main-content')
     <div class="my-style-home-dashboard-main  h-100">
