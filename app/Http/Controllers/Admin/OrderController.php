@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
 
 // Models
 use App\Models\User;
@@ -22,19 +23,23 @@ class OrderController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $user = User::find(Auth::id());
-        $restaurant = $user->restaurants()->first();
-        $dishes = $restaurant->dishes()->get();
+{
+    $user = User::find(Auth::id());
+    $restaurant = $user->restaurants()->first();
+    $dishes = $restaurant->dishes()->get();
 
-        $orders = [];
-        foreach ($dishes as $dish) {
-            $orders[] = $dish->orders()->get();
-        }
-        
-        return view('admin.order.index', ['orders' => $orders, 'restaurant' => $restaurant]);
+    // Recupera tutti gli ordini relativi ai piatti del ristorante attuale
+    $orders = new Collection(); // Crea una nuova collezione di ordini vuota
 
+    foreach ($dishes as $dish) {
+        $orders = $orders->merge($dish->orders()->where('status', '!=', 'completato')->get());
     }
+
+    // Rimuovi i duplicati dalla collezione di ordini
+    $uniqueOrders = $orders->unique('id');
+
+    return view('admin.order.index', ['orders' => $uniqueOrders, 'restaurant' => $restaurant]);
+}
 
     /**
      * Show the form for creating a new resource.

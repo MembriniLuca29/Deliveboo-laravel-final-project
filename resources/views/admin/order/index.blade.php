@@ -5,9 +5,7 @@
 @section('main-content')
 
 
-    @foreach ($orders as $orderArray)
-        @foreach ($orderArray as $order)
-        @if ($order->status !== 'completato')
+@foreach ($orders as $order)
 
             <div class="card order-card ms-4 mb-2" >
                 <div class="card-header">
@@ -47,8 +45,7 @@
                 </ul>
                 </ul>
               </div>
-              @endif
-        @endforeach
+             
     @endforeach
 
 @endsection
