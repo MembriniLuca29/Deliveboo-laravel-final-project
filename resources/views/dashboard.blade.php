@@ -4,14 +4,15 @@
 
 {{-- MAIN CONTENT SECTION  --}}
 @section('main-content')
-    <div class="my-style-home-dashboard-main h-100">
+    <div class="my-style-home-dashboard-main  h-100">
 
-        <div class="px-5 h-100">
-            <div class="px-4  h-100">
+        <div class="px-0 px-lg-4 px-xl-5 h-100">
+            <div id="cont-2" class="px-4  h-100">
 
+                
                 {{-- intestazione main  --}}
                 
-                <div class="header d-inline col-12">
+                <div class="header d-inline">
                     {{-- IF RESTAURANT EXIST --}}
                     @if($restaurant)
                         <h1 class="lh-1 mb-0 fw-normal text-capitalize">
@@ -24,8 +25,8 @@
                                 </span>
                         </span>
                     @else
-                        <div class="px-5 pt-3">
-                            <h1 class="lh-1 mb-0 mt-5 fw-normal text-capitalize">
+                        <div class="px-0 px-md-2 px-lg-4 px-xl-5 pt-0 pt-lg-3">
+                            <h1 class="lh-1 mb-0 mt-0 mt-md-2 mt-lg-3 mt-xl-5 fw-normal text-capitalize">
                                 Ciao {{ auth()->user()->name }},
                             </h1>
                         
@@ -39,7 +40,7 @@
 
                     
                 
-                    <div id="main-content" class="mt-5 h-100 col-md-12">
+                    <div id="main-content" class="mt-5 h-100">
                         
                         {{-- IF RESTAURANT DOESNT EXIST --}}
                         @if (!$restaurant)
@@ -90,15 +91,13 @@
                                             <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row">
 
                                                 {{-- dishes thumb --}}
-                                                <div class="col-md-4 col-sm-12">
+                                                <div class="col-4">
                                                     <div class="img-box bg-white rounded h-100">
-                                                        @if ($dish->thumb)
-                                                            <img src="{{ asset('storage/'.$dish->thumb) }}" alt="" class="img-fluid">
-                                                        @endif
+                                                        <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
                                                     </div>
                                                 </div>
                                                 {{-- dishes Name --}}
-                                                <div class="col-md-4 col-sm-12">
+                                                <div class="col-4">
                                                     <div class="d-flex flex-column justify-content-center h-100 ms-4 mb-2">
                                                         <h2 class="fw-semibold fs-5">                                                    
                                                             Nome : {{ $dish->name }}
@@ -110,7 +109,7 @@
                                                 </div>
 
                                                 {{-- dishes interaction buttons --}}
-                                                <div class="col-md-4 col-sm-12">
+                                                <div class="col-4">
                                                     <div id="res-int-buttons" class="d-flex flex-column justify-content-center h-100 align-items-center">
                                                         {{-- dieses visibility button --}}
                                                         <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">
@@ -125,6 +124,11 @@
                                                                 {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
                                                             </button>
                                                         </form>
+                                                        {{-- <div class="details-button">
+                                                            <div type="submit" class="btn btn-1 btn-blue px-3 mb-3 fw-semibold">
+                                                                    <a class="text-decoration-none" href="{{ route('restaurants.show', ['restaurant' => $restaurant]) }}">a</a>
+                                                            </div>
+                                                        </div> --}}
                                                         
                                                         {{-- Dish edit button --}}
                                                         <div class="edit-button">
@@ -152,14 +156,5 @@
             </div>
         </div>
     </div>
+
 @endsection
-
-<style>
-
-.my-style-home-dashboard-main {
-    overflow: auto; 
-    max-height: 100vh; 
-    max-width: 100vw; 
-}
-
-</style>
