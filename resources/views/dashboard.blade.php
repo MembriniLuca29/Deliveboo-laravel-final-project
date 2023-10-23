@@ -7,8 +7,8 @@
 @section('main-content')
     <div class="my-style-home-dashboard-main h-100">
 
-        <div class="container-fluid h-100">
-            <div class="row h-100">
+        <div class="px-5 h-100">
+            <div class="px-4  h-100">
 
                 {{-- intestazione main  --}}
                 
@@ -18,14 +18,14 @@
                         <h1 class="lh-1 mb-0 fw-normal text-capitalize">
                             Ciao {{ auth()->user()->name }},
                         </h1>
-                        <span class="fs-3 border-bottom border-warning border-3">
+                        <span class="fs-md-3 border-bottom border-warning border-3">
                             qui puoi gestire e monitorare il tuo ristorante
                                 <span class="fs-2 text-capitalize">
                                     "{{ $restaurant->name }}"
                                 </span>
                         </span>
                     @else
-                        <div class="pt-3 col-md-12">
+                        <div class="px-5 pt-3">
                             <h1 class="lh-1 mb-0 mt-5 fw-normal text-capitalize">
                                 Ciao {{ auth()->user()->name }},
                             </h1>
@@ -46,7 +46,7 @@
                         @if (!$restaurant)
                         
                         {{-- bottone aggiunta ristorante  --}}
-                        <div class="add-button px-5">
+                        <div class="add-button px-lg-3 px-xl-5">
                             <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
                                 <a class="text-decoration-none" href="{{ route('restaurants.create') }}">
                                         + Aggiungi Ristorante

@@ -3,6 +3,7 @@
 
 .my-style-login{
 
+
     .form-control:focus{
         border-color: unset;
         box-shadow: unset;
@@ -29,6 +30,9 @@
         }
     }
 
+
+
+
     main {
         // background-color: $bg-color;
         background-image: url(../../public/images/bg-2.png);
@@ -36,14 +40,73 @@
         width: 100%;
         height: calc(100vh - 6.25rem);
 
+            /* On screens that are more than 993px, ... */
+        @media screen and (min-width: 993px) {
+
+            .my-card{
+                width: 40%;
+                min-height: 30%;
+                transform: translate(0, -10%);
+
+
+                #login-form{        
+    
+                    form{       // form di registrazione
+    
+                        input{
+                            border: 3px solid $yellow-primary;
+                        }
+    
+                        button{
+                            background-color: $yellow-primary;
+                            transition: all 0.25s ease;
+                            border: 4px solid $yellow-primary;
+                        }
+                        
+                        #btn-1:hover {    
+                            transform: translateY(-3px);
+                            background-color: $bg-color;
+                            // color: black;
+                            border: 4px solid $yellow-primary;
+                            // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+                        }
+    
+                        #pass_recovery{
+                            transition: all 0.35s ease;
+                        }
+                        #pass_recovery:hover{
+                            transform: scale(1.040);
+                        }
+    
+                        #rememb_me{
+                            transition: all 0.35s ease;
+                            user-select: none;
+                        }
+                        #rememb_me:hover{
+                            transform: scale(1.050);
+                        }
+    
+                        #register_redirect{
+                            transition: all 0.35s ease;
+                        }
+                        #register_redirect:hover{
+                            transform: scale(1.050);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* On screens that are 993px or less,   ...*/
+    @media screen and (max-width: 991px) {
         .my-card{
-            width: 40%;
+            width: 80%;
             min-height: 30%;
             transform: translate(0, -10%);
-            
 
-            #registrer-form{        
-
+            #login-form{        
+    
                 form{       // form di registrazione
 
                     input{
@@ -89,4 +152,60 @@
             }
         }
     }
+
+        /* On screens that are 450px or less,   ...*/
+        @media screen and (max-width: 450px) {
+            .my-card{
+                width: 100%;
+                min-height: 30%;
+                transform: translate(0, -10%);
+    
+                #login-form{     
+                    margin: 0 15px !important;   
+        
+                    form{       // form di registrazione
+    
+                        input{
+                            border: 3px solid $yellow-primary;
+                        }
+    
+                        button{
+                            background-color: $yellow-primary;
+                            transition: all 0.25s ease;
+                            border: 4px solid $yellow-primary;
+                        }
+                        
+                        #btn-1:hover {    
+                            transform: translateY(-3px);
+                            background-color: $bg-color;
+                            // color: black;
+                            border: 4px solid $yellow-primary;
+                            // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+                        }
+    
+                        #pass_recovery{
+                            transition: all 0.35s ease;
+                        }
+                        #pass_recovery:hover{
+                            transform: scale(1.040);
+                        }
+    
+                        #rememb_me{
+                            transition: all 0.35s ease;
+                            user-select: none;
+                        }
+                        #rememb_me:hover{
+                            transform: scale(1.050);
+                        }
+    
+                        #register_redirect{
+                            transition: all 0.35s ease;
+                        }
+                        #register_redirect:hover{
+                            transform: scale(1.050);
+                        }
+                    }
+                }
+            }
+        }
 }

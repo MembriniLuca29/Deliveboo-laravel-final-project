@@ -20,12 +20,10 @@
 
             <div class="container d-flex h-100 shadow-lg rounded-5 p-0">
                 
-                <aside class="col-xl-2 col-lg-3 col-md-4 py-4 d-flex flex-column position-relative">
+                <aside class="col-2 col-xl-2 col-lg-3 py-4 d-flex flex-column position-relative">
         
                     <div id="aside-title" class="ms-4 lh-1 mb-5">Deliveboo<br>Dashboard</div>
 
-                    
-                   
                     
                     <div class="my-style-home-dashboard-aside">
                         {{-- Elemento aside Navbar  --}}
@@ -81,7 +79,7 @@
 
                 </aside>
         
-                <main class="py-4 col-xl-10 col-lg-9 col-md-8">
+                <main class="py-4 col-xl-10 col-lg-9 col-md-10">
                     {{-- <div class="container"> --}}
                         @yield('main-content')
                     {{-- </div> --}}
