@@ -34,7 +34,7 @@
                                     "{{ $restaurant->name }}"
                                 </span>
                         </span>
-                        {{-- situation on big screen devices  --}}
+                        {{-- situation on large screen devices  --}}
                         <span class="d-none d-xl-block fs-3 border-bottom border-warning border-3">
                             qui puoi gestire e monitorare il tuo ristorante
                                 <span class="fs-2">
@@ -47,8 +47,17 @@
                             <h1 class="lh-1 mb-0 mt-0 mt-md-2 mt-lg-3 mt-xl-5 fw-normal text-capitalize">
                                 Ciao {{ auth()->user()->name }},
                             </h1>
-                        
-                            <span class="fs-3 border-bottom border-warning border-3">
+
+                            {{-- situation on small screen devices  --}}
+                            <span class="fs-5 d-block d-md-none border-bottom border-warning border-3">
+                                non ci sono ancora ristoranti, aggiungine uno!
+                            </span>
+                            {{-- situation on mid screen devices  --}}
+                            <span class="d-none d-md-block d-xl-none fs-4 border-bottom border-warning border-3">
+                                non ci sono ancora ristoranti, aggiungine uno!
+                            </span>
+                            {{-- situation on large screen devices  --}}
+                            <span class="d-none d-xl-block fs-3 border-bottom border-warning border-3">
                                 non ci sono ancora ristoranti, aggiungine uno!
                             </span>
                         </div>
@@ -58,13 +67,13 @@
 
                     
                 
-                    <div id="main-content" class="mt-md-2 mt-lg-3 mt-xl-5 h-100">
+                    <div id="main-content" class="mt-md-2 mt-lg-3 mt-xl-4 h-100">
                         
                         {{-- IF RESTAURANT DOESNT EXIST --}}
                         @if (!$restaurant)
                         
                         {{-- bottone aggiunta ristorante  --}}
-                        <div class="add-button px-lg-3 px-xl-5">
+                        <div class="add-button pt-3 pt-lg-0 px-lg-3 px-xl-5">
                             <div type="submit" class="btn btn-1 btn-green px-3 mb-3 fw-semibold">
                                 <a class="text-decoration-none" href="{{ route('restaurants.create') }}">
                                         + Aggiungi Ristorante
