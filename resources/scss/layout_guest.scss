@@ -9,6 +9,20 @@ body{
     #my-container{
         background-color: $bg-color;
 
+        /* On screens that are 577px or less,   ...*/
+        @media screen and (max-width: 577px) {
+            #my-cont-2{
+                border-radius: 0 !important;
+            }
+        }
+
+        /* On screens that are 577px or less,   ...*/
+        @media screen and (max-width: 577px) {
+            aside{
+                border-radius: 0 !important;
+            }
+        }
+
         aside{
             background-color: $yellow-primary;
             border-radius: 1.875rem 0 0 1.875rem;
@@ -38,10 +52,10 @@ body{
                 transition: transform 0.3s ease; /* Aggiunge un effetto di transizione quando appare */
             }
             .underline-hover:hover:after {
-                transform: scaleX(1); /* Quando passi sopra il div, la linea appare da sinistra a destra */
+                transform: scaleX(1.5); /* Quando passi sopra il div, la linea appare da sinistra a destra */
             }
             .underline-hover.attivo:after {
-                transform: scaleX(1); /* Quando passi sopra il div, la linea appare da sinistra a destra */
+                transform: scaleX(1.5); /* Quando passi sopra il div, la linea appare da sinistra a destra */
             }
 
             #login-button{
@@ -61,10 +75,15 @@ body{
 
 
         }
-    
         main {
             background-color: white;
             border-radius: 0 1.875rem 1.875rem 0;
+        }
+        /* On screens that are 577px or less,   ...*/
+        @media screen and (max-width: 577px) {
+            main{
+                border-radius: 0 !important;
+            }
         }
     }
     

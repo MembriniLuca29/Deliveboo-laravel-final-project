@@ -16,11 +16,11 @@
         @vite('resources/js/app.js')
     </head>
     <body>
-        <div id="my-container" class="py-5 h-100">
+        <div id="my-container" class="py-sm-3 py-lg-4 py-xxl-5 h-100">
 
-            <div class="container d-flex h-100 shadow-lg rounded-5 p-0">
+            <div id="my-cont-2" class="container d-flex h-100 shadow-lg rounded-5 p-0">
                 
-                <aside class="col-2 col-xl-2 col-lg-3 py-4 d-flex flex-column position-relative">
+                <aside class="col-2 col-lg-3 col-xl-3 col-xxl-2 py-4 d-flex flex-column position-relative">
         
                     <div id="aside-title" class="ms-4 lh-1 mb-5">Deliveboo<br>Dashboard</div>
 
@@ -79,7 +79,7 @@
 
                 </aside>
         
-                <main class="py-4 col-xl-10 col-lg-9 col-md-10">
+                <main class="py-4 col-10 col-lg-9 col-xl-9 col-xxl-10">
                     {{-- <div class="container"> --}}
                         @yield('main-content')
                     {{-- </div> --}}

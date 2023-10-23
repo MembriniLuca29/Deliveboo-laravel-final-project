@@ -6,7 +6,7 @@
 @section('main-content')
     <div class="my-style-home-dashboard-main  h-100">
 
-        <div class="px-0 px-lg-4 px-xl-5 h-100">
+        <div class="px-0 px-lg-3 px-xl-5 h-100">
             <div id="cont-2" class="px-4  h-100">
 
                 
@@ -18,12 +18,30 @@
                         <h1 class="lh-1 mb-0 fw-normal text-capitalize">
                             Ciao {{ auth()->user()->name }},
                         </h1>
-                        <span class="fs-md-3 border-bottom border-warning border-3">
+                        {{-- situation on small screen devices  --}}
+                        <span class="fs-5 d-block d-md-none border-bottom border-warning border-3">
+                            <span>
+                                il tuo ristorante
+                            </span>
+                            <span class="fs-4">
+                                "{{ $restaurant->name }}"
+                            </span>
+                        </span>
+                        {{-- situation on mid screen devices  --}}
+                        <span class="d-none d-md-block d-xl-none fs-4 border-bottom border-warning border-3">
                             qui puoi gestire e monitorare il tuo ristorante
-                                <span class="fs-2 text-capitalize">
+                                <span class="fs-3">
                                     "{{ $restaurant->name }}"
                                 </span>
                         </span>
+                        {{-- situation on big screen devices  --}}
+                        <span class="d-none d-xl-block fs-3 border-bottom border-warning border-3">
+                            qui puoi gestire e monitorare il tuo ristorante
+                                <span class="fs-2">
+                                    "{{ $restaurant->name }}"
+                                </span>
+                        </span>
+
                     @else
                         <div class="px-0 px-md-2 px-lg-4 px-xl-5 pt-0 pt-lg-3">
                             <h1 class="lh-1 mb-0 mt-0 mt-md-2 mt-lg-3 mt-xl-5 fw-normal text-capitalize">
@@ -40,7 +58,7 @@
 
                     
                 
-                    <div id="main-content" class="mt-5 h-100">
+                    <div id="main-content" class="mt-md-2 mt-lg-3 mt-xl-5 h-100">
                         
                         {{-- IF RESTAURANT DOESNT EXIST --}}
                         @if (!$restaurant)
