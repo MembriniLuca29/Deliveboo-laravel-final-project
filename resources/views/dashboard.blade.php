@@ -91,15 +91,15 @@
                                             <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row">
 
                                                 {{-- dishes thumb --}}
-                                                <div class="col-4">
+                                                <div class="col-3">
                                                     <div class="img-box bg-white rounded h-100">
-                                                        <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
+                                                        <img src="{{ asset('storage/'.$dish->thumb) }}" alt="" class="dish-img">
                                                     </div>
                                                 </div>
                                                 {{-- dishes Name --}}
-                                                <div class="col-4">
+                                                <div class="col-5">
                                                     <div class="d-flex flex-column justify-content-center h-100 ms-4 mb-2">
-                                                        <h2 class="fw-semibold fs-5">                                                    
+                                                        <h2 class="fw-semibold fs-5 dish-name">                                                    
                                                             Nome : {{ $dish->name }}
                                                         </h2>
                                                         <h2 class="fw-semibold fs-5">                                                    

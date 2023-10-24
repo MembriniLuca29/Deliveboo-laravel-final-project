@@ -1,5 +1,11 @@
- .order-card{
+main{
+  overflow: scroll;
+  padding: 20px 0;
+}
+
+.order-card{
     width: 95%;
+    margin: 20px 0;
     .status{
       display: flex;
     }

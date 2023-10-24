@@ -106,7 +106,7 @@
 
                                             @if ($restaurant->thumb)
                                                 <div>
-                                                    <img src="{{ asset('storage/' . $restaurant->thumb) }}" class="w-50" alt="{{ $restaurant->name }}">
+                                                    <img src="{{ asset('storage/' . $restaurant->thumb) }}" class="w-50 edit-img" alt="{{ $restaurant->name }}">
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value="1" name="remove_thumb" id="remove_thumb">

@@ -6,7 +6,7 @@
 
 
 @foreach ($orders as $order)
-
+            
             <div class="card order-card ms-4 mb-2" >
                 <div class="card-header">
                     <div class="d-flex justify-content-between"><h3>{{ $order->name }} {{ $order->last_name }}  </h3><h2 class="me-4"> costo: {{ $order->total_price}}</h2></div><h6>data: {{ $order->updated_at }} </h6>
@@ -33,8 +33,7 @@
                             <option value="produzione" {{ $order->status === 'produzione' ? 'selected' : '' }}>Produzione</option>
                             <option value="completato" {{ $order->status === 'completato' ? 'selected' : '' }}>Completato</option>
                         </select>
-                        <button type="submit" class="btn btn-primary ms-2">Aggiorna</button>
-                    </div>
+                        <button type="submit" class="btn {{ $order->status === 'inviato' ? 'btn-primary' : ($order->status === 'produzione' ? 'btn-warning' : 'btn-succes') }} ms-2">Aggiorna</button>                    </div>
                     </form>
                 </li>
                   <li class="list-group-item"></li>

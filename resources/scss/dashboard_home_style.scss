@@ -64,18 +64,27 @@
         #main-bot-cont{
             height: 73%;
 
-            #res-search{
-
-            }
+            
             #res-list{
                 height: 90%;
-
-                img{
-                    width: 100%;
+                .img-box{
+                    width: 150px;
+                    img{
+                        width: 100%;
+                        max-height: 125px;
+                        object-fit:cover;
+                        object-position: center;
+                    }
+    
                 }
-
+                
                 #single-item{
-                    height: 30%;
+                    height: 33%;
+
+                    .dish-name{
+                        overflow-wrap: break-word;
+                        max-height: 80px;
+                    }
 
                     // restaurant interaction buttons
                     #res-int-buttons{
