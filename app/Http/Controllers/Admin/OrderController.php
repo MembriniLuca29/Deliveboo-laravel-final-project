@@ -22,24 +22,23 @@ class OrderController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-           $user = User::find(Auth::id());
-           $restaurant = $user->restaurants()->first();
-           $dishes = $restaurant->dishes()->get();
-       
-           $orderIds = [];
-       
-           foreach ($dishes as $dish) {
-               $orders = $dish->orders()->where('status', '!=', 'completato')->pluck('id')->toArray();
-               $orderIds = array_merge($orderIds, $orders);
-           }
-       
-           $uniqueOrderIds = array_unique($orderIds);
-           $orders = Order::whereIn('id', $uniqueOrderIds)->get();
-       
-           return view('admin.order.index', ['orders' => $orders, 'restaurant' => $restaurant]);
-       }
-
+{
+    $user = User::find(Auth::id());
+    $restaurant = $user->restaurants()->first();
+    $dishes = $restaurant->dishes()->get();
+   
+    $orderIds = [];
+   
+    foreach ($dishes as $dish) {
+        $orders = $dish->orders()->pluck('id')->toArray();
+        $orderIds = array_merge($orderIds, $orders);
+    }
+   
+    $uniqueOrderIds = array_unique($orderIds);
+    $orders = Order::whereIn('id', $uniqueOrderIds)->get();
+   
+    return view('admin.order.index', ['orders' => $orders, 'restaurant' => $restaurant]);
+}
     /**
      * Show the form for creating a new resource.
      */
