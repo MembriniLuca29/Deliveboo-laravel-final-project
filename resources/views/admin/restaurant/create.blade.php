@@ -31,7 +31,7 @@
                     <div id="main-bot-cont" class="w-100">
                         <div class="px-1 px-md-2 px-lg-3 px-xl-4 pt-1 pb-3 h-100">
                             <div class="overflow-x-hidden overflow-y-auto h-100 border-start border-end border-warning border-3 px-1 px-md-2 px-lg-3 px-xl-5">
-                                <div class="mx-1 py-5 h-100">
+                                <div class="mx-1 pt-2 pt-md-4 pt-lg-4 px-md-3 pt-xl-5 h-100">
                                     <div>
                                         {{-- Form to create restaurant --}}
                                         <form id="res-create-form" action="{{ route('restaurants.store') }}" method="POST" enctype="multipart/form-data">
