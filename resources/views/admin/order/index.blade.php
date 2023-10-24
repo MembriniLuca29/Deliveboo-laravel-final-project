@@ -4,7 +4,7 @@
 
 @section('main-content')
 
-
+<h2 id="completed-orders-toggle" class="fs-5 completed-button">vedi ordini completati</h2>
 @foreach ($orders as $order)
             
             <div class="card order-card ms-4 mb-2" >

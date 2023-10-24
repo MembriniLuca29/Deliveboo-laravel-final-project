@@ -2,7 +2,20 @@ main{
   overflow: scroll;
   padding: 20px 0;
 }
-
+.completed-button{
+  margin-left: 30px;
+  background-color: lightblue;
+  width: 225px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+.completed-button:hover{
+  margin-left: 30px;
+  background-color: black;
+  color: white;
+ cursor: pointer;
+}
 .order-card{
     width: 95%;
     margin: 20px 0;
