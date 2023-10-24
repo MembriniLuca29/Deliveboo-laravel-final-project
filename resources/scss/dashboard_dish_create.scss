@@ -1,7 +1,13 @@
 @use "partials/variables" as *;
 
-#my-style-dashboard-restaurant-edit{
+#my-style-dashboard-dish-create{
 
+    .form-control:focus{
+        border-color: unset;
+        box-shadow: unset;
+    }
+
+    
     #main-content{
         
         #main-top-cont{
@@ -11,10 +17,10 @@
         #main-bot-cont{
             height: 73%;
 
-            #res-edit-form{
-                // form di Mofica restaurant
+            #res-create-form{
+                // form di creazione restaurant
 
-                input{
+                input,textarea{
                     border: 2px solid $yellow-primary;
                 }
 

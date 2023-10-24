@@ -132,7 +132,7 @@
                                             </div>
 
                                             <div class="text-center mt-5">
-                                                <button type="submit">
+                                                <button id="btn-1" class="btn button" type="submit">
                                                     Salva
                                                 </button>
                                             </div>

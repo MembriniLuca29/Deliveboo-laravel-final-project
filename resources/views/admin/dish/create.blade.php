@@ -4,7 +4,7 @@
 
 
 @section('main-content')
-    <div id="my-style-dashboard-restaurant-create" class="h-100">
+    <div id="my-style-dashboard-dish-create" class="h-100">
         <div class="px-0 px-lg-3 px-xl-2 px-xxl-5 h-100">
             <div class="px-2 px-md-2 px-xl-3 px-xl-4 h-100">
 
@@ -60,7 +60,7 @@
                                                 {{-- Dish Description --}}
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="form-floating mb-3">
-                                                        <input  type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description" placeholder="Indirizzo" maxlength="255">
+                                                        <textarea class="form-control" id="description" name="description" placeholder="descrizione" rows="3">{{ old('description', $dish->description) }}</textarea>
                                                         <label for="description">Descrizione
                                                         </label>
                                                     </div>
@@ -70,7 +70,7 @@
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="form-floating mb-3">
                                                         <input type="number" name="price" step="0.01" min="0.00" max="499.99" id="price" class="form-control" placeholder="Inserisci il prezzo" required>
-                                                        <label for="phone_number">Prezzo
+                                                        <label for="price">Prezzo
                                                             <span class="text-danger">
                                                                 *
                                                             </span>
@@ -87,7 +87,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-center mt-5">
-                                                <button type="submit">
+                                                <button id="btn-1" class="btn button" type="submit">
                                                     Aggiungi
                                                 </button>
                                             </div>

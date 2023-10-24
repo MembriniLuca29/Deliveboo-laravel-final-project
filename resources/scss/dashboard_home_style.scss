@@ -7,33 +7,6 @@
 
 // Stile della section del MAIN della dashboard 
 .my-style-home-dashboard-main{
-
-    // SCROLLBAR STYLING 
-    /* ===== Scrollbar CSS ===== */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #2c2c2c #ffffff;
-    }
-
-    /* Chrome, Edge, and Safari */
-    *::-webkit-scrollbar {
-        width: 13px;
-    }
-
-    *::-webkit-scrollbar-track {
-        background: #ffffff;
-    }
-
-    *::-webkit-scrollbar-thumb {
-        background-color: #2c2c2c;
-        border-radius: 10px;
-        border: 3px solid #ffffff;
-    }
-    // END SCROLLBAR STYLING 
-
-    // ADD BUTTON 
-
-
     
     #main-content{
         
