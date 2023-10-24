@@ -6,8 +6,8 @@
 @section('main-content')
     <div class="my-style-home-dashboard-main  h-100">
 
-        <div class="px-0 px-lg-3 px-xl-5 h-100">
-            <div id="cont-2" class="px-2 px-md-2 px-xl-3 px-xl-4  h-100">
+        <div class="px-0 px-lg-3 px-xl-2 px-xxl-5 h-100">
+            <div id="cont-2" class="px-2 px-md-2 px-xl-3 px-xl-4 h-100">
 
                 
                 {{-- intestazione main  --}}
@@ -114,7 +114,7 @@
                         
                         <div id="main-bot-cont" class="w-100">
                             <div class="px-1 px-md-2 px-lg-3 px-xl-4 pt-1 pb-3 h-100">
-                                <div class="h-100 border-start border-end border-warning border-3 px-1 px-md-2 px-lg-3 px-xl-5">
+                                <div class="h-100 border-start border-end border-warning border-3 px-1 px-md-2 px-lg-3 px-xxl-5">
                                     <div class="mx-1 pt-1 h-100">
 
                                         {{-- Dishes searchbar  --}}
@@ -131,13 +131,13 @@
                                             <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row">
 
                                                 {{-- dishes thumb --}}
-                                                <div class="col-4">
-                                                    <div class="img-box bg-white rounded h-100">
+                                                <div class="col-12 col-sm-6 col-md-4">
+                                                    <div class="img-box bg-white rounded">
                                                         <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
                                                     </div>
                                                 </div>
                                                 {{-- dishes Name --}}
-                                                <div class="col-4">
+                                                <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="d-flex flex-column justify-content-center h-100 ms-4 mb-2">
                                                         <h2 class="fw-semibold fs-5">                                                    
                                                             Nome : {{ $dish->name }}
@@ -149,7 +149,7 @@
                                                 </div>
 
                                                 {{-- dishes interaction buttons --}}
-                                                <div class="col-4">
+                                                <div class=" col-12 col-sm-12 col-md-4">
                                                     <div id="res-int-buttons" class="d-flex flex-column justify-content-center h-100 align-items-center">
                                                         {{-- dieses visibility button --}}
                                                         <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">

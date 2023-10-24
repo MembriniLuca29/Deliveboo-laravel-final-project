@@ -5,14 +5,14 @@
 @section('main-content')
 
     <div id="my-style-dashboard-restaurant-edit" class="h-100">
-        <div class="px-5 h-100">
-            <div class="px-4  h-100">
+        <div class="px-0 px-lg-3 px-xl-2 px-xxl-5 h-100">
+            <div class="px-2 px-md-2 px-xl-3 px-xl-4 h-100">
 
                 {{-- intestazione main  --}}
                 
                 <div class="header d-inline">
                     <span>
-                        <h1 class="lh-1 mb-0 fw-normal text-capitalize border-bottom border-warning border-3 pt-3 pb-5">
+                        <h1 class="lh-1 mb-0 fw-normal text-capitalize border-bottom border-warning border-3 pb-2 pb-sm-3 pb-md-4 pt-xl-3 pb-xl-5">
                             <span class="py-5">{{ $restaurant->name }}</span>
                         </h1>
                     </span>
@@ -20,7 +20,7 @@
 
                     
                 
-                <div id="main-content" class="mt-5 h-100">
+                <div id="main-content" class="mt-1 mt-sm-2 mt-xl-3 mt-xxl-5 h-100">
                     
                     {{-- intestazione main --}}
                     <div id="main-top-cont" class="py-2 d-flex justify-content-between">
@@ -30,9 +30,9 @@
                     </div>
                     
                     <div id="main-bot-cont" class="w-100">
-                        <div class="px-4 pt-1 pb-3 h-100">
-                            <div class="h-100 border-start border-end border-warning border-3 px-5">
-                                <div class="mx-1 pt-5 h-100  overflow-auto overflow-x-hidden">
+                        <div class="px-sm-4 pt-1 pb-3 h-100">
+                            <div class="h-100 border-start border-end border-warning border-3 px-2 px-xl-5 overflow-auto overflow-x-hidden">
+                                <div class="mx-1 pt-2 pt-md-4 pt-lg-4 px-md-3 pt-xl-5 h-100">
                                     <div>
                                         {{-- Form to edit restaurant --}}
                                         <form id="res-edit-form" action="{{ route('restaurants.update', ['restaurant' => $restaurant]) }}" method="post" enctype="multipart/form-data">

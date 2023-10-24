@@ -56,22 +56,26 @@
                     background-color: $bg-color;
                     color: black !important;
                 }
-                .btn-1.btn-green:hover{
-                    // border: 4px solid green;
-                }
+                // .btn-1.btn-green:hover{ 
+                // }
             }
         }
         #main-bot-cont{
             height: 73%;
 
-            #res-search{
+            // #res-search{
 
-            }
+            // }
             #res-list{
                 height: 90%;
 
-                img{
-                    width: 100%;
+                .img-box{
+                    // height: 200px;
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
                 }
 
                 #single-item{
@@ -167,17 +171,16 @@
                         background-color: $bg-color;
                         color: black !important;
                     }
-                    .btn-1.btn-green:hover{
-                        // border: 4px solid green;
-                    }
+                    // .btn-1.btn-green:hover{
+                    // }
                 }
             }
             #main-bot-cont{
                 height: 73%;
 
-                #res-search{
+                // #res-search{
 
-                }
+                // }
                 #res-list{
                     height: 90%;
 
