@@ -49,18 +49,18 @@ class DishController extends Controller
         $user = User::find(Auth::id());
         $restaurantId = $user->restaurants()->first()->id;
 
-        $thumbPath = null;
+        $imagePath = null;
 
-        if ($request->hasFile('thumb')) {
-            $thumb = $request->file('thumb');
-            $thumbPath = $thumb->store('thumbs', 'public');
+        if (isset($data['thumb'])) {
+            // Salva l'immagine nella directory specifica (per esempio 'uploads/dishes/')
+            $imagePath = Storage::disk('public')->put('uploads/dishes', $data['thumb']);
         }
 
         Dish::create([
             'name' => $formData['name'],
             'ingredients' => $formData['description'],
             'price' => $formData['price'],
-            'thumb' => $thumbPath,
+            'thumb' => $imagePath,
             'restaurant_id' => $formData['restaurant_id'],
         ]);
 

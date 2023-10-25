@@ -103,7 +103,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             @if ($restaurant->thumb)
                                                 <div>
                                                     <img src="{{ asset('storage/' . $restaurant->thumb) }}" class="w-50 edit-img" alt="{{ $restaurant->name }}">

@@ -28,7 +28,7 @@ class UpdateDishRequest extends FormRequest
             'description' => 'nullable',
             'visible' => 'boolean',
             'price' => 'required|numeric|min:0.10|max:500',
-            'thumb' => 'nullable|max:2048',
+            'thumb' => 'nullable|image',
             'restaurant_id' => 'required|exists:restaurants,id',
 
         ];
