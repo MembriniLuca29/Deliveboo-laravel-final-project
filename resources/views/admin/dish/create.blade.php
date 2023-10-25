@@ -85,8 +85,8 @@
                                                         <input type="file" class="form-control border-top-0 border-end-0 border-start-0 mt-2" id="thumb" name="thumb" accept="image/*" style="border-radius: 0">
                                                     </div>
                                                 </div>
+                                                <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                                             </div>
-                                            <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                                             <div class="text-center mt-5">
                                                 <button id="btn-1" class="btn button" type="submit">
                                                     Aggiungi
