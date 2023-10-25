@@ -109,6 +109,22 @@
                 });
             });
 
+            // Funzione filtraggio pietanze per nome 
+            document.getElementById("search-input").addEventListener("input", function() {
+                var searchTerm = this.value.toLowerCase();
+                var items = document.getElementsByClassName("bg-secondary");
+                console.log(items)
+
+                for (var i = 0; i < items.length; i++) {
+                    var itemName = items[i].querySelector(".dish-name").innerText.toLowerCase();
+                    if (itemName.includes(searchTerm)) {
+                        items[i].style.display = "flex";
+                    } else {
+                        items[i].style.display = "none";
+                    }
+                }
+            });
+
         </script>
     </body>
 </html>
