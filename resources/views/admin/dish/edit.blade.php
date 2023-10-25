@@ -101,8 +101,11 @@
                                                     Aggiorna
                                                 </button>
                                             </div>
-
+                                            
+                                            <input type="hidden" name="visible" value="{{ old('visible', $dish->visible) }}">
+                                            <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                                             </form>
+                                            
                                             {{-- NON METTERE IL FORM DENTRO L'ALTRO FORM SE VUOI SPOSTARLO USA RELATIVE O ABSOLUTE --}}
                                             <form id="dish-del-form" method="POST" action="{{ route('dishes.destroy', $dish->id) }}">
                                                 @csrf
@@ -110,8 +113,6 @@
                                                 <button id="btn-2" type="submit" class="btn text-white">Delete</button>
                                             </form>
 
-                                            <input type="hidden" name="visible" value="{{ old('visible', $dish->visible) }}">
-                                            <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
 
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">
