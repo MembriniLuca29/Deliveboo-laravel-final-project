@@ -86,6 +86,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                                             <div class="text-center mt-5">
                                                 <button id="btn-1" class="btn button" type="submit">
                                                     Aggiungi
