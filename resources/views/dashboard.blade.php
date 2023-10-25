@@ -118,10 +118,9 @@
                                     <div class="mx-1 pt-1 h-100">
 
                                         {{-- Dishes searchbar  --}}
-                                        <form id="res-search" class="d-flex" role="search">
-                                            <input class="d-md-none form-control border-1 border-dark py-2" type="search" placeholder="Cerca una pietanza..." aria-label="Search">
-                                            <input class="d-none d-md-block form-control border-1 border-dark py-2" type="search" placeholder="Cerca la pietanza di cui hai bisogno..." aria-label="Search">
-                                        </form>
+                                        {{-- <form id="res-search" class="d-flex" role="search"> --}}
+                                            <input id="search-input" class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca una pietanza..." aria-label="Search">
+                                        {{-- </form> --}}
 
                                         {{-- Dishes list section --}}
                                         <div id="res-list" class="mt-3 px-4 overflow-auto overflow-x-hidden">
@@ -140,7 +139,7 @@
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="d-flex flex-column justify-content-center h-100 ms-4 mb-2">
                                                         <h2 class="fw-semibold fs-5 dish-name">                                                    
-                                                            Nome : {{ $dish->name }}
+                                                            Nome : <span id="item-name">{{ $dish->name }}</span>
                                                         </h2>
                                                         <h2 class="fw-semibold fs-5">                                                    
                                                             Prezzo : {{ $dish->price }} €
