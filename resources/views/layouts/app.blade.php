@@ -112,12 +112,12 @@
             // Funzione filtraggio pietanze per nome 
             document.getElementById("search-input").addEventListener("input", function() {
                 var searchTerm = this.value.toLowerCase();
-                var items = document.getElementsByClassName("bg-secondary");
+                var items = document.getElementsByClassName("items-container");
 
                 for (var i = 0; i < items.length; i++) {
                     var itemName = items[i].querySelector(".dish-name").innerText.toLowerCase();
                     if (itemName.includes(searchTerm)) {
-                        items[i].style.display = "flex";
+                        items[i].style.display = "block";
                     } else {
                         items[i].style.display = "none";
                     }
