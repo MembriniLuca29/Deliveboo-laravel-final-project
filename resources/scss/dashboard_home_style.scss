@@ -96,6 +96,37 @@
                         }
                     }
                 }
+                #single-item-mobile{
+
+                    .img-box-mobile{
+                        width: 100%;
+                        height: 8.25rem;
+
+                        img{
+                            width: 100%;
+                            height: 8.25rem;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+
+                    .edit-button{
+                        a{
+                            color: unset;
+                        }
+                        .btn-1{
+                            transition: all 0.25s ease;
+                        }
+                        .btn-1.btn-yellow{
+                            background-color: $yellow-primary;
+                            border: 4px solid $yellow-primary;
+                        }
+                        .btn-1:hover {    
+                            transform: translateY(-3px);
+                            background-color: $bg-color;
+                        }
+                    }
+                }
             }
         }
     }
