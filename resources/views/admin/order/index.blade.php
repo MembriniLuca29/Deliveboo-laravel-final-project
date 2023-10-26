@@ -5,6 +5,9 @@
 @section('main-content')
 <div class="order-container overflow-scrool">
 <h2 id="completed-orders-toggle" class="fs-5 completed-button">Mostra completati</h2>
+    @php  
+        $orders = $orders->reverse();
+    @endphp
 @foreach ($orders as $order)
     <div class="card order-card ms-4 mb-2 {{ $order->status === 'completato' ? 'd-none' : '' }}" data-status="{{ $order->status }}">
                 <div class="card-header">
