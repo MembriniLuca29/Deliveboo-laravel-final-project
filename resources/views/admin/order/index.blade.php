@@ -3,6 +3,7 @@
 @section('page-title', 'Dashboard')
 
 @section('main-content')
+<div class="order-container overflow-scrool">
 <h2 id="completed-orders-toggle" class="fs-5 completed-button">Mostra completati</h2>
 @foreach ($orders as $order)
     <div class="card order-card ms-4 mb-2 {{ $order->status === 'completato' ? 'd-none' : '' }}" data-status="{{ $order->status }}">
@@ -44,6 +45,7 @@
               </div>
              
     @endforeach
+</div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var completedOrdersToggle = document.getElementById('completed-orders-toggle');

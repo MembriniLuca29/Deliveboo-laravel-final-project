@@ -1,6 +1,11 @@
 main{
-  overflow: scroll;
+  
   padding: 20px 0;
+  .order-container{
+    width: 100%;
+    overflow: scroll;
+    max-height: 630px;
+  }
 }
 .completed-button{
   margin-left: 30px;
@@ -16,6 +21,7 @@ main{
   color: white;
  cursor: pointer;
 }
+
 .order-card{
     width: 95%;
     margin: 20px 0;
