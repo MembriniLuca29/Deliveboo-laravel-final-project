@@ -177,10 +177,10 @@
                                                 </div>
                                             </div> 
 
-                                            {{-- my single dishes item MOBILE --}}
+                                            {{-- my single dishes item MOBILE
                                             <div id="single-item-mobile" class="bg-secondary bg-opacity-50 d-flex flex-column align-items-center d-lg-none h-100 py-1 px-1 rounded-3 mb-3">
 
-                                                {{-- dishes thumb MOBILE--}}
+                                                dishes thumb MOBILE
                                                 <div class="img-box-mobile bg-white rounded-3 mb-2">
                                                     @if ($dish->thumb)
                                                         <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
@@ -189,7 +189,7 @@
                                                     @endif
                                                 </div>
 
-                                                {{-- dishes name MOBILE --}}
+                                                dishes name MOBILE
                                                 <div class="px-3">
                                                     <div class="fw-semibold dish-name">                                                    
                                                         Nome : <span id="item-name">{{ $dish->name }}</span>
@@ -199,7 +199,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                                {{-- dishes buttons MOBILE  --}}
+                                                dishes buttons MOBILE 
                                                 <form class="my-2" action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">
                                                     @csrf
                                                     @method('PUT')
@@ -218,7 +218,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                            </div>
+                                            </div> --}}
                                             @endforeach
                                             
                                         </div>
