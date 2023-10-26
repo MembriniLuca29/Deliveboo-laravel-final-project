@@ -48,13 +48,13 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var completedOrdersToggle = document.getElementById('completed-orders-toggle');
-        var orderCards = document.querySelectorAll('.order-card');
-        var showCompleted = true; // Variabile di stato per tenere traccia del toggle
+        let completedOrdersToggle = document.getElementById('completed-orders-toggle');
+        let orderCards = document.querySelectorAll('.order-card');
+        let showCompleted = true; // Variabile di stato per tenere traccia del toggle
 
         completedOrdersToggle.addEventListener('click', function() {
             orderCards.forEach(function(card) {
-                var status = card.getAttribute('data-status');
+                let status = card.getAttribute('data-status');
                 if (status === 'completato') {
                     card.classList.toggle('d-none', !showCompleted); // Nasconde completati se showCompleted è falso
                 }
