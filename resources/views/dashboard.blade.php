@@ -178,7 +178,7 @@
                                             </div> 
 
                                             {{-- my single dishes item MOBILE --}}
-                                            <div id="single-item-mobile" class="bg-secondary bg-opacity-50 d-flex flex-column align-items-center d-lg-none h-100 py-1 px-1 rounded-3 mb-3">
+                                            <div id="single-item-mobile" class="bg-secondary bg-opacity-50 d-flex flex-column align-items-center d-lg-none py-1 px-1 rounded-3 mb-3">
 
                                                 {{-- dishes thumb MOBILE--}}
                                                 <div class="img-box-mobile bg-white rounded-3 mb-2">
