@@ -7,7 +7,10 @@
 <div>
     <div>
         <label for="year-select">Seleziona Anno:</label>
-        <select id="year-select"></select>
+        <select id="year-select" style="width: 70px" >
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+        </select>
     </div>
     <canvas id="myChart" width="800" height="400"></canvas>
 
@@ -51,17 +54,33 @@ updateChart(labels, data);
 
 const yearSelect = document.getElementById('year-select');
 yearSelect.addEventListener('change', () => {
-    const selectedYear = parseInt(yearSelect.value); // Ottieni l'anno selezionato come numero intero
-    const filteredOrders = orders.filter(order => order.year === selectedYear);
-    const monthlyOrderCounts = calculateMonthlyOrderCounts(filteredOrders); // Calcola i conteggi mensili per l'anno selezionato
-    const data = Object.values(monthlyOrderCounts); // Quantità di ordini per ogni mese
-    const labels = Object.keys(monthlyOrderCounts).map(month => monthNames[month]); // Nomi dei mesi
+    const selectedYear = parseInt(yearSelect.value);
 
-    // Aggiorna il grafico con i nuovi dati
+    // Aggiungi questa condizione per gestire l'opzione "Tutti gli anni"
+    const filteredOrders = selectedYear === 0 
+        ? orders 
+        : orders.filter(order => order.year === selectedYear);
+
+    const monthlyOrderCounts = calculateMonthlyOrderCounts(filteredOrders);
+    const data = Object.values(monthlyOrderCounts);
+    const labels = Object.keys(monthlyOrderCounts).map(month => monthNames[month]);
+
     updateChart(labels, data);
 });
 
+function populateYearSelect(uniqueYears) {
+    const allYearsOption = document.createElement('option');
+    allYearsOption.value = 0;
+    allYearsOption.text = 'Tutti gli anni';
+    yearSelect.appendChild(allYearsOption);
 
+    uniqueYears.forEach(year => {
+        const option = document.createElement('option');
+        option.value = year;
+        option.text = year;
+        yearSelect.appendChild(option);
+    });
+}
 function updateChart(labels, data) {
     // Aggiorna il grafico con i nuovi dati
     const ctx = document.getElementById('myChart').getContext('2d');
