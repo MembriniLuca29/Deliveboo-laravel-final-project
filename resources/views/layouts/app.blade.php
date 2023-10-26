@@ -20,9 +20,14 @@
 
             <div id="my-cont-2" class="container d-flex h-100 shadow-lg rounded-5 p-0">
                 
-                <aside class="col-2 col-lg-3 col-xl-3 col-xxl-2 py-4 d-flex flex-column position-relative">
+                <aside class="col-2 col-lg-3 col-xl-3 col-xxl-2 pt-3 pb-4 d-flex flex-column position-relative">
         
-                    <div id="aside-title" class="ms-4 lh-1 mb-5">Deliveboo<br>Dashboard</div>
+                    <div id="aside-title" class="mb-5">
+                        <div class="mx-2 d-lg-none mx-md-4">
+                            <img class="w-100" src="/images/logo-black.png" alt="">
+                        </div>
+                        <div class="ms-4 lh-1 d-none d-lg-block">Deliveboo<br>Dashboard</div>
+                    </div>
 
                     
                     <div class="my-style-home-dashboard-aside">

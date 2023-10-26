@@ -36,6 +36,11 @@
         #main-bot-cont{
             height: 73%;
 
+            /* On screens that are 577px or less,   ...*/
+            @media screen and (max-width: 577px) {
+                height: 85%;
+            }
+
             
             .res-list{
                 height: 90%;
@@ -194,7 +199,6 @@
                 }
             }
             #main-bot-cont{
-                height: 73%;
 
                 // #res-search{
 

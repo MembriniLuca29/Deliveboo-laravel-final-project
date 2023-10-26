@@ -11,7 +11,8 @@
                 <div class="header d-inline">
                     <span>
                         <h1 class="lh-1 mb-0 fw-normal border-bottom border-warning border-3 pb-2 pb-sm-3 pb-md-4 pt-xl-3 pb-xl-5">
-                            <span class="py-5">nome piatto</span>
+                            <span class="py-5 d-none d-md-inline">Ecco l'andamento della tua attività</span>
+                            <span class="py-5 d-md-none fs-2">Ecco l'andamento della tua attività</span>
                         </h1>
                     </span>
                 </div>

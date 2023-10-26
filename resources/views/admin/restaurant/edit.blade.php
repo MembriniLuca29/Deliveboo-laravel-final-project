@@ -24,7 +24,10 @@
                     
                     {{-- intestazione main --}}
                     <div id="main-top-cont" class="py-2 d-flex justify-content-between">
-                        <div class="fs-2">
+                        <div class="fs-2 d-none d-md-block">
+                            Modifica il tuo ristorante
+                        </div>
+                        <div class="fs-4 d-md-none">
                             Modifica il tuo ristorante
                         </div>
                     </div>
