@@ -129,9 +129,15 @@
                                                     {{-- dishes thumb --}}
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="img-box bg-white rounded">
-                                                            <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
+                                                            @if ($dish->thumb)
+                                                                <img class="rounded" src="{{ asset('storage/'.$dish->thumb) }}" alt="">
+                                                            @else
+                                                                <div class="text-center pt-5 fw-semibold">Immagine non presente</div>
+                                                            @endif
                                                         </div>
                                                     </div>
+
+
                                                     {{-- dishes Name --}}
                                                     <div class="col-12 col-sm-6 col-md-4">
                                                         <div class="d-flex flex-column justify-content-center h-100 ms-4 mb-2">
