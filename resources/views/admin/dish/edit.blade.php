@@ -34,7 +34,7 @@
                         <div class="px-1 px-md-2 px-lg-3 px-xl-4 pt-1 pb-3 h-100">
                             <div class="overflow-x-hidden overflow-y-auto h-100 border-start border-end border-warning border-3 px-1 px-md-2 px-lg-3 px-xl-5">
                                 <div class="mx-1 pt-2 pt-md-4 pt-lg-4 px-md-3 pt-xl-5 h-100">
-                                    <div>
+                                    <div class="position-relative">
                                         {{-- Form to create Dish --}}
                                         <form id="res-create-form" action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" enctype="multipart/form-data">
                                             @csrf
@@ -82,7 +82,7 @@
                                                         <input type="file" class="form-control border-top-0 border-end-0 border-start-0 mt-2" id="thumb" name="thumb" accept="image/*" style="border-radius: 0">
                                     
                                                         @if ($dish->thumb)
-                                                            <div>
+                                                            <div class="mt-4">
                                                                 <img src="{{ asset('storage/' . $dish->thumb) }}" class="w-50" alt="{{ $dish->title }}">
                                                             </div>
                                                             <div class="form-check">
@@ -92,11 +92,12 @@
                                                                 </label>
                                                             </div>
                                                         @endif
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="text-center mt-5">
+                                            <div class="text-center mt-5 me-5">
                                                 <button id="btn-1" class="btn" type="submit">
                                                     Aggiorna
                                                 </button>
@@ -110,7 +111,7 @@
                                             <form id="dish-del-form" method="POST" action="{{ route('dishes.destroy', $dish->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button id="btn-2" type="submit" class="btn text-white">Delete</button>
+                                                <button id="btn-2" type="submit" class="btn text-white position-absolute">Delete</button>
                                             </form>
 
 
