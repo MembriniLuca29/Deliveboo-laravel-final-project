@@ -118,16 +118,14 @@
                                     <div class="mx-1 pt-1 h-100">
 
                                         {{-- Dishes searchbar  --}}
-                                        {{-- <form id="res-search" class="d-flex" role="search"> --}}
-                                            <input id="search-input" class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca una pietanza..." aria-label="Search">
-                                        {{-- </form> --}}
+                                        <input id="search-input" class="form-control border-1 border-dark py-2" type="search" placeholder="Cerca una pietanza..." aria-label="Search">
 
                                         {{-- Dishes list section --}}
-                                        <div id="res-list" class="mt-3 px-4 overflow-auto overflow-x-hidden">
+                                        <div id="res-list" class="mt-3 px-1 px-lg-4 overflow-auto overflow-x-hidden">
 
                                             @foreach ($dishes as $dish)
-                                            {{-- my single dishes item  --}}
-                                            <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row">
+                                            {{-- my single dishes item DESKTOP --}}
+                                            <div id="single-item" class="bg-secondary bg-opacity-50 mb-3 p-2 row d-none d-lg-flex">
 
                                                 {{-- dishes thumb --}}
                                                 <div class="col-12 col-sm-6 col-md-4">
@@ -177,8 +175,50 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div> 
+
+                                            {{-- my single dishes item MOBILE --}}
+                                            <div id="single-item-mobile" class="bg-secondary bg-opacity-50 d-flex flex-column align-items-center d-lg-none h-100 py-1 px-1 rounded-3 mb-3">
+
+                                                {{-- dishes thumb MOBILE--}}
+                                                <div class="img-box-mobile bg-white rounded-3 mb-2">
+                                                    @if ($dish->thumb)
+                                                        <img src="{{ asset('storage/'.$dish->thumb) }}" alt="">
+                                                    @else
+                                                        <div class="text-center px-4 py-4 mt-2 fw-semibold">Immagine non presente</div>
+                                                    @endif
+                                                </div>
+
+                                                {{-- dishes name MOBILE --}}
+                                                <div class="px-3">
+                                                    <div class="fw-semibold dish-name">                                                    
+                                                        Nome : <span id="item-name">{{ $dish->name }}</span>
+                                                    </div>
+                                                    <div class="fw-semibold">                                                    
+                                                        Prezzo : {{ $dish->price }} €
+                                                    </div>
+                                                </div>
+                                                
+                                                {{-- dishes buttons MOBILE  --}}
+                                                <form class="my-2" action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="name" value="{{ $dish->name }}">
+                                                    <input type="hidden" name="price" value="{{ $dish->price }}">
+                                                    <input type="hidden" name="restaurant_id" value="{{ $dish->restaurant_id }}">
+                                                    <input type="hidden" name="visible" value="{{ $dish->visible ? '0' : '1' }}">
+                                                    
+                                                    <button type="submit" class="btn py-1 {{ $dish->visible ?  'btn-danger' : 'btn-primary'}}">
+                                                        {{ $dish->visible ? 'Nascondi' : 'Mostra' }}
+                                                    </button>
+                                                </form>
+                                                <div class="edit-button">
+                                                    <div type="submit" class="btn btn-1 btn-yellow py-0 fw-semibold">
+                                                            <a class="text-decoration-none" href="{{ route('dishes.edit', ['dish' => $dish->id]) }}">Modifica</a>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
                                             @endforeach
                                             
                                         </div>
