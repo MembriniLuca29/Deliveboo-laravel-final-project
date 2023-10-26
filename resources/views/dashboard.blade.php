@@ -148,7 +148,7 @@
                                                 {{-- dishes interaction buttons --}}
                                                 <div class=" col-12 col-sm-12 col-md-4">
                                                     <div id="res-int-buttons" class="d-flex flex-column justify-content-center h-100 align-items-center">
-                                                        {{-- dieses visibility button --}}
+                                                        {{-- dishes visibility button --}}
                                                         <form action="{{ route('dishes.update', ['dish' => $dish->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler modificare la visibilità del piatto?');" class="d-inline">
                                                             @csrf
                                                             @method('PUT')
