@@ -46,30 +46,31 @@
              
     @endforeach
 </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var completedOrdersToggle = document.getElementById('completed-orders-toggle');
-            var orderCards = document.querySelectorAll('.order-card');
-    
-            completedOrdersToggle.addEventListener('click', function() {
-                var buttonText = '';
-    
-                orderCards.forEach(function(card) {
-                    var status = card.getAttribute('data-status');
-                    if (status === 'completato') {
-                        card.classList.toggle('d-none');
-                    }
-                });
-    
-                // Modifica il testo del pulsante in base allo stato dei completati
-                if (orderCards[0].classList.contains('d-none')) {
-                    buttonText = 'Mostra completati';
-                } else {
-                    buttonText = 'Nascondi completati';
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var completedOrdersToggle = document.getElementById('completed-orders-toggle');
+        var orderCards = document.querySelectorAll('.order-card');
+        var showCompleted = true; // Variabile di stato per tenere traccia del toggle
+
+        completedOrdersToggle.addEventListener('click', function() {
+            orderCards.forEach(function(card) {
+                var status = card.getAttribute('data-status');
+                if (status === 'completato') {
+                    card.classList.toggle('d-none', !showCompleted); // Nasconde completati se showCompleted è falso
                 }
-                completedOrdersToggle.textContent = buttonText;
             });
+
+            // Modifica il testo del pulsante in base allo stato di showCompleted
+            if (showCompleted) {
+                completedOrdersToggle.textContent = 'Mostra completati';
+            } else {
+                completedOrdersToggle.textContent = 'Nascondi completati';
+            }
+
+            showCompleted = !showCompleted; // Inverte lo stato del toggle
         });
-    </script>
+    });
+</script>
+
 
 @endsection
