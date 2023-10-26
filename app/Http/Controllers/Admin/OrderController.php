@@ -39,6 +39,28 @@ class OrderController extends Controller
    
     return view('admin.order.index', ['orders' => $orders, 'restaurant' => $restaurant]);
 }
+public function stats()
+{
+    $user = User::find(Auth::id());
+    $restaurant = $user->restaurants()->first();
+    $dishes = $restaurant->dishes()->get();
+
+    $orderIds = [];
+
+    foreach ($dishes as $dish) {
+        $orders = $dish->orders()->pluck('id')->toArray();
+        $orderIds = array_merge($orderIds, $orders);
+    }
+
+    $uniqueOrderIds = array_unique($orderIds);
+    $orders = Order::whereIn('id', $uniqueOrderIds)->get();
+
+    // Recupera i timestamp degli ordini
+    $timestamps = Order::whereIn('id', $uniqueOrderIds)->pluck('updated_at');
+
+    return view('admin.order.stats', ['orders' => $orders, 'restaurant' => $restaurant, 'timestamps' => $timestamps]);
+}
+
     /**
      * Show the form for creating a new resource.
      */
@@ -102,13 +124,6 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-    }
-
-    public function stats() {
-        $user = User::find(Auth::id());
-        $restaurant = $user->restaurants()->first();
-
-        return view('admin.order.stats', ['restaurant' => $restaurant]);
     }
 
     public function updateStatus(Request $request, Order $order)
