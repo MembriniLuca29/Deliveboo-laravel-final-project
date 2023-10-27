@@ -105,18 +105,28 @@ class DishController extends Controller
         // Verifica se 'description' è presente nei dati validati, altrimenti assegnalo a null
         $description = isset($validatedData['description']) ? $validatedData['description'] : null;
     
+        // Rimuovi l'immagine se la checkbox 'remove_thumb' è selezionata
+        if ($request->has('remove_thumb') && $request->input('remove_thumb') == 1) {
+            if ($dish->thumb) {
+                Storage::delete($dish->thumb);
+            }
+            $thumbPath = null;
+        } else {
+            // Altrimenti, verifica se è stata fornita una nuova immagine
+            $thumbPath = $request->hasFile('thumb') ? $request->file('thumb')->store('thumbs', 'public') : $dish->thumb;
+        }
+    
         $dish->update([
             'name' => $validatedData['name'],
             'description' => $description,
             'price' => $validatedData['price'],
             'visible' => $request->input('visible') ? 1 : 0,
-            'thumb' => $request->hasFile('thumb') ? $request->file('thumb')->store('thumbs', 'public') : $dish->thumb,
+            'thumb' => $thumbPath,
             'restaurant_id' => $validatedData['restaurant_id'],
         ]);
     
         return redirect()->route('dashboard')->with('success', 'Piatto aggiornato con successo.');
     }
-    
 
 
 
