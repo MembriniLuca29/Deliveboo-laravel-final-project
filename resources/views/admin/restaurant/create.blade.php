@@ -31,7 +31,7 @@
                     <div id="main-bot-cont" class="w-100">
                         <div class="px-1 px-md-2 px-lg-3 px-xl-4 pt-1 pb-3 h-100">
                             <div class="overflow-x-hidden overflow-y-auto h-100 border-start border-end border-warning border-3 px-1 px-md-2 px-lg-3 px-xl-5">
-                                <div class="mx-1 pt-2 pt-md-4 pt-lg-4 px-md-3 pt-xl-5 h-100">
+                                <div class="mx-1 pt-2 pt-md-4 pt-lg-4 px-md-3 pt-xl-4 h-100">
                                     <div>
                                         {{-- Form to create restaurant --}}
                                         <form id="res-create-form" action="{{ route('restaurants.store') }}" method="POST" enctype="multipart/form-data">
@@ -80,6 +80,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                
                                                 {{-- Restaurant P.Iva --}}
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="form-floating mb-3">
@@ -94,25 +95,34 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                
+                                                {{-- Restaurant Type  --}}
+                                                <div class="col-12 col-lg-6 px-4 mb-3">
+                                                    <div class="ms-2">
+                                                        <div class="text-capitalize mb-2 fw-semibold">tipologia:</div>
+                                                        @foreach ($types as $type)
+                                                        <div class="form-check ms-2">
+                                                            <label class="form-check-label text-capitalize" for="{{ $type->name }}">
+                                                                {{ $type->name }}
+                                                            </label>
+                                                            <input type="checkbox" id="{{ $type->name }}" name="type_id[]" value="{{ $type->id }}" class="form-check-input me-3">
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+
                                                 {{-- Restaurant Thumb --}}
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
+                                                    <div class="fw-semibold"> Immagine :</div>
                                                     <div class="input-group mb-3">
                                                         <input type="file" class="form-control border-top-0 border-end-0 border-start-0 mt-2" id="thumb" name="thumb" accept="image/*" style="border-radius: 0">
                                                     </div>
                                                 </div>
                                             </div>
                                             
-                                            <div>
-                                                @foreach ($types as $type)
-                                                    <label for="{{ $type->name }}">
-                                                        {{ $type->name }}
-                                                    </label>
-                                                    <input type="checkbox" id="{{ $type->name }}" name="type_id[]" value="{{ $type->id }}" class="me-3">
-                                                @endforeach
-                                            
-                                            </div>
-                                            <div class="text-center mt-5">
-                                                <button type="submit">
+
+                                            <div class="text-center mt-2">
+                                                <button id="btn-1" class="btn button" type="submit">
                                                     Aggiungi
                                                 </button>
                                             </div>
