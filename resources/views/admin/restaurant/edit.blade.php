@@ -35,7 +35,7 @@
                     <div id="main-bot-cont" class="w-100">
                         <div class="px-sm-4 pt-1 pb-3 h-100">
                             <div class="h-100 border-start border-end border-warning border-3 px-2 px-xl-5 overflow-auto overflow-x-hidden">
-                                <div class="mx-1 pt-2 pt-md-4 pt-lg-4 px-md-3 pt-xl-5 h-100">
+                                <div class="mx-1 pt-2 pt-md-4 pt-lg-4 px-md-3 pt-xl-4 h-100">
                                     <div>
                                         {{-- Form to edit restaurant --}}
                                         <form id="res-edit-form" action="{{ route('restaurants.update', ['restaurant' => $restaurant]) }}" method="post" enctype="multipart/form-data">
@@ -99,41 +99,50 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+
+                                                {{-- Restaurant Type  --}}
+                                                <div class="col-12 col-lg-6 px-4 mb-3">
+                                                    <div class="ms-2">
+                                                        <div class="text-capitalize mb-2 d-inline-block fw-semibold">tipologia:</div>
+                                                        @foreach ($types as $index => $type)
+                                                        
+                                                        <div class="form-check ms-2">
+                                                            <label class="form-check-label text-capitalize" for="{{ $type->name }}">
+                                                                {{ $type->name }}
+                                                            </label>
+                                            
+                                                            <input type="checkbox" id="{{ $type->name }}" name="type_id[]" value="{{ $type->id }}" class="form-check-input me-3"
+                                                                @if ($restaurant->types->contains($type))
+                                                                    checked
+                                                                @endif
+                                                            >
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+
                                                 {{-- Restaurant Thumb --}}
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
+                                                    <div class="fw-semibold"> Immagine :</div>
                                                     <div class="input-group mb-3">
                                                         <input type="file" class="form-control border-top-0 border-end-0 border-start-0 mt-2" id="thumb" name="thumb" accept="image/*" style="border-radius: 0">
                                                     </div>
+                                                    @if ($restaurant->thumb)
+                                                        <div>
+                                                            <img src="{{ asset('storage/' . $restaurant->thumb) }}" class="w-50 edit-img" alt="{{ $restaurant->name }}">
+                                                        </div>
+                                                        <div class="form-check  my-2">
+                                                            <input class="form-check-input" type="checkbox" value="1" name="remove_thumb" id="remove_thumb">
+                                                            <label class="form-check-label" for="remove_thumb">
+                                                                Rimuovi immagine
+                                                            </label>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
-                                            @if ($restaurant->thumb)
-                                                <div>
-                                                    <img src="{{ asset('storage/' . $restaurant->thumb) }}" class="w-50 edit-img" alt="{{ $restaurant->name }}">
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="1" name="remove_thumb" id="remove_thumb">
-                                                    <label class="form-check-label" for="remove_thumb">
-                                                        Rimuovi immagine
-                                                    </label>
-                                                </div>
-                                            @endif
-                                            
-                                            <div>
-                                                @foreach ($types as $index => $type)
-                                    
-                                                    <label for="{{ $type->name }}">
-                                                        {{ $type->name }}
-                                                    </label>
-                                    
-                                                    <input type="checkbox" id="{{ $type->name }}" name="type_id[]" value="{{ $type->id }}" class="me-3"
-                                                        @if ($restaurant->types->contains($type))
-                                                            checked
-                                                        @endif
-                                                    >
-                                                @endforeach
-                                            </div>
-
-                                            <div class="text-center mt-5">
+                                        
+                                            {{-- confirm button  --}}
+                                            <div class="text-center mt-2">
                                                 <button id="btn-1" class="btn button" type="submit">
                                                     Salva
                                                 </button>
