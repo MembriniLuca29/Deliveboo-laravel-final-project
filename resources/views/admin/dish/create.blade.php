@@ -60,7 +60,7 @@
                                                 {{-- Dish Description --}}
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="form-floating mb-3">
-                                                        <textarea class="form-control overflow-hidden" id="description" name="description" placeholder="descrizione" rows="3">{{ old('description', $dish->description ?? '') }}</textarea>
+                                                        <textarea class="form-control overflow-hidden my-area" id="description" name="description" placeholder="descrizione" rows="3">{{ old('description', $dish->description ?? '') }}</textarea>
                                                         <label for="description">Descrizione
                                                         </label>
                                                     </div>

@@ -61,7 +61,7 @@ class DishController extends Controller
 
         Dish::create([
             'name' => $validatedData['name'],
-            'ingredients' => $validatedData['description'],
+            'description' => $validatedData['description'],
             'price' => $validatedData['price'],
             'thumb' => $imagePath,
             'restaurant_id' => $validatedData['restaurant_id'],

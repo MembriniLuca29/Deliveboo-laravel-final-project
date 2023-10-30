@@ -57,7 +57,7 @@
                                                 {{-- Dish Description --}}
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="form-floating mb-3">
-                                                        <textarea class="form-control" id="description" name="description" placeholder="descrizione" rows="3">{{ old('description', $dish->description) }}</textarea>
+                                                        <textarea class="form-control my-area"" id="description" name="description" placeholder="descrizione" rows="3">{{ old('description', $dish->description) }}</textarea>
                                                         <label for="description">Descrizione
                                                         </label>
                                                     </div>
@@ -79,7 +79,7 @@
                                                 {{-- Dish Thumb --}}
                                                 <div class="col-lg-6 col-12 px-4 mb-3">
                                                     <div class="mb-3">
-                                                        <input type="file" class="form-control border-top-0 border-end-0 border-start-0 mt-2" id="thumb" name="thumb" accept="image/*" style="border-radius: 0">
+                                                        <input type="file" class="form-control border-top-0 border-end-0 border-start-0 mt-2  id="thumb" name="thumb" accept="image/*" style="border-radius: 0">
                                     
                                                         @if ($dish->thumb)
                                                             <div class="mt-4">
