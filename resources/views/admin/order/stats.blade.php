@@ -122,7 +122,7 @@ chartInstance = new Chart(ctx, {
     data: {
         labels: labels,
         datasets: [{
-            label: '# Venduti',
+            label: 'My Data', // Aggiungi un nome di dataset generico se necessario
             data: data,
             backgroundColor: backgroundColors
         }]
