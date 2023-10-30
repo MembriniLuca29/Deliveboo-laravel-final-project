@@ -57,18 +57,19 @@ const monthNames = [
 ];
 
 function calculateMonthlyOrderCounts(selectedYear) {
-    const monthlyOrderCounts = {};
+    const monthlyTotalPrices  = {};
 
     // Itera attraverso gli ordini e aggiorna il conteggio per ogni mese
     orders.forEach(order => {
         const orderYear = new Date(order.updated_at).getFullYear();
         const orderMonth = new Date(order.updated_at).getMonth();
-        if (selectedYear === 0 || orderYear === selectedYear) {
-            monthlyOrderCounts[orderMonth] = (monthlyOrderCounts[orderMonth] || 0) + 1;
+        const orderTotalPrice = parseFloat(order.total_price); // Assicurati che total_price sia un numero
+        if (!isNaN(orderTotalPrice) && (selectedYear === 0 || orderYear === selectedYear)) {
+            monthlyTotalPrices[orderMonth] = (monthlyTotalPrices[orderMonth] || 0) + orderTotalPrice;
         }
     });
 
-    return monthlyOrderCounts;
+    return monthlyTotalPrices;
 }
 
 function calculateBackgroundColor(value) {
@@ -122,7 +123,7 @@ chartInstance = new Chart(ctx, {
     data: {
         labels: labels,
         datasets: [{
-            label: 'My Data', // Aggiungi un nome di dataset generico se necessario
+            label: 'euro', // Aggiungi un nome di dataset generico se necessario
             data: data,
             backgroundColor: backgroundColors
         }]
