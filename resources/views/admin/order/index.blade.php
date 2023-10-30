@@ -17,6 +17,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">numero: {{ $order->phone_number }} </li>
                   <li class="list-group-item">email: {{ $order->email }}</li>
+                  <li class="list-group-item">indirizzo:  {{ $order->address }}</li>
                   <li class="list-group-item ">
                 
                     <form action="{{ route('order.update', ['order' => $order->id]) }}" method="POST" class="d-inline">
