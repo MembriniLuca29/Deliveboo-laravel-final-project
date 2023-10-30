@@ -38,7 +38,11 @@
                                 <!-- Email -->
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" required>
-                                    <label for="email">Indirizzo email</label>
+                                    <label for="email">Indirizzo email
+                                        <span class="text-danger">
+                                            *
+                                        </span>
+                                    </label>
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -46,7 +50,12 @@
                                 <!-- Password -->
                                 <div class="form-floating mb-1">
                                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required>
-                                    <label for="password">Password</label>
+                                    <label for="password">Password
+                                        <span class="text-danger">
+                                            *
+                                        </span>
+                                    </label>
+                                    
                                     @error('password')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
