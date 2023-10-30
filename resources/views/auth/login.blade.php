@@ -55,7 +55,7 @@
                                 <div class="d-flex justify-content-end">
                                     @if (Route::has('password.request'))
                                         <a id="pass_recovery" href="{{ route('password.request') }}" class="text-dark text-decoration-none">
-                                            {{ __('Forgot your password?') }}
+                                            {{ __('Hai dimenticato la password?') }}
                                         </a>
                                     @endif
                                 </div>
