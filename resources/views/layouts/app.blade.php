@@ -21,12 +21,12 @@
             <div id="my-cont-2" class="container d-flex h-100 shadow-lg rounded-5 p-0">
                 
                 <aside class="col-2 col-lg-3 col-xl-3 col-xxl-2 pt-3 pb-4 d-flex flex-column position-relative">
-        
+                    {{-- da cambiare in base al localhost----------------------------------------------------------------------------------------------------------- --}}
                     <div id="aside-title" class="mb-5">
-                        <div class="mx-2 d-lg-none mx-md-4">
-                            <img class="w-100" src="/images/logo-black.png" alt="">
-                        </div>
-                        <div class="ms-4 lh-1 d-none d-lg-block">Deliveboo<br>Dashboard</div>
+                        <a href="http://localhost:5173" class="my-link"><div class="mx-2 d-lg-none mx-md-4">
+                            <img class="w-100 rever-color" src="/images/logo-black.png" alt="">
+                        </div></a>
+                        <a href="http://localhost:5173" class="my-link"><div class="ms-4 lh-1 d-none d-lg-block">Deliveboo<br>Dashboard</div></a>
                     </div>
 
                     

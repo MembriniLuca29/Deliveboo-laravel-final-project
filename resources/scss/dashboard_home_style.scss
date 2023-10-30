@@ -1,11 +1,21 @@
 @use "partials/variables" as *;
 
 // Stile della section della ASIDE della dashboard 
-
+.my-link{
+    color: black;
+    text-decoration: none;
+}
+.my-link:hover{
+    color: whitesmoke;
+    text-decoration: underline;
+}
+.rever-color:hover{
+    filter:invert(100%)
+}
 
 // Stile della section del MAIN della dashboard 
 .my-style-home-dashboard-main{
-    
+   
     #main-content{
         
         #main-top-cont{
@@ -139,7 +149,7 @@
                                 object-position: center;
                             }
                         }
-    
+                        
                         .edit-button{
                             a{
                                 color: unset;

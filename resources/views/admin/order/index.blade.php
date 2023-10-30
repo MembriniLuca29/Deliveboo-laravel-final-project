@@ -11,7 +11,7 @@
 @foreach ($orders as $order)
     <div class="card order-card ms-4 mb-2 {{ $order->status === 'completato' ? 'd-none' : '' }}" data-status="{{ $order->status }}">
                 <div class="card-header">
-                    <div class="d-flex justify-content-between"><h4>{{ $order->name }} {{ $order->last_name }}  </h4><h2 class="me-4"> costo: {{ $order->total_price}}</h2>
+                    <div class="d-flex justify-content-between"><h4>{{ $order->name }} {{ $order->last_name }}  </h4><h2 class="me-4"> costo: {{ $order->total_price}}€</h2>
                     </div><h6>Data: {{ \Carbon\Carbon::parse($order->updated_at)->format('d/m/Y H:i') }}</h6>
                 </div>
                 <ul class="list-group list-group-flush">
