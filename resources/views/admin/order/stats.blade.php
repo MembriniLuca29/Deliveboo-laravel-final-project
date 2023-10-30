@@ -88,47 +88,59 @@ if (yearSelect) {
     let chartInstance;
     
     yearSelect.addEventListener('change', () => {
-        const selectedYear = parseInt(yearSelect.value);
-        const monthlyOrderCounts = calculateMonthlyOrderCounts(selectedYear);
-        const data = Object.values(monthlyOrderCounts);
-        const labels = Object.keys(monthlyOrderCounts).map(month => monthNames[month]);
-
-        const backgroundColors = data.map(value => calculateBackgroundColor(value));
-        
-        // Aggiorna solo i dati del grafico invece di crearne uno nuovo
-        chartInstance.data.labels = labels;
-        chartInstance.data.datasets[0].data = data;
-        chartInstance.data.datasets[0].backgroundColor = backgroundColors;
-        chartInstance.update(); // Aggiorna il grafico con i nuovi dati
+    const selectedYear = parseInt(yearSelect.value);
+    const monthlyOrderCounts = calculateMonthlyOrderCounts(selectedYear);
+    const data = Array.from({ length: 12 }, (_, monthIndex) => {
+        // Se c'è un conteggio per il mese, restituisci il conteggio, altrimenti restituisci 0
+        return monthlyOrderCounts[monthIndex] || 0;
     });
 
-    // Inizializza il grafico con l'anno corrente come predefinito
-    const currentYear = new Date().getFullYear();
-    const monthlyOrderCounts = calculateMonthlyOrderCounts(currentYear);
-    const data = Object.values(monthlyOrderCounts);
-    const labels = Object.keys(monthlyOrderCounts).map(month => monthNames[month]);
+    const labels = monthNames; // Usa i nomi dei mesi come etichette sull'asse x
     const backgroundColors = data.map(value => calculateBackgroundColor(value));
 
-    const ctx = document.getElementById('myChart').getContext('2d');
-    chartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: '# Venduti',
-                data: data,
-                borderWidth: 1,
-                backgroundColor: backgroundColors
-            }]
-        },
-        options: {
-            indexAxis: 'x',
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1
+    // Aggiorna solo i dati del grafico invece di crearne uno nuovo
+    chartInstance.data.labels = labels;
+    chartInstance.data.datasets[0].data = data;
+    chartInstance.data.datasets[0].backgroundColor = backgroundColors;
+    chartInstance.update(); // Aggiorna il grafico con i nuovi dati
+});
+
+// Inizializza il grafico con l'anno corrente come predefinito
+const currentYear = new Date().getFullYear();
+const monthlyOrderCounts = calculateMonthlyOrderCounts(currentYear);
+const data = Array.from({ length: 12 }, (_, monthIndex) => {
+    // Se c'è un conteggio per il mese, restituisci il conteggio, altrimenti restituisci 0
+    return monthlyOrderCounts[monthIndex] || 0;
+});
+
+const labels = monthNames; // Usa i nomi dei mesi come etichette sull'asse x
+const backgroundColors = data.map(value => calculateBackgroundColor(value));
+
+const ctx = document.getElementById('myChart').getContext('2d');
+chartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: '# Venduti',
+            data: data,
+            backgroundColor: backgroundColors
+        }]
+    },
+    options: {
+        indexAxis: 'x',
+        responsive: true,
+        scales: {
+            x: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
                     }
                 }
             }
