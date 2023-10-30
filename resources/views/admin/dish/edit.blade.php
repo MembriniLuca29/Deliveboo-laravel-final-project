@@ -23,7 +23,7 @@
                     {{-- intestazione main --}}
                     <div id="main-top-cont" class="py-2 pb-3 d-flex justify-content-between">
                         <div class="fs-2 d-none d-md-inline">
-                            Modifica la pietanza
+                            Modifica il piatto
                         </div>
                         <div class="fs-4 d-md-none">
                             Aggiungi una pietanza
